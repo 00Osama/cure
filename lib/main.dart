@@ -27,8 +27,8 @@ Future<void> main() async {
   
   // Initialize Supabase
   await Supabase.initialize(
-    url: 'https://wrzvjdmcylevmohoaqmv.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indyenl2amRtY3lsZXZtb2hvYXFtdiIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzM3NTU5NTU3LCJleHAiOjIwNTMxMzU1NTd9.sb_publishable_TKVKUQga5GGEvahNRcx7jQ_ny7nbQIy',
+    url: '--',
+    anonKey: '--',
   );
   
   // Initialize dependency injection
