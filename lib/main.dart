@@ -1,4 +1,4 @@
-import 'package:cure/features/auth/presentation/pages/splash.dart';
+import 'package:cure/shared/widgets/splash_page.dart';
 import 'package:cure/shared/di/injection.dart';
 import 'package:cure/shared/theme_and_locals/app_theme.dart';
 import 'package:cure/shared/theme_and_locals/locals_cubit.dart';

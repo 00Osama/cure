@@ -9,14 +9,14 @@ import 'package:cure/features/auth/presentation/widgets/splash_navigation_bar.da
 import 'package:cure/shared/widgets/gradient_scaffold.dart';
 import 'package:flutter/material.dart';
 
-class SplashPage extends StatefulWidget {
-  const SplashPage({super.key});
+class OnBordingPage extends StatefulWidget {
+  const OnBordingPage({super.key});
 
   @override
-  State<SplashPage> createState() => _SplashPageState();
+  State<OnBordingPage> createState() => _OnBordingPageState();
 }
 
-class _SplashPageState extends State<SplashPage>
+class _OnBordingPageState extends State<OnBordingPage>
     with SingleTickerProviderStateMixin {
   late final PageController _pageController;
   late final AnimationController _pulseController;
