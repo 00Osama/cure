@@ -1,12 +1,13 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../../features/auth/data/datasources/auth_remote_datasource.dart';
+import '../../features/auth/data/data_sources/auth_remote_datasource.dart';
 import '../../features/auth/data/repositories/auth_repository_impl.dart';
 import '../../features/auth/domain/repositories/auth_repository.dart';
-import '../../features/auth/presentation/bloc/auth_bloc.dart';
+import '../../features/auth/domain/usecase/auth_usecase.dart';
+import '../../features/auth/presentation/cubits/auth_cubit.dart';
 
 /// Simple dependency injection container
-/// 
+///
 /// Manages all app dependencies using a singleton pattern
 class DependencyInjection {
   // Singleton instance
@@ -23,18 +24,17 @@ class DependencyInjection {
 
   // Repositories
   late final AuthRepository _authRepository;
+  late final AuthUseCase _authUseCase;
 
   /// Initialize all dependencies
-  /// 
+  ///
   /// Must be called once at app startup before using any dependencies
   Future<void> initialize() async {
     // Initialize core dependencies
     _supabaseClient = Supabase.instance.client;
-    
+
     _secureStorage = const FlutterSecureStorage(
-      aOptions: AndroidOptions(
-        encryptedSharedPreferences: true,
-      ),
+      aOptions: AndroidOptions(encryptedSharedPreferences: true),
     );
 
     // Initialize data sources
@@ -48,18 +48,22 @@ class DependencyInjection {
       secureStorage: _secureStorage,
       supabaseClient: _supabaseClient,
     );
+
+    // Initialize use cases
+    _authUseCase = AuthUseCase(authRepository: _authRepository);
   }
 
   // Getters for dependencies
   SupabaseClient get supabaseClient => _supabaseClient;
   FlutterSecureStorage get secureStorage => _secureStorage;
   AuthRepository get authRepository => _authRepository;
+  AuthUseCase get authUseCase => _authUseCase;
 
-  /// Create a new AuthBloc instance
-  /// 
-  /// BLoCs should not be singletons - create new instances as needed
-  AuthBloc createAuthBloc() {
-    return AuthBloc(authRepository: _authRepository);
+  /// Create a new AuthCubit instance
+  ///
+  /// Cubits should not be singletons - create new instances as needed
+  AuthCubit createAuthCubit() {
+    return AuthCubit(authUseCase: _authUseCase);
   }
 }
 

@@ -6,7 +6,7 @@ enum LanguageState { english, arabic, french }
 
 class LanguageCubit extends Cubit<LanguageState> {
   final Box settingsBox;
-  
+
   LanguageCubit({required this.settingsBox}) : super(LanguageState.english);
 
   void setLanguage(LanguageState languageState) {
@@ -25,7 +25,7 @@ class LanguageCubit extends Cubit<LanguageState> {
         emit(LanguageState.english);
       }
     } else {
-      emit(LanguageState.english);
+      emit(LanguageState.arabic);
     }
   }
 

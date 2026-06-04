@@ -1,13 +1,20 @@
-import '../../../../core/utils/result.dart';
-import '../entities/user.dart';
+import 'package:cure/features/auth/domain/entities/nurse.dart';
+import 'package:cure/features/auth/domain/entities/patient.dart';
+import 'package:cure/features/auth/domain/entities/user.dart';
+import '../../../../shared/utils/result.dart';
 
-
+// outline for auth operations
 
 abstract class AuthRepository {
-  
-  // register outline
-  Future<Result<User>> register({
-    required String email,
+  // patient register outline
+  Future<Result<User>> patientRegister({
+    required Patient patient,
+    required String password,
+  });
+
+  // nurse register outline
+  Future<Result<User>> nurseRegister({
+    required Nurse nurse,
     required String password,
   });
 
@@ -16,13 +23,13 @@ abstract class AuthRepository {
     required String email,
     required String password,
   });
-  
+
   // signOut outline
   Future<Result<void>> signOut();
 
   // restoreSession outlint
   Future<Result<User?>> restoreSession();
-  
+
   // getCurrentUser outline
   Future<User?> getCurrentUser();
 }

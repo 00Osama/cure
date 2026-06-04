@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 class AppTheme {
   static ThemeData lightTheme(BuildContext context) {
-    const Color scaffoldColor = Color(0xffF2F2F6);
+    const Color scaffoldColor = Color(0xFF032531);
     return ThemeData(
       brightness: Brightness.light,
       primaryColor: Colors.white,
@@ -20,7 +20,7 @@ class AppTheme {
   }
 
   static ThemeData darkTheme(BuildContext context) {
-    final Color scaffoldColor = Colors.grey[900]!;
+    final Color scaffoldColor = Color(0xFF4A7C8C);
     return ThemeData(
       brightness: Brightness.dark,
       primaryColor: const Color(0xFF1C1C1E),

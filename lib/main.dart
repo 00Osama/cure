@@ -1,7 +1,8 @@
-import 'package:cure/core/di/injection.dart';
-import 'package:cure/core/them_and_locals/app_theme.dart';
-import 'package:cure/core/them_and_locals/locals_cubit.dart';
-import 'package:cure/core/them_and_locals/them_cubit.dart';
+import 'package:cure/features/auth/presentation/pages/splash.dart';
+import 'package:cure/shared/di/injection.dart';
+import 'package:cure/shared/theme_and_locals/app_theme.dart';
+import 'package:cure/shared/theme_and_locals/locals_cubit.dart';
+import 'package:cure/shared/theme_and_locals/them_cubit.dart';
 import 'package:cure/firebase_options.dart';
 import 'package:cure/generated/l10n.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -13,45 +14,43 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // Initialize Hive
   await Hive.initFlutter();
-  
+
   // Open Hive box for settings
   final settingsBox = await Hive.openBox('settings');
-  
+
   // Initialize Firebase
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   // Initialize Supabase
   await Supabase.initialize(
-    url: '--',
-    anonKey: '--',
+    url: 'https://wrzvjdmcylevmohoaqmv.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indyenl2amRtY3lsZXZtb2hvYXFtdiIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzM3NTU5NTU3LCJleHAiOjIwNTMxMzU1NTd9.sb_publishable_TKVKUQga5GGEvahNRcx7jQ_ny7nbQIy',
   );
-  
+
   // Initialize dependency injection
   await di.initialize();
-  
+
   // main app entry with theme, locals features provider
   runApp(
     MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => ThemeCubit(settingsBox: settingsBox)
-            ..loadThemePreference(),
+          create: (_) =>
+              ThemeCubit(settingsBox: settingsBox)..loadThemePreference(),
         ),
         BlocProvider(
-          create: (_) => LanguageCubit(settingsBox: settingsBox)
-            ..loadLanguagePreference(),
+          create: (_) =>
+              LanguageCubit(settingsBox: settingsBox)..loadLanguagePreference(),
         ),
       ],
       child: const MyApp(),
     ),
   );
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -75,11 +74,7 @@ class MyApp extends StatelessWidget {
               theme: AppTheme.lightTheme(context),
               darkTheme: AppTheme.darkTheme(context),
               themeMode: context.watch<ThemeCubit>().themeMode,
-              home: const Scaffold(
-                body: Center(
-                  child: Text('CURE - Home Care Nursing'),
-                ),
-              ),
+              home: const SplashPage(),
             );
           },
         );

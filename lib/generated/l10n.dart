@@ -49,6 +49,1076 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Egypt's First Healthcare Intermediary`
+  String get splashSlide1Title {
+    return Intl.message(
+      'Egypt\'s First Healthcare Intermediary',
+      name: 'splashSlide1Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Egypt's first intermediary`
+  String get splashSlide1Line1 {
+    return Intl.message(
+      'Egypt\'s first intermediary',
+      name: 'splashSlide1Line1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `between nurse and patient`
+  String get splashSlide1Line2 {
+    return Intl.message(
+      'between nurse and patient',
+      name: 'splashSlide1Line2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `in Egypt`
+  String get splashSlide1Line3 {
+    return Intl.message(
+      'in Egypt',
+      name: 'splashSlide1Line3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connecting Nurses and Patients`
+  String get splashSlide1Subtitle {
+    return Intl.message(
+      'Connecting Nurses and Patients',
+      name: 'splashSlide1Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Healthcare is Everyone's Right`
+  String get splashSlide2Title {
+    return Intl.message(
+      'Healthcare is Everyone\'s Right',
+      name: 'splashSlide2Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CURE is a smart platform that connects patients with home nursing service providers in a safe, fast, and organized manner, aimed at facilitating access to high-quality home healthcare at a fair price.`
+  String get splashSlide2Subtitle {
+    return Intl.message(
+      'CURE is a smart platform that connects patients with home nursing service providers in a safe, fast, and organized manner, aimed at facilitating access to high-quality home healthcare at a fair price.',
+      name: 'splashSlide2Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daily Struggles in Fayoum`
+  String get splashSlide3Title {
+    return Intl.message(
+      'Daily Struggles in Fayoum',
+      name: 'splashSlide3Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Patients suffer in silence`
+  String get splashSlide3Subtitle {
+    return Intl.message(
+      'Patients suffer in silence',
+      name: 'splashSlide3Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hours of Waiting`
+  String get waitingHours {
+    return Intl.message(
+      'Hours of Waiting',
+      name: 'waitingHours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Patients wait 2-6 hours for a nurse who might not come at all`
+  String get waitingDesc {
+    return Intl.message(
+      'Patients wait 2-6 hours for a nurse who might not come at all',
+      name: 'waitingDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `73% of patients suffered from long waiting times`
+  String get waitingPercent {
+    return Intl.message(
+      '73% of patients suffered from long waiting times',
+      name: 'waitingPercent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price Manipulation`
+  String get priceManipulation {
+    return Intl.message(
+      'Price Manipulation',
+      name: 'priceManipulation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Same service costs 50 pounds in one street, 500 in the next — for no reason`
+  String get priceDesc {
+    return Intl.message(
+      'Same service costs 50 pounds in one street, 500 in the next — for no reason',
+      name: 'priceDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `68% paid unfair prices`
+  String get unfairPrice {
+    return Intl.message(
+      '68% paid unfair prices',
+      name: 'unfairPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Guarantee or Verification`
+  String get noVerification {
+    return Intl.message(
+      'No Guarantee or Verification',
+      name: 'noVerification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No way to verify a nurse's qualifications or professional background`
+  String get noVerificationDesc {
+    return Intl.message(
+      'No way to verify a nurse\'s qualifications or professional background',
+      name: 'noVerificationDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `81% felt unsafe`
+  String get unsafeFeel {
+    return Intl.message(
+      '81% felt unsafe',
+      name: 'unsafeFeel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Unified System`
+  String get noSystem {
+    return Intl.message(
+      'No Unified System',
+      name: 'noSystem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Booking done through unofficial WhatsApp groups and personal connections — no organized platform`
+  String get noSystemDesc {
+    return Intl.message(
+      'Booking done through unofficial WhatsApp groups and personal connections — no organized platform',
+      name: 'noSystemDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `100% — No app in Fayoum`
+  String get noApp {
+    return Intl.message(
+      '100% — No app in Fayoum',
+      name: 'noApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Healthcare at Your Doorstep in 15 Minutes`
+  String get splashSlide4Title {
+    return Intl.message(
+      'Healthcare at Your Doorstep in 15 Minutes',
+      name: 'splashSlide4Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A platform connecting patients with certified nurses through a smart system ensuring speed, safety, and complete transparency`
+  String get splashSlide4Subtitle {
+    return Intl.message(
+      'A platform connecting patients with certified nurses through a smart system ensuring speed, safety, and complete transparency',
+      name: 'splashSlide4Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Our Services`
+  String get splashSlide5Title {
+    return Intl.message(
+      'Our Services',
+      name: 'splashSlide5Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comprehensive Medical Coverage for All Your Needs`
+  String get splashSlide5Subtitle {
+    return Intl.message(
+      'Comprehensive Medical Coverage for All Your Needs',
+      name: 'splashSlide5Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We provide a wide range of home nursing services tailored to all cases`
+  String get servicesIntro {
+    return Intl.message(
+      'We provide a wide range of home nursing services tailored to all cases',
+      name: 'servicesIntro',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `📋 Basic Care`
+  String get basicCareTitle {
+    return Intl.message(
+      '📋 Basic Care',
+      name: 'basicCareTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `💉 Giving injections (IM / SC / IV)\n🩸 Random and cumulative blood sugar measurement\n❤️ Blood pressure measurement\n🌡️ Temperature measurement\n📊 Measuring vital signs (Pulse – O2 – R)\n💊 Administering medications on schedule\n🧪 IV Cannula insertion\n💧 Setting up intravenous fluids\n🧴 Monitoring dehydration and fluid replacement`
+  String get basicCareItems {
+    return Intl.message(
+      '💉 Giving injections (IM / SC / IV)\n🩸 Random and cumulative blood sugar measurement\n❤️ Blood pressure measurement\n🌡️ Temperature measurement\n📊 Measuring vital signs (Pulse – O2 – R)\n💊 Administering medications on schedule\n🧪 IV Cannula insertion\n💧 Setting up intravenous fluids\n🧴 Monitoring dehydration and fluid replacement',
+      name: 'basicCareItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🩹 Wound and Skin Care`
+  String get woundCareTitle {
+    return Intl.message(
+      '🩹 Wound and Skin Care',
+      name: 'woundCareTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🩹 Dressing simple and deep wounds\n🧬 Cleaning and sterilizing wounds\n🦶 Diabetic foot dressing\n🧴 Treating bed sores\n🪡 Monitoring post-operative wounds\n🧷 Simple suture removal`
+  String get woundCareItems {
+    return Intl.message(
+      '🩹 Dressing simple and deep wounds\n🧬 Cleaning and sterilizing wounds\n🦶 Diabetic foot dressing\n🧴 Treating bed sores\n🪡 Monitoring post-operative wounds\n🧷 Simple suture removal',
+      name: 'woundCareItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🧓 Elderly Care`
+  String get elderlyCareTitle {
+    return Intl.message(
+      '🧓 Elderly Care',
+      name: 'elderlyCareTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🛏️ Complete care for bedridden patients\n🚿 Bathing and cleaning unable patients\n🔄 Changing patient position to prevent sores\n🍽️ Assistance with nutrition\n🚻 Assistance with toilet needs\n🧠 Monitoring mental state and consciousness\n💊 Organizing daily medications`
+  String get elderlyCareItems {
+    return Intl.message(
+      '🛏️ Complete care for bedridden patients\n🚿 Bathing and cleaning unable patients\n🔄 Changing patient position to prevent sores\n🍽️ Assistance with nutrition\n🚻 Assistance with toilet needs\n🧠 Monitoring mental state and consciousness\n💊 Organizing daily medications',
+      name: 'elderlyCareItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🫀 Chronic Diseases Care`
+  String get chronicCareTitle {
+    return Intl.message(
+      '🫀 Chronic Diseases Care',
+      name: 'chronicCareTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🫀 Monitoring heart disease patients\n🩸 Monitoring diabetes patients\n🧠 Monitoring high blood pressure\n🫁 Monitoring asthma and breathing difficulty patients\n📅 Preparing periodic follow-up plan\n📊 Recording and analyzing daily readings`
+  String get chronicCareItems {
+    return Intl.message(
+      '🫀 Monitoring heart disease patients\n🩸 Monitoring diabetes patients\n🧠 Monitoring high blood pressure\n🫁 Monitoring asthma and breathing difficulty patients\n📅 Preparing periodic follow-up plan\n📊 Recording and analyzing daily readings',
+      name: 'chronicCareItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🚑 Post-Operative Care`
+  String get postOpCareTitle {
+    return Intl.message(
+      '🚑 Post-Operative Care',
+      name: 'postOpCareTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🏥 Post-operative surgical monitoring\n🩹 Changing surgical bandages\n💉 Administering post-operative antibiotics\n🧼 Cleaning surgical wounds\n📉 Monitoring infections or complications\n🛏️ Helping patient gradual movement`
+  String get postOpCareItems {
+    return Intl.message(
+      '🏥 Post-operative surgical monitoring\n🩹 Changing surgical bandages\n💉 Administering post-operative antibiotics\n🧼 Cleaning surgical wounds\n📉 Monitoring infections or complications\n🛏️ Helping patient gradual movement',
+      name: 'postOpCareItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🫁 Home Respiratory Care`
+  String get respiratoryCareTitle {
+    return Intl.message(
+      '🫁 Home Respiratory Care',
+      name: 'respiratoryCareTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `💨 Nebulizer sessions (steam)\n🫁 Suctioning phlegm\n😮‍💨 Monitoring home oxygen\n🧴 Teaching use of respiratory devices\n📊 Monitoring asthma cases`
+  String get respiratoryCareItems {
+    return Intl.message(
+      '💨 Nebulizer sessions (steam)\n🫁 Suctioning phlegm\n😮‍💨 Monitoring home oxygen\n🧴 Teaching use of respiratory devices\n📊 Monitoring asthma cases',
+      name: 'respiratoryCareItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🚿 Catheter and Special Procedures`
+  String get catheterCareTitle {
+    return Intl.message(
+      '🚿 Catheter and Special Procedures',
+      name: 'catheterCareTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🚿 Urinary catheter insertion\n🧼 Changing and monitoring catheter\n💧 Care for catheterized patient\n🧪 Monitoring urine and catheter complications`
+  String get catheterCareItems {
+    return Intl.message(
+      '🚿 Urinary catheter insertion\n🧼 Changing and monitoring catheter\n💧 Care for catheterized patient\n🧪 Monitoring urine and catheter complications',
+      name: 'catheterCareItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🧠 Psychological and Rehabilitation Support`
+  String get psychologicalCareTitle {
+    return Intl.message(
+      '🧠 Psychological and Rehabilitation Support',
+      name: 'psychologicalCareTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🧠 Basic psychological support for patient\n👨‍👩‍👧 Family support in dealing with condition\n🧘 Simple rehabilitation exercises at home\n🦵 Light physical therapy (Mobility)\n🪑 Training patient on movement`
+  String get psychologicalCareItems {
+    return Intl.message(
+      '🧠 Basic psychological support for patient\n👨‍👩‍👧 Family support in dealing with condition\n🧘 Simple rehabilitation exercises at home\n🦵 Light physical therapy (Mobility)\n🪑 Training patient on movement',
+      name: 'psychologicalCareItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🚨 Emergency and Rapid Assessment Services`
+  String get emergencyCareTitle {
+    return Intl.message(
+      '🚨 Emergency and Rapid Assessment Services',
+      name: 'emergencyCareTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🚨 Emergency case assessment at home\n📉 Rapid health status measurement\n🏥 Preparing patient for hospital transfer\n📞 Urgent nursing consultation`
+  String get emergencyCareItems {
+    return Intl.message(
+      '🚨 Emergency case assessment at home\n📉 Rapid health status measurement\n🏥 Preparing patient for hospital transfer\n📞 Urgent nursing consultation',
+      name: 'emergencyCareItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How It Works`
+  String get howItWorks {
+    return Intl.message(
+      'How It Works',
+      name: 'howItWorks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `3 Steps Only for Home Care`
+  String get threeSteps {
+    return Intl.message(
+      '3 Steps Only for Home Care',
+      name: 'threeSteps',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `For Patient`
+  String get forPatient {
+    return Intl.message(
+      'For Patient',
+      name: 'forPatient',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose Service`
+  String get step1Title {
+    return Intl.message(
+      'Choose Service',
+      name: 'step1Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Browse the list of 15 home medical services with fixed announced prices. No negotiation, what you see is what you pay.`
+  String get step1Desc {
+    return Intl.message(
+      'Browse the list of 15 home medical services with fixed announced prices. No negotiation, what you see is what you pay.',
+      name: 'step1Desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set Location and Time`
+  String get step2Title {
+    return Intl.message(
+      'Set Location and Time',
+      name: 'step2Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use GPS to automatically identify your address or enter it manually, then choose the time that suits you.`
+  String get step2Desc {
+    return Intl.message(
+      'Use GPS to automatically identify your address or enter it manually, then choose the time that suits you.',
+      name: 'step2Desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Receive Nurse`
+  String get step3Title {
+    return Intl.message(
+      'Receive Nurse',
+      name: 'step3Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The closest certified nurse is automatically selected for you. Track their location on the map until arrival in less than 15 minutes.`
+  String get step3Desc {
+    return Intl.message(
+      'The closest certified nurse is automatically selected for you. Track their location on the map until arrival in less than 15 minutes.',
+      name: 'step3Desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pay and Rate`
+  String get step4Title {
+    return Intl.message(
+      'Pay and Rate',
+      name: 'step4Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `After service completion, pay securely and rate the nurse. Your ratings help maintain service quality for everyone.`
+  String get step4Desc {
+    return Intl.message(
+      'After service completion, pay securely and rate the nurse. Your ratings help maintain service quality for everyone.',
+      name: 'step4Desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Account Type`
+  String get selectAccountType {
+    return Intl.message(
+      'Select Account Type',
+      name: 'selectAccountType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose whether you are a patient seeking care or a nurse offering services`
+  String get selectAccountTypeDesc {
+    return Intl.message(
+      'Choose whether you are a patient seeking care or a nurse offering services',
+      name: 'selectAccountTypeDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I'm a Patient`
+  String get patientButton {
+    return Intl.message(
+      'I\'m a Patient',
+      name: 'patientButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I'm a Nurse`
+  String get nurseButton {
+    return Intl.message(
+      'I\'m a Nurse',
+      name: 'nurseButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next`
+  String get next {
+    return Intl.message(
+      'Next',
+      name: 'next',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Previous`
+  String get previous {
+    return Intl.message(
+      'Previous',
+      name: 'previous',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get Started`
+  String get getStarted {
+    return Intl.message(
+      'Get Started',
+      name: 'getStarted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to CURE`
+  String get welcome {
+    return Intl.message(
+      'Welcome to CURE',
+      name: 'welcome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This field is required`
+  String get errorRequired {
+    return Intl.message(
+      'This field is required',
+      name: 'errorRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid email address`
+  String get errorInvalidEmail {
+    return Intl.message(
+      'Please enter a valid email address',
+      name: 'errorInvalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 6 characters`
+  String get errorInvalidPassword {
+    return Intl.message(
+      'Password must be at least 6 characters',
+      name: 'errorInvalidPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passwords do not match`
+  String get errorPasswordMismatch {
+    return Intl.message(
+      'Passwords do not match',
+      name: 'errorPasswordMismatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid phone number`
+  String get errorInvalidPhone {
+    return Intl.message(
+      'Please enter a valid phone number',
+      name: 'errorInvalidPhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select your date of birth`
+  String get errorInvalidDOB {
+    return Intl.message(
+      'Please select your date of birth',
+      name: 'errorInvalidDOB',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select your gender`
+  String get errorSelectGender {
+    return Intl.message(
+      'Please select your gender',
+      name: 'errorSelectGender',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter years of experience`
+  String get errorExperienceRequired {
+    return Intl.message(
+      'Please enter years of experience',
+      name: 'errorExperienceRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your region`
+  String get errorRegionRequired {
+    return Intl.message(
+      'Please enter your region',
+      name: 'errorRegionRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your skills or specialties`
+  String get errorSkillsRequired {
+    return Intl.message(
+      'Please enter your skills or specialties',
+      name: 'errorSkillsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Join as a Nurse`
+  String get nurseSignupTitle {
+    return Intl.message(
+      'Join as a Nurse',
+      name: 'nurseSignupTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provide Care. Make a Difference.`
+  String get nurseSignupSubtitle {
+    return Intl.message(
+      'Provide Care. Make a Difference.',
+      name: 'nurseSignupSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal Information`
+  String get personalInformation {
+    return Intl.message(
+      'Personal Information',
+      name: 'personalInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account Security`
+  String get accountSecurity {
+    return Intl.message(
+      'Account Security',
+      name: 'accountSecurity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Professional Information`
+  String get professionalInformation {
+    return Intl.message(
+      'Professional Information',
+      name: 'professionalInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal Details`
+  String get personalDetails {
+    return Intl.message(
+      'Personal Details',
+      name: 'personalDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Join as Nurse`
+  String get joinAsNurse {
+    return Intl.message(
+      'Join as Nurse',
+      name: 'joinAsNurse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full Name`
+  String get fullName {
+    return Intl.message(
+      'Full Name',
+      name: 'fullName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email Address`
+  String get emailAddress {
+    return Intl.message(
+      'Email Address',
+      name: 'emailAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get phoneNumberLabel {
+    return Intl.message(
+      'Phone Number',
+      name: 'phoneNumberLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get passwordLabel {
+    return Intl.message(
+      'Password',
+      name: 'passwordLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Password`
+  String get confirmPasswordLabel {
+    return Intl.message(
+      'Confirm Password',
+      name: 'confirmPasswordLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Years of Experience`
+  String get yearsOfExperience {
+    return Intl.message(
+      'Years of Experience',
+      name: 'yearsOfExperience',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Less than 1 year`
+  String get experienceLessThanOneYear {
+    return Intl.message(
+      'Less than 1 year',
+      name: 'experienceLessThanOneYear',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1-3 years`
+  String get experience1to3Years {
+    return Intl.message(
+      '1-3 years',
+      name: 'experience1to3Years',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `3-5 years`
+  String get experience3to5Years {
+    return Intl.message(
+      '3-5 years',
+      name: 'experience3to5Years',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More than 5 years`
+  String get experienceMoreThan5Years {
+    return Intl.message(
+      'More than 5 years',
+      name: 'experienceMoreThan5Years',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Region`
+  String get regionLabel {
+    return Intl.message(
+      'Region',
+      name: 'regionLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fayoum City`
+  String get regionFayoumCity {
+    return Intl.message(
+      'Fayoum City',
+      name: 'regionFayoumCity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Itsa`
+  String get regionItsa {
+    return Intl.message(
+      'Itsa',
+      name: 'regionItsa',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tamiya`
+  String get regionTamiya {
+    return Intl.message(
+      'Tamiya',
+      name: 'regionTamiya',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Youssef El Seddik`
+  String get regionYoussefElSeddik {
+    return Intl.message(
+      'Youssef El Seddik',
+      name: 'regionYoussefElSeddik',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Snores`
+  String get regionSnores {
+    return Intl.message(
+      'Snores',
+      name: 'regionSnores',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Other`
+  String get regionOther {
+    return Intl.message(
+      'Other',
+      name: 'regionOther',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Skills & Specialties`
+  String get skillsSpecialties {
+    return Intl.message(
+      'Skills & Specialties',
+      name: 'skillsSpecialties',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date of Birth`
+  String get dateOfBirthLabel {
+    return Intl.message(
+      'Date of Birth',
+      name: 'dateOfBirthLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gender`
+  String get genderLabel {
+    return Intl.message(
+      'Gender',
+      name: 'genderLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Male`
+  String get maleLabel {
+    return Intl.message(
+      'Male',
+      name: 'maleLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Female`
+  String get femaleLabel {
+    return Intl.message(
+      'Female',
+      name: 'femaleLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nurse account created successfully`
+  String get nurseSignupSuccess {
+    return Intl.message(
+      'Nurse account created successfully',
+      name: 'nurseSignupSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create your patient account`
+  String get patientSignupTitle {
+    return Intl.message(
+      'Create your patient account',
+      name: 'patientSignupTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign up to access home nursing services`
+  String get patientSignupSubtitle {
+    return Intl.message(
+      'Sign up to access home nursing services',
+      name: 'patientSignupSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Join as Patient`
+  String get joinAsPatient {
+    return Intl.message(
+      'Join as Patient',
+      name: 'joinAsPatient',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Patient signup submitted`
+  String get patientSignupSuccess {
+    return Intl.message(
+      'Patient signup submitted',
+      name: 'patientSignupSuccess',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -21,5 +21,190 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "accountSecurity": MessageLookupByLibrary.simpleMessage("أمان الحساب"),
+        "basicCareItems": MessageLookupByLibrary.simpleMessage(
+            "💉 إعطاء الحقن (عضل / تحت الجلد / وريد)\n🩸 قياس السكر العشوائي والتراكمي\n❤️ قياس ضغط الدم\n🌡️ قياس الحرارة\n📊 قياس العلامات الحيوية (Pulse – O2 – R)\n💊 إعطاء الأدوية في مواعيدها\n🧪 تركيب كانيولا (IV Cannula)\n💧 تركيب المحاليل الوريدية\n🧴 متابعة الجفاف وتعويض السوائل"),
+        "basicCareTitle": MessageLookupByLibrary.simpleMessage(
+            "📋 الخدمات الأساسية (Basic Care)"),
+        "catheterCareItems": MessageLookupByLibrary.simpleMessage(
+            "🚿 تركيب قسطرة بولية\n🧼 تغيير القسطرة ومتابعتها\n💧 العناية بمريض القسطرة\n🧪 متابعة البول ومضاعفات القسطرة"),
+        "catheterCareTitle": MessageLookupByLibrary.simpleMessage(
+            "🚿 القسطرة والإجراءات الخاصة"),
+        "chronicCareItems": MessageLookupByLibrary.simpleMessage(
+            "🫀 متابعة مرضى القلب\n🩸 متابعة مرضى السكر\n🧠 متابعة الضغط المرتفع\n🫁 متابعة مرضى الربو وضيق التنفس\n📅 إعداد خطة متابعة دورية\n📊 تسجيل قراءات يومية وتحليلها"),
+        "chronicCareTitle": MessageLookupByLibrary.simpleMessage(
+            "🫀 الأمراض المزمنة (Chronic Care)"),
+        "confirmPasswordLabel":
+            MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
+        "dateOfBirthLabel":
+            MessageLookupByLibrary.simpleMessage("تاريخ الميلاد"),
+        "elderlyCareItems": MessageLookupByLibrary.simpleMessage(
+            "🛏️ رعاية كاملة للمريض طريح الفراش\n🚿 استحمام وتنظيف المريض غير القادر\n🔄 تغيير وضعية المريض لمنع القرح\n🍽️ المساعدة في التغذية\n🚻 المساعدة في قضاء الحاجة\n🧠 متابعة الحالة النفسية والوعي\n💊 تنظيم الأدوية اليومية"),
+        "elderlyCareTitle": MessageLookupByLibrary.simpleMessage(
+            "🧓 رعاية كبار السن (Elderly Care)"),
+        "emailAddress":
+            MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+        "emergencyCareItems": MessageLookupByLibrary.simpleMessage(
+            "🚨 تقييم حالة طارئة في المنزل\n📉 قياس سريع للحالة الصحية\n🏥 تجهيز المريض للنقل للمستشفى\n📞 استشارة تمريضية عاجلة"),
+        "emergencyCareTitle":
+            MessageLookupByLibrary.simpleMessage("🚨 خدمات طوارئ وتقييم سريع"),
+        "errorExperienceRequired":
+            MessageLookupByLibrary.simpleMessage("الرجاء إدخال سنوات الخبرة"),
+        "errorInvalidDOB":
+            MessageLookupByLibrary.simpleMessage("الرجاء اختيار تاريخ ميلادك"),
+        "errorInvalidEmail": MessageLookupByLibrary.simpleMessage(
+            "الرجاء إدخال عنوان بريد إلكتروني صحيح"),
+        "errorInvalidPassword": MessageLookupByLibrary.simpleMessage(
+            "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل"),
+        "errorInvalidPhone":
+            MessageLookupByLibrary.simpleMessage("الرجاء إدخال رقم هاتف صحيح"),
+        "errorPasswordMismatch":
+            MessageLookupByLibrary.simpleMessage("كلمتا المرور غير متطابقتين"),
+        "errorRegionRequired":
+            MessageLookupByLibrary.simpleMessage("الرجاء إدخال المنطقة"),
+        "errorRequired":
+            MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
+        "errorSelectGender":
+            MessageLookupByLibrary.simpleMessage("الرجاء اختيار الجنس"),
+        "errorSkillsRequired": MessageLookupByLibrary.simpleMessage(
+            "الرجاء إدخال المهارات أو التخصصات"),
+        "experience1to3Years":
+            MessageLookupByLibrary.simpleMessage("1-3 سنوات"),
+        "experience3to5Years":
+            MessageLookupByLibrary.simpleMessage("3-5 سنوات"),
+        "experienceLessThanOneYear":
+            MessageLookupByLibrary.simpleMessage("أقل من سنة"),
+        "experienceMoreThan5Years":
+            MessageLookupByLibrary.simpleMessage("أكثر من 5 سنوات"),
+        "femaleLabel": MessageLookupByLibrary.simpleMessage("أنثى"),
+        "forPatient": MessageLookupByLibrary.simpleMessage("للمريض"),
+        "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+        "genderLabel": MessageLookupByLibrary.simpleMessage("الجنس"),
+        "getStarted": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
+        "howItWorks": MessageLookupByLibrary.simpleMessage("كيف يعمل"),
+        "joinAsNurse": MessageLookupByLibrary.simpleMessage("انضم كممرض"),
+        "joinAsPatient": MessageLookupByLibrary.simpleMessage("انضم كمريض"),
+        "maleLabel": MessageLookupByLibrary.simpleMessage("ذكر"),
+        "next": MessageLookupByLibrary.simpleMessage("التالي"),
+        "noApp": MessageLookupByLibrary.simpleMessage(
+            "100% لا يوجد تطبيق في الفيوم"),
+        "noSystem": MessageLookupByLibrary.simpleMessage("لا يوجد نظام موحّد"),
+        "noSystemDesc": MessageLookupByLibrary.simpleMessage(
+            "الحجز يتم عبر مجموعات واتساب غير رسمية والمعارف الشخصية — بدون أي منصة منظمة"),
+        "noVerification":
+            MessageLookupByLibrary.simpleMessage("لا توجد كفالة أو تحقق"),
+        "noVerificationDesc": MessageLookupByLibrary.simpleMessage(
+            "لا توجد طريقة للتحقق من مؤهلات الممرض أو خلفيته المهنية قبل استقباله"),
+        "nurseButton": MessageLookupByLibrary.simpleMessage("أنا ممرض"),
+        "nurseSignupSubtitle":
+            MessageLookupByLibrary.simpleMessage("قدّم الرعاية. اصنع فرقاً."),
+        "nurseSignupSuccess":
+            MessageLookupByLibrary.simpleMessage("تم إنشاء حساب الممرض بنجاح"),
+        "nurseSignupTitle": MessageLookupByLibrary.simpleMessage("انضم كممرض"),
+        "passwordLabel": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "patientButton": MessageLookupByLibrary.simpleMessage("أنا مريض"),
+        "patientSignupSubtitle": MessageLookupByLibrary.simpleMessage(
+            "سجّل للوصول إلى خدمات التمريض المنزلي"),
+        "patientSignupSuccess":
+            MessageLookupByLibrary.simpleMessage("تم إرسال تسجيل المريض"),
+        "patientSignupTitle":
+            MessageLookupByLibrary.simpleMessage("أنشئ حساب المريض"),
+        "personalDetails": MessageLookupByLibrary.simpleMessage("تفاصيل شخصية"),
+        "personalInformation":
+            MessageLookupByLibrary.simpleMessage("المعلومات الشخصية"),
+        "phoneNumberLabel": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+        "postOpCareItems": MessageLookupByLibrary.simpleMessage(
+            "🏥 متابعة ما بعد العمليات الجراحية\n🩹 تغيير الضمادات الجراحية\n💉 إعطاء مضادات حيوية بعد العمليات\n🧼 تنظيف الجروح الجراحية\n📉 متابعة الالتهابات أو المضاعفات\n🛏️ مساعدة المريض في الحركة التدريجية"),
+        "postOpCareTitle":
+            MessageLookupByLibrary.simpleMessage("🚑 خدمات ما بعد العمليات"),
+        "previous": MessageLookupByLibrary.simpleMessage("السابق"),
+        "priceDesc": MessageLookupByLibrary.simpleMessage(
+            "نفس الخدمة بـ 50 جنيه في شارع، و500 جنيه في الشارع المجاور — بدون أي مبرر"),
+        "priceManipulation":
+            MessageLookupByLibrary.simpleMessage("التلاعب بالأسعار"),
+        "professionalInformation":
+            MessageLookupByLibrary.simpleMessage("المعلومات المهنية"),
+        "psychologicalCareItems": MessageLookupByLibrary.simpleMessage(
+            "🧠 دعم نفسي بسيط للمريض\n👨‍👩‍👧 دعم الأسرة في التعامل مع الحالة\n🧘 تمارين تأهيل بسيطة في المنزل\n🦵 علاج طبيعي خفيف (Mobility)\n🪑 تدريب المريض على الحركة"),
+        "psychologicalCareTitle":
+            MessageLookupByLibrary.simpleMessage("🧠 الدعم النفسي والتأهيلي"),
+        "regionFayoumCity":
+            MessageLookupByLibrary.simpleMessage("مدينة الفيوم"),
+        "regionItsa": MessageLookupByLibrary.simpleMessage("إطسا"),
+        "regionLabel": MessageLookupByLibrary.simpleMessage("المنطقة"),
+        "regionOther": MessageLookupByLibrary.simpleMessage("أخرى"),
+        "regionSnores": MessageLookupByLibrary.simpleMessage("سنورس"),
+        "regionTamiya": MessageLookupByLibrary.simpleMessage("طامية"),
+        "regionYoussefElSeddik":
+            MessageLookupByLibrary.simpleMessage("يوسف الصديق"),
+        "respiratoryCareItems": MessageLookupByLibrary.simpleMessage(
+            "💨 جلسات نيبولايزر (بخار)\n🫁 شفط بلغم (Suction)\n😮‍💨 متابعة الأكسجين المنزلي\n🧴 تعليم استخدام أجهزة التنفس\n📊 متابعة حالات الربو"),
+        "respiratoryCareTitle": MessageLookupByLibrary.simpleMessage(
+            "🫁 الرعاية التنفسية المنزلية"),
+        "selectAccountType":
+            MessageLookupByLibrary.simpleMessage("اختر نوع الحساب"),
+        "selectAccountTypeDesc": MessageLookupByLibrary.simpleMessage(
+            "اختر ما إذا كنت مريضاً تحتاج رعاية أو ممرضاً يريد عمل منظم"),
+        "servicesIntro": MessageLookupByLibrary.simpleMessage(
+            "نوفر مجموعة واسعة من خدمات التمريض المنزلي المخصصة لتناسب جميع الحالات"),
+        "skillsSpecialties":
+            MessageLookupByLibrary.simpleMessage("المهارات والتخصصات"),
+        "splashSlide1Line1":
+            MessageLookupByLibrary.simpleMessage("أول وسيط بين"),
+        "splashSlide1Line2":
+            MessageLookupByLibrary.simpleMessage("الممرض والمريض"),
+        "splashSlide1Line3": MessageLookupByLibrary.simpleMessage("في مصر"),
+        "splashSlide1Subtitle":
+            MessageLookupByLibrary.simpleMessage("ربط الممرضين والمرضى"),
+        "splashSlide1Title": MessageLookupByLibrary.simpleMessage(
+            "أول وسيط بين الممرض والمريض في مصر"),
+        "splashSlide2Subtitle": MessageLookupByLibrary.simpleMessage(
+            "كيور منصة ذكية تربط المرضى بمقدمي خدمات التمريض المنزلي بطريقة آمنة وسريعة ومنظمة، بهدف تسهيل الوصول للرعاية الصحية في المنزل بجودة عالية وسعر عادل."),
+        "splashSlide2Title":
+            MessageLookupByLibrary.simpleMessage("الرعاية الصحية حق للجميع"),
+        "splashSlide3Subtitle":
+            MessageLookupByLibrary.simpleMessage("الناس يعانون في صمت"),
+        "splashSlide3Title": MessageLookupByLibrary.simpleMessage(
+            "كل يوم في الفيوم \\n يعاني الناس في صمت"),
+        "splashSlide4Subtitle": MessageLookupByLibrary.simpleMessage(
+            "منصة تربط المرضى بممرضين معتمدين بنظام ذكي يضمن السرعة والأمان والشفافية الكاملة"),
+        "splashSlide4Title": MessageLookupByLibrary.simpleMessage(
+            "الرعاية الصحية على بابك في 15 دقيقة"),
+        "splashSlide5Subtitle": MessageLookupByLibrary.simpleMessage(
+            "تغطية طبية شاملة لكل احتياجاتك"),
+        "splashSlide5Title": MessageLookupByLibrary.simpleMessage("خدماتنا"),
+        "step1Desc": MessageLookupByLibrary.simpleMessage(
+            "تصفّح قائمة الـ 15 خدمة طبية المنزلية مع الأسعار الثابتة المعلنة. لا تفاوض، ما تراه هو ما تدفعه."),
+        "step1Title": MessageLookupByLibrary.simpleMessage("اختر الخدمة"),
+        "step2Desc": MessageLookupByLibrary.simpleMessage(
+            "استخدم GPS لتحديد عنوانك تلقائياً أو أدخله يدوياً، ثم اختر الوقت المناسب لك."),
+        "step2Title":
+            MessageLookupByLibrary.simpleMessage("حدد الموقع والموعد"),
+        "step3Desc": MessageLookupByLibrary.simpleMessage(
+            "يتم تلقائياً اختيار أقرب ممرض معتمد إليك. تابع مكانه على الخريطة حتى وصوله في أقل من 15 دقيقة."),
+        "step3Title": MessageLookupByLibrary.simpleMessage("استلم الممرض"),
+        "step4Desc": MessageLookupByLibrary.simpleMessage(
+            "بعد انتهاء الخدمة، ادفع بأمان وأعطِ تقييمك للممرض. تقييماتك تساعد في الحفاظ على جودة الخدمة للجميع."),
+        "step4Title": MessageLookupByLibrary.simpleMessage("ادفع وقيّم"),
+        "threeSteps": MessageLookupByLibrary.simpleMessage(
+            "3 خطوات فقط للرعاية المنزلية"),
+        "unfairPrice":
+            MessageLookupByLibrary.simpleMessage("68% دفعوا أسعاراً غير عادلة"),
+        "unsafeFeel":
+            MessageLookupByLibrary.simpleMessage("81% شعروا بعدم الأمان"),
+        "waitingDesc": MessageLookupByLibrary.simpleMessage(
+            "المرضى ينتظرون من 2 إلى 6 ساعات لممرض قد لا يأتي أصلاً"),
+        "waitingHours":
+            MessageLookupByLibrary.simpleMessage("ساعات من الانتظار"),
+        "waitingPercent": MessageLookupByLibrary.simpleMessage(
+            "73% من المرضى عانوا من الانتظار الطويل"),
+        "welcome": MessageLookupByLibrary.simpleMessage("مرحباً بك في كيور"),
+        "woundCareItems": MessageLookupByLibrary.simpleMessage(
+            "🩹 غيار الجروح البسيطة والعميقة\n🧬 تنظيف الجروح وتعقيمها\n🦶 غيار قدم السكري\n🧴 علاج قرح الفراش (Bed Sores)\n🪡 متابعة الجروح بعد العمليات\n🧷 إزالة غرز بسيطة (Suture Removal)"),
+        "woundCareTitle":
+            MessageLookupByLibrary.simpleMessage("🩹 الجروح والرعاية الجلدية"),
+        "yearsOfExperience":
+            MessageLookupByLibrary.simpleMessage("سنوات الخبرة")
+      };
 }

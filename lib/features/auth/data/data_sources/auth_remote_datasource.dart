@@ -4,40 +4,29 @@ import '../models/user_model.dart';
 /// Exception thrown when authentication operations fail
 class AuthException implements Exception {
   final String message;
-  
+
   AuthException(this.message);
-  
+
   @override
   String toString() => 'AuthException: $message';
 }
 
 /// Remote data source for authentication operations using Supabase
 /// swap out any backend here
- 
+
 abstract class AuthRemoteDataSource {
-  /// Register a new user with email and password
-  Future<UserModel> register({
-    required String email,
-    required String password,
-  });
+  Future<UserModel> register({required String email, required String password});
 
-  /// Sign in with email and password
-  Future<UserModel> signIn({
-    required String email,
-    required String password,
-  });
+  Future<UserModel> signIn({required String email, required String password});
 
-  /// Sign out the current user
   Future<void> signOut();
 
-  /// Get the current authenticated user
   Future<UserModel?> getCurrentUser();
 }
 
 /// Implementation of AuthRemoteDataSource using Supabase
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final SupabaseClient supabaseClient;
-
   AuthRemoteDataSourceImpl({required this.supabaseClient});
 
   @override
@@ -46,9 +35,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     required String password,
   }) async {
     try {
-      // Validate credentials before making the call (Requirement 1.3)
-      _validateCredentials(email, password);
-
       // Call Supabase Auth to register
       final response = await supabaseClient.auth.signUp(
         email: email,
@@ -77,9 +63,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     required String password,
   }) async {
     try {
-      // Validate credentials before making the call (Requirement 1.3)
-      _validateCredentials(email, password);
-
       // Call Supabase Auth to sign in
       final response = await supabaseClient.auth.signInWithPassword(
         email: email,
@@ -117,7 +100,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<UserModel?> getCurrentUser() async {
     try {
       final user = supabaseClient.auth.currentUser;
-      
+
       if (user == null) {
         return null;
       }
@@ -128,39 +111,30 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     }
   }
 
-  /// Validate email and password credentials (Requirement 1.3)
-  /// Throws AuthException if credentials are empty, incomplete, or malformed
-  void _validateCredentials(String email, String password) {
-    // Check if email or password is empty
-    if (email.trim().isEmpty) {
-      throw AuthException('Email cannot be empty');
-    }
-
-    if (password.isEmpty) {
-      throw AuthException('Password cannot be empty');
-    }
-
-    // Validate email format
-    final emailRegex = RegExp(
-      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
-    );
-    
-    if (!emailRegex.hasMatch(email)) {
-      throw AuthException('Invalid email format');
-    }
-
-    // Validate password length (minimum 6 characters)
-    if (password.length < 6) {
-      throw AuthException('Password must be at least 6 characters');
-    }
-  }
-
   /// Convert Supabase User to UserModel
   UserModel _convertToUserModel(User supabaseUser) {
+    final metadata = supabaseUser.userMetadata ?? <String, dynamic>{};
+    final parsedDob = () {
+      final dobRaw = metadata['date_of_birth'] as String?;
+      if (dobRaw == null) return DateTime.fromMillisecondsSinceEpoch(0);
+      try {
+        return DateTime.parse(dobRaw);
+      } catch (_) {
+        return DateTime.fromMillisecondsSinceEpoch(0);
+      }
+    }();
+
     return UserModel(
       id: supabaseUser.id,
       email: supabaseUser.email ?? '',
-      displayName: supabaseUser.userMetadata?['display_name'] as String?,
+      name: (metadata['display_name'] as String?) ?? '',
+      phoneNumber: metadata['phone_number'] as String?,
+      dateOfBirth: parsedDob,
+      gender: (metadata['gender'] as String?) ?? '',
+      role: (metadata['role'] as String?) ?? '',
+      yearOfExperience: metadata['year_of_experience'] as String?,
+      region: metadata['region'] as String?,
+      skillSet: metadata['skill_set'] as String?,
     );
   }
 }
