@@ -5,13 +5,14 @@ class Nurse extends User {
   final String? region;
   final String? skillSet;
 
-  const Nurse({
+  Nurse({
     required super.id,
     required super.name,
     required super.email,
     required super.phoneNumber,
     required super.dateOfBirth,
     required super.gender,
+    required super.profileImageUrl,
     required this.yearOfExperience,
     required this.region,
     required this.skillSet,

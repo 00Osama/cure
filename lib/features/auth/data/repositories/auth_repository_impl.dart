@@ -1,8 +1,8 @@
+import '../data_sources/profile_remote_datasource.dart';
 import 'package:cure/features/auth/domain/entities/nurse.dart';
 import 'package:cure/features/auth/domain/entities/patient.dart';
 import 'package:cure/features/auth/domain/entities/user.dart' as domain;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../../shared/utils/result.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../data_sources/auth_remote_datasource.dart' as datasource;
@@ -11,15 +11,15 @@ import '../models/user_model.dart';
 class AuthRepositoryImpl implements AuthRepository {
   final datasource.AuthRemoteDataSource remoteDataSource;
   final FlutterSecureStorage secureStorage;
-  final SupabaseClient supabaseClient;
+  final ProfileRemoteDataSource profileRemoteDataSource;
 
   // Key for storing session flag in secure storage
-  static const String _sessionKey = 'supabase_session_active';
+  static const String _sessionKey = 'auth_session_active';
 
   AuthRepositoryImpl({
     required this.remoteDataSource,
     required this.secureStorage,
-    required this.supabaseClient,
+    required this.profileRemoteDataSource,
   });
 
   @override
@@ -35,31 +35,30 @@ class AuthRepositoryImpl implements AuthRepository {
       );
 
       final authUserId = createdAuthModel.id;
+      Map<String, String?> nurseData = {
+        'id': authUserId,
+        'name': nurse.name,
+        'email': nurse.email,
+        'phone_number': nurse.phoneNumber,
+        'date_of_birth': nurse.dateOfBirth.toIso8601String(),
+        'gender': nurse.gender,
+        'role': 'nurse',
+        'year_of_experience': nurse.yearOfExperience,
+        'region': nurse.region,
+        'skill_set': nurse.skillSet,
+        'profile_image_url': nurse.profileImageUrl,
+      };
 
       // Insert profile row using auth user id
-      final inserted = await supabaseClient
-          .from('users')
-          .insert({
-            'id': authUserId,
-            'name': nurse.name,
-            'email': nurse.email,
-            'phone_number': nurse.phoneNumber,
-            'date_of_birth': nurse.dateOfBirth.toIso8601String(),
-            'gender': nurse.gender,
-            'role': 'nurse',
-            'year_of_experience': nurse.yearOfExperience,
-            'region': nurse.region,
-            'skill_set': nurse.skillSet,
-          })
-          .select()
-          .single();
+      await profileRemoteDataSource.createProfile(nurseData);
 
-      // Only persist session if Supabase actually has a current session
-      if (supabaseClient.auth.currentSession != null) {
+      // Persist session if Firebase has a current user
+      final currentUser = await remoteDataSource.getCurrentUser();
+      if (currentUser != null) {
         await _saveSession();
       }
 
-      final userModel = UserModel.fromJson(inserted);
+      final userModel = UserModel.fromJson(nurseData);
       return Success(userModel.toDomain());
     } catch (e) {
       return Failure(Exception('Nurse registration failed: $e'));
@@ -79,33 +78,30 @@ class AuthRepositoryImpl implements AuthRepository {
       );
 
       final authUserId = createdAuthModel.id;
+      Map<String, String?> patientData = {
+        'id': authUserId,
+        'name': patient.name,
+        'email': patient.email,
+        'phone_number': patient.phoneNumber,
+        'date_of_birth': patient.dateOfBirth.toIso8601String(),
+        'gender': patient.gender,
+        'role': 'patient',
+        'year_of_experience': null,
+        'region': null,
+        'skill_set': null,
+        'profile_image_url': patient.profileImageUrl,
+      };
 
       // Insert profile row using auth user id
-      final inserted = await supabaseClient
-          .from('users')
-          .insert({
-            'id': authUserId,
-            'name': patient.name,
-            'email': patient.email,
-            'phone_number': patient.phoneNumber,
-            'date_of_birth': patient.dateOfBirth.toIso8601String(),
-            'gender': patient.gender,
-            'role': 'patient',
+      await profileRemoteDataSource.createProfile(patientData);
 
-            // nurse fields null
-            'year_of_experience': null,
-            'region': null,
-            'skill_set': null,
-          })
-          .select()
-          .single();
-
-      // Only persist session if Supabase actually has a current session
-      if (supabaseClient.auth.currentSession != null) {
+      // Persist session if Firebase has a current user
+      final currentUser = await remoteDataSource.getCurrentUser();
+      if (currentUser != null) {
         await _saveSession();
       }
 
-      final userModel = UserModel.fromJson(inserted);
+      final userModel = UserModel.fromJson(patientData);
       return Success(userModel.toDomain());
     } catch (e) {
       return Failure(Exception('Patient registration failed: $e'));
@@ -118,28 +114,35 @@ class AuthRepositoryImpl implements AuthRepository {
     required String password,
   }) async {
     try {
-      // Call remote data source to sign in
-      final userModel = await remoteDataSource.signIn(
-        email: email,
+      // 1. Sign in
+      final authUser = await remoteDataSource.signIn(
+        email: email.trim().toLowerCase(),
         password: password,
       );
 
-      // Persist session after successful sign in
+      // 2. Fetch profile from Firestore
+      final profile = await _fetchUserProfile(authUser.id);
+
+      if (profile == null) {
+        return Failure(Exception('User profile not found after sign in'));
+      }
+
+      // 3. Save session flag
       await _saveSession();
 
-      // Convert model to domain entity and return success
-      return Success(userModel.toDomain());
+      // 4. Return domain model
+      return Success(profile.toDomain());
     } on datasource.AuthException catch (e) {
       return Failure(e);
     } catch (e) {
-      return Failure(Exception('Unexpected error during sign in: $e'));
+      return Failure(Exception('Unexpected error during sign in'));
     }
   }
 
   @override
   Future<Result<void>> signOut() async {
     try {
-      // Sign out from Supabase
+      // Sign out from authentication backend
       await remoteDataSource.signOut();
 
       // Clear stored session (Requirement 1.5)
@@ -160,32 +163,23 @@ class AuthRepositoryImpl implements AuthRepository {
       final hasSession = await secureStorage.read(key: _sessionKey);
 
       if (hasSession == null) {
-        // No stored session
         return const Success(null);
       }
 
-      // Check if Supabase has a current session
-      final currentSession = supabaseClient.auth.currentSession;
-
-      if (currentSession == null) {
-        // Session expired or invalid, clear it
+      final currentUser = await remoteDataSource.getCurrentUser();
+      if (currentUser == null) {
         await _clearSession();
         return const Success(null);
       }
 
-      // Get current user from Supabase
-      final userModel = await remoteDataSource.getCurrentUser();
-
-      if (userModel == null) {
-        // No user found, clear session
+      final profile = await _fetchUserProfile(currentUser.id);
+      if (profile == null) {
         await _clearSession();
         return const Success(null);
       }
 
-      // Session is valid, return user
-      return Success(userModel.toDomain());
+      return Success(profile.toDomain());
     } catch (e) {
-      // On any error, clear the session and return null
       await _clearSession();
       return const Success(null);
     }
@@ -194,8 +188,12 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<domain.User?> getCurrentUser() async {
     try {
-      final userModel = await remoteDataSource.getCurrentUser();
-      return userModel?.toDomain();
+      final currentUser = await remoteDataSource.getCurrentUser();
+      if (currentUser == null) {
+        return null;
+      }
+      final profile = await _fetchUserProfile(currentUser.id);
+      return profile?.toDomain();
     } catch (e) {
       return null;
     }
@@ -208,6 +206,15 @@ class AuthRepositoryImpl implements AuthRepository {
     } catch (e) {
       // Non-fatal: session persistence failed but auth succeeded
       // In production, this should be logged
+    }
+  }
+
+  /// Fetches a user profile document from Firestore by auth user id.
+  Future<UserModel?> _fetchUserProfile(String id) async {
+    try {
+      return await profileRemoteDataSource.getProfileById(id);
+    } catch (e) {
+      return null;
     }
   }
 

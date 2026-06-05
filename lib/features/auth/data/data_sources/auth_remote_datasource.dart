@@ -1,4 +1,4 @@
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../models/user_model.dart';
 
 /// Exception thrown when authentication operations fail
@@ -11,7 +11,7 @@ class AuthException implements Exception {
   String toString() => 'AuthException: $message';
 }
 
-/// Remote data source for authentication operations using Supabase
+/// Remote data source for authentication operations using Firebase Auth
 /// swap out any backend here
 
 abstract class AuthRemoteDataSource {
@@ -24,10 +24,10 @@ abstract class AuthRemoteDataSource {
   Future<UserModel?> getCurrentUser();
 }
 
-/// Implementation of AuthRemoteDataSource using Supabase
+/// Implementation of AuthRemoteDataSource using Firebase Auth
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-  final SupabaseClient supabaseClient;
-  AuthRemoteDataSourceImpl({required this.supabaseClient});
+  final FirebaseAuth firebaseAuth;
+  AuthRemoteDataSourceImpl({required this.firebaseAuth});
 
   @override
   Future<UserModel> register({
@@ -35,23 +35,26 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     required String password,
   }) async {
     try {
-      // Call Supabase Auth to register
-      final response = await supabaseClient.auth.signUp(
+      final credential = await firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
-      // Check if user was created
-      if (response.user == null) {
+      final user = credential.user;
+      if (user == null) {
         throw AuthException('Registration failed: No user returned');
       }
-
-      // Convert Supabase user to our UserModel
-      return _convertToUserModel(response.user!);
-    } on AuthException {
-      rethrow;
-    } on AuthApiException catch (e) {
-      throw AuthException('Registration failed: ${e.message}');
+      return _convertToUserModel(user);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'email-already-in-use') {
+        throw AuthException('email-already-in-use');
+      } else if (e.code == 'weak-password') {
+        throw AuthException('weak-password');
+      } else if (e.code == 'invalid-email') {
+        throw AuthException('invalid-email');
+      } else {
+        throw AuthException('Registration failed: ${e.message}');
+      }
     } catch (e) {
       throw AuthException('Registration failed: $e');
     }
@@ -63,33 +66,31 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     required String password,
   }) async {
     try {
-      // Call Supabase Auth to sign in
-      final response = await supabaseClient.auth.signInWithPassword(
-        email: email,
+      final credential = await firebaseAuth.signInWithEmailAndPassword(
+        email: email.trim(),
         password: password,
       );
 
-      // Check if user was authenticated
-      if (response.user == null) {
-        throw AuthException('Sign in failed: No user returned');
+      final user = credential.user;
+      return _convertToUserModel(user!);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        throw AuthException('user-not-found');
+      } else if (e.code == 'wrong-password') {
+        throw AuthException('wrong-password');
+      } else {
+        throw AuthException('Unexpected error occurred. Please try again.');
       }
-
-      // Convert Supabase user to our UserModel
-      return _convertToUserModel(response.user!);
-    } on AuthException {
-      rethrow;
-    } on AuthApiException catch (e) {
-      throw AuthException('Sign in failed: ${e.message}');
     } catch (e) {
-      throw AuthException('Sign in failed: $e');
+      throw AuthException('Unexpected error occurred. Please try again.');
     }
   }
 
   @override
   Future<void> signOut() async {
     try {
-      await supabaseClient.auth.signOut();
-    } on AuthApiException catch (e) {
+      await firebaseAuth.signOut();
+    } on FirebaseAuthException catch (e) {
       throw AuthException('Sign out failed: ${e.message}');
     } catch (e) {
       throw AuthException('Sign out failed: $e');
@@ -99,42 +100,26 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<UserModel?> getCurrentUser() async {
     try {
-      final user = supabaseClient.auth.currentUser;
-
+      final user = firebaseAuth.currentUser;
       if (user == null) {
         return null;
       }
-
       return _convertToUserModel(user);
     } catch (e) {
       throw AuthException('Failed to get current user: $e');
     }
   }
 
-  /// Convert Supabase User to UserModel
-  UserModel _convertToUserModel(User supabaseUser) {
-    final metadata = supabaseUser.userMetadata ?? <String, dynamic>{};
-    final parsedDob = () {
-      final dobRaw = metadata['date_of_birth'] as String?;
-      if (dobRaw == null) return DateTime.fromMillisecondsSinceEpoch(0);
-      try {
-        return DateTime.parse(dobRaw);
-      } catch (_) {
-        return DateTime.fromMillisecondsSinceEpoch(0);
-      }
-    }();
-
+  UserModel _convertToUserModel(User firebaseUser) {
     return UserModel(
-      id: supabaseUser.id,
-      email: supabaseUser.email ?? '',
-      name: (metadata['display_name'] as String?) ?? '',
-      phoneNumber: metadata['phone_number'] as String?,
-      dateOfBirth: parsedDob,
-      gender: (metadata['gender'] as String?) ?? '',
-      role: (metadata['role'] as String?) ?? '',
-      yearOfExperience: metadata['year_of_experience'] as String?,
-      region: metadata['region'] as String?,
-      skillSet: metadata['skill_set'] as String?,
+      id: firebaseUser.uid,
+      email: firebaseUser.email ?? '',
+      name: '',
+      phoneNumber: '',
+      profileImagePath: '',
+      dateOfBirth: DateTime(2000, 1, 1),
+      gender: '',
+      role: '',
     );
   }
 }

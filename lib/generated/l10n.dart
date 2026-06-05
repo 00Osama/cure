@@ -620,20 +620,20 @@ class S {
     );
   }
 
-  /// `I'm a Patient`
+  /// `Sign Up as a Patient`
   String get patientButton {
     return Intl.message(
-      'I\'m a Patient',
+      'Sign Up as a Patient',
       name: 'patientButton',
       desc: '',
       args: [],
     );
   }
 
-  /// `I'm a Nurse`
+  /// `Sign Up as a Nurse`
   String get nurseButton {
     return Intl.message(
-      'I\'m a Nurse',
+      'Sign Up as a Nurse',
       name: 'nurseButton',
       desc: '',
       args: [],
@@ -1115,6 +1115,326 @@ class S {
     return Intl.message(
       'Patient signup submitted',
       name: 'patientSignupSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account`
+  String get alreadyHaveAccount {
+    return Intl.message(
+      'Already have an account',
+      name: 'alreadyHaveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome back`
+  String get welcomeBackTitle {
+    return Intl.message(
+      'Welcome back',
+      name: 'welcomeBackTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign In to Continue`
+  String get signInToContinue {
+    return Intl.message(
+      'Sign In to Continue',
+      name: 'signInToContinue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign In`
+  String get signInButtonLabel {
+    return Intl.message(
+      'Sign In',
+      name: 'signInButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Join our network of certified nurses and start providing high-quality, fast home care.`
+  String get nurseButtonSubtitle {
+    return Intl.message(
+      'Join our network of certified nurses and start providing high-quality, fast home care.',
+      name: 'nurseButtonSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get fast and secure home care from our network of certified nurses in less than 15 minutes.`
+  String get patientButtonSubtitle {
+    return Intl.message(
+      'Get fast and secure home care from our network of certified nurses in less than 15 minutes.',
+      name: 'patientButtonSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in to your account for quick access to home nursing services or to manage your nurse account.`
+  String get alreadyHaveAccountSubtitle {
+    return Intl.message(
+      'Sign in to your account for quick access to home nursing services or to manage your nurse account.',
+      name: 'alreadyHaveAccountSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User not found`
+  String get errorUserNotFoundAfterSignIn {
+    return Intl.message(
+      'User not found',
+      name: 'errorUserNotFoundAfterSignIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wrong password`
+  String get errorWrongPassword {
+    return Intl.message(
+      'Wrong password',
+      name: 'errorWrongPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unexpected error occurred`
+  String get errorUnexpected {
+    return Intl.message(
+      'An unexpected error occurred',
+      name: 'errorUnexpected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `email already exists`
+  String get errorUserAlreadyExists {
+    return Intl.message(
+      'email already exists',
+      name: 'errorUserAlreadyExists',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account Details`
+  String get accountDetailsHeaderTitle {
+    return Intl.message(
+      'Account Details',
+      name: 'accountDetailsHeaderTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Secure your account with a strong password`
+  String get accountDetailsHeaderSubtitle {
+    return Intl.message(
+      'Secure your account with a strong password',
+      name: 'accountDetailsHeaderSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile Photo`
+  String get profilePhotoHeaderTitle {
+    return Intl.message(
+      'Profile Photo',
+      name: 'profilePhotoHeaderTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose a profile photo to personalize your nurse profile`
+  String get profilePhotoHeaderSubtitle {
+    return Intl.message(
+      'Choose a profile photo to personalize your nurse profile',
+      name: 'profilePhotoHeaderSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Career Details`
+  String get careerDetailsHeaderTitle {
+    return Intl.message(
+      'Career Details',
+      name: 'careerDetailsHeaderTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tell us about your experience and service area`
+  String get careerDetailsHeaderSubtitle {
+    return Intl.message(
+      'Tell us about your experience and service area',
+      name: 'careerDetailsHeaderSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal Details`
+  String get personalDetailsHeaderTitle {
+    return Intl.message(
+      'Personal Details',
+      name: 'personalDetailsHeaderTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complete your profile with birthdate and gender`
+  String get personalDetailsHeaderSubtitle {
+    return Intl.message(
+      'Complete your profile with birthdate and gender',
+      name: 'personalDetailsHeaderSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Photo`
+  String get SelectPhoto {
+    return Intl.message(
+      'Select Photo',
+      name: 'SelectPhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile photo helps patients recognize you easily.`
+  String get NurseProfilePhotoNote {
+    return Intl.message(
+      'Profile photo helps patients recognize you easily.',
+      name: 'NurseProfilePhotoNote',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Storage permission denied. Please allow access to select a profile photo.`
+  String get storagePermissionDenied {
+    return Intl.message(
+      'Storage permission denied. Please allow access to select a profile photo.',
+      name: 'storagePermissionDenied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permission Denied issue`
+  String get storagePermissionDenirdTitle {
+    return Intl.message(
+      'Permission Denied issue',
+      name: 'storagePermissionDenirdTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Storage Permission Required`
+  String get storagePermissionDialogTitle {
+    return Intl.message(
+      'Storage Permission Required',
+      name: 'storagePermissionDialogTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Storage access is required to save and manage files. Please enable the permission from app settings.`
+  String get storagePermissionDialogMessage {
+    return Intl.message(
+      'Storage access is required to save and manage files. Please enable the permission from app settings.',
+      name: 'storagePermissionDialogMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Later`
+  String get storagePermissionDialogLater {
+    return Intl.message(
+      'Later',
+      name: 'storagePermissionDialogLater',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Open Settings`
+  String get storagePermissionDialogOpenSettings {
+    return Intl.message(
+      'Open Settings',
+      name: 'storagePermissionDialogOpenSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get home {
+    return Intl.message(
+      'Home',
+      name: 'home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message(
+      'Profile',
+      name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dashboard`
+  String get dashboard {
+    return Intl.message(
+      'Dashboard',
+      name: 'dashboard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A profile photo helps nurses recognize you easily.`
+  String get PatientProfilePhotoNote {
+    return Intl.message(
+      'A profile photo helps nurses recognize you easily.',
+      name: 'PatientProfilePhotoNote',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Make sure the data is correct and try again`
+  String get makeSure {
+    return Intl.message(
+      'Make sure the data is correct and try again',
+      name: 'makeSure',
       desc: '',
       args: [],
     );

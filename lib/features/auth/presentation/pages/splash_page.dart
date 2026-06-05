@@ -32,7 +32,7 @@ class _SplashPageState extends State<SplashPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.asset('lib/assets/cure_logo.png', height: 140),
+              Image.asset('lib/assets/images/cure_logo.png', height: 140),
               const SizedBox(height: 20),
               Text(
                 'CURE',

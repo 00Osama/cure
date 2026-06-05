@@ -6,13 +6,15 @@ abstract class User {
   final String? phoneNumber;
   final DateTime dateOfBirth;
   final String gender;
+  String profileImageUrl;
 
-  const User({
+  User({
     required this.id,
     required this.name,
     required this.email,
     required this.phoneNumber,
     required this.dateOfBirth,
     required this.gender,
+    required this.profileImageUrl,
   });
 }

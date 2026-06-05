@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../features/auth/data/data_sources/auth_remote_datasource.dart';
+import '../../features/auth/data/data_sources/profile_remote_datasource.dart';
 import '../../features/auth/data/repositories/auth_repository_impl.dart';
 import '../../features/auth/domain/repositories/auth_repository.dart';
 import '../../features/auth/domain/usecase/auth_usecase.dart';
@@ -16,11 +18,13 @@ class DependencyInjection {
   DependencyInjection._internal();
 
   // Core dependencies
-  late final SupabaseClient _supabaseClient;
+  late final FirebaseAuth _firebaseAuth;
+  late final FirebaseFirestore _firestore;
   late final FlutterSecureStorage _secureStorage;
 
   // Data sources
   late final AuthRemoteDataSource _authRemoteDataSource;
+  late final ProfileRemoteDataSource _profileRemoteDataSource;
 
   // Repositories
   late final AuthRepository _authRepository;
@@ -31,7 +35,8 @@ class DependencyInjection {
   /// Must be called once at app startup before using any dependencies
   Future<void> initialize() async {
     // Initialize core dependencies
-    _supabaseClient = Supabase.instance.client;
+    _firebaseAuth = FirebaseAuth.instance;
+    _firestore = FirebaseFirestore.instance;
 
     _secureStorage = const FlutterSecureStorage(
       aOptions: AndroidOptions(encryptedSharedPreferences: true),
@@ -39,14 +44,16 @@ class DependencyInjection {
 
     // Initialize data sources
     _authRemoteDataSource = AuthRemoteDataSourceImpl(
-      supabaseClient: _supabaseClient,
+      firebaseAuth: _firebaseAuth,
     );
+
+    _profileRemoteDataSource = ProfileRemoteDataSourceImpl(firestore: _firestore);
 
     // Initialize repositories
     _authRepository = AuthRepositoryImpl(
       remoteDataSource: _authRemoteDataSource,
       secureStorage: _secureStorage,
-      supabaseClient: _supabaseClient,
+      profileRemoteDataSource: _profileRemoteDataSource,
     );
 
     // Initialize use cases
@@ -54,7 +61,7 @@ class DependencyInjection {
   }
 
   // Getters for dependencies
-  SupabaseClient get supabaseClient => _supabaseClient;
+  FirebaseFirestore get firestore => _firestore;
   FlutterSecureStorage get secureStorage => _secureStorage;
   AuthRepository get authRepository => _authRepository;
   AuthUseCase get authUseCase => _authUseCase;

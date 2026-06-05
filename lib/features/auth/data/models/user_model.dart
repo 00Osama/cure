@@ -9,6 +9,7 @@ class UserModel {
   final String? phoneNumber;
   final DateTime dateOfBirth;
   final String gender;
+  final String profileImagePath;
 
   final String role;
 
@@ -23,6 +24,7 @@ class UserModel {
     required this.phoneNumber,
     required this.dateOfBirth,
     required this.gender,
+    required this.profileImagePath,
     required this.role,
     this.yearOfExperience,
     this.region,
@@ -41,6 +43,7 @@ class UserModel {
       dateOfBirth: DateTime.parse(json['date_of_birth']),
       gender: json['gender'],
       role: json['role'],
+      profileImagePath: json['profile_image_url'] ?? 'default',
 
       yearOfExperience: json['year_of_experience'],
       region: json['region'],
@@ -81,6 +84,7 @@ class UserModel {
         dateOfBirth: user.dateOfBirth,
         gender: user.gender,
         role: 'nurse',
+        profileImagePath: user.profileImageUrl,
         yearOfExperience: user.yearOfExperience,
         region: user.region,
         skillSet: user.skillSet,
@@ -95,6 +99,7 @@ class UserModel {
       dateOfBirth: user.dateOfBirth,
       gender: user.gender,
       role: 'patient',
+      profileImagePath: user.profileImageUrl,
     );
   }
 
@@ -113,6 +118,7 @@ class UserModel {
         yearOfExperience: yearOfExperience,
         region: region,
         skillSet: skillSet,
+        profileImageUrl: profileImagePath,
       );
     }
 
@@ -123,6 +129,7 @@ class UserModel {
       phoneNumber: phoneNumber,
       dateOfBirth: dateOfBirth,
       gender: gender,
+      profileImageUrl: profileImagePath,
     );
   }
 }

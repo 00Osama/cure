@@ -1,4 +1,4 @@
-import 'package:cure/shared/widgets/splash_page.dart';
+import 'package:cure/features/auth/presentation/widgets/auth_gate.dart';
 import 'package:cure/shared/di/injection.dart';
 import 'package:cure/shared/theme_and_locals/app_theme.dart';
 import 'package:cure/shared/theme_and_locals/locals_cubit.dart';
@@ -28,7 +28,7 @@ Future<void> main() async {
   await Supabase.initialize(
     url: 'https://wrzvjdmcylevmohoaqmv.supabase.co',
     anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indyenl2amRtY3lsZXZtb2hvYXFtdiIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzM3NTU5NTU3LCJleHAiOjIwNTMxMzU1NTd9.sb_publishable_TKVKUQga5GGEvahNRcx7jQ_ny7nbQIy',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndyenZqZG1jeWxldm1vaG9hcW12Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MDM0MzU1NywiZXhwIjoyMDk1OTE5NTU3fQ.5nYbqIIgh3fN5vCl6Z84clFsnf6PJq55RaYX8yvyoXs',
   );
 
   // Initialize dependency injection
@@ -74,7 +74,7 @@ class MyApp extends StatelessWidget {
               theme: AppTheme.lightTheme(context),
               darkTheme: AppTheme.darkTheme(context),
               themeMode: context.watch<ThemeCubit>().themeMode,
-              home: const SplashPage(),
+              home: const AuthGate(),
             );
           },
         );

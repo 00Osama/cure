@@ -62,9 +62,10 @@ class _Slide3ProblemsState extends State<Slide3Problems>
               Text(
                 s.splashSlide3Subtitle,
                 textAlign: TextAlign.center,
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  color: Colors.white70,
-                  fontWeight: FontWeight.w500,
+                style: theme.textTheme.headlineMedium?.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 0.5,
                 ),
               ),
               const SizedBox(height: 32),

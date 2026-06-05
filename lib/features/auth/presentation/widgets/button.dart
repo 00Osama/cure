@@ -5,9 +5,11 @@ class AppPrimaryButton extends StatelessWidget {
     super.key,
     required this.title,
     required this.onPressed,
+    this.color,
   });
 
   final String title;
+  final Color? color;
   final VoidCallback onPressed;
 
   @override
@@ -17,7 +19,7 @@ class AppPrimaryButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color(0xFF7ED957),
+          backgroundColor: color ?? const Color.fromARGB(255, 117, 204, 80),
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18),

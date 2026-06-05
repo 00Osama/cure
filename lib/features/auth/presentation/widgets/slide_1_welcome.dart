@@ -52,7 +52,10 @@ class _Slide1WelcomeState extends State<Slide1Welcome>
               // Animated Logo
               ScaleTransition(
                 scale: widget.pulseController,
-                child: Image.asset('lib/assets/cure_logo.png', height: 180),
+                child: Image.asset(
+                  'lib/assets/images/crop_cure_logo.png',
+                  height: 140,
+                ),
               ),
               const SizedBox(height: 48),
               Padding(

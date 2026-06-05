@@ -15,10 +15,13 @@ class MyTextField extends StatelessWidget {
     this.textInputAction,
     this.suffixIcon,
     this.maxLines = 1,
+    this.errorText,
   });
 
   final TextEditingController controller;
   final String label;
+
+  final String? errorText;
 
   final IconData? icon;
   final IconData? suffixIcon;
@@ -51,6 +54,7 @@ class MyTextField extends StatelessWidget {
       onTap: onTap,
       decoration: InputDecoration(
         labelText: label,
+        errorText: errorText,
 
         prefixIcon: icon != null ? Icon(icon) : null,
 

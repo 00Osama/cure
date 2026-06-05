@@ -54,6 +54,8 @@ class GradientScaffold extends StatelessWidget {
     return Scaffold(
       appBar: appBar,
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(gradient: gradient),
         child: body ?? const SizedBox.expand(),
       ),

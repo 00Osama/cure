@@ -22,11 +22,28 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "NurseProfilePhotoNote": MessageLookupByLibrary.simpleMessage(
+            "Profile photo helps patients recognize you easily."),
+        "PatientProfilePhotoNote": MessageLookupByLibrary.simpleMessage(
+            "A profile photo helps nurses recognize you easily."),
+        "SelectPhoto": MessageLookupByLibrary.simpleMessage("Select Photo"),
+        "accountDetailsHeaderSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Secure your account with a strong password"),
+        "accountDetailsHeaderTitle":
+            MessageLookupByLibrary.simpleMessage("Account Details"),
         "accountSecurity":
             MessageLookupByLibrary.simpleMessage("Account Security"),
+        "alreadyHaveAccount":
+            MessageLookupByLibrary.simpleMessage("Already have an account"),
+        "alreadyHaveAccountSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Sign in to your account for quick access to home nursing services or to manage your nurse account."),
         "basicCareItems": MessageLookupByLibrary.simpleMessage(
             "💉 Giving injections (IM / SC / IV)\n🩸 Random and cumulative blood sugar measurement\n❤️ Blood pressure measurement\n🌡️ Temperature measurement\n📊 Measuring vital signs (Pulse – O2 – R)\n💊 Administering medications on schedule\n🧪 IV Cannula insertion\n💧 Setting up intravenous fluids\n🧴 Monitoring dehydration and fluid replacement"),
         "basicCareTitle": MessageLookupByLibrary.simpleMessage("📋 Basic Care"),
+        "careerDetailsHeaderSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Tell us about your experience and service area"),
+        "careerDetailsHeaderTitle":
+            MessageLookupByLibrary.simpleMessage("Career Details"),
         "catheterCareItems": MessageLookupByLibrary.simpleMessage(
             "🚿 Urinary catheter insertion\n🧼 Changing and monitoring catheter\n💧 Care for catheterized patient\n🧪 Monitoring urine and catheter complications"),
         "catheterCareTitle": MessageLookupByLibrary.simpleMessage(
@@ -37,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("🫀 Chronic Diseases Care"),
         "confirmPasswordLabel":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
         "dateOfBirthLabel":
             MessageLookupByLibrary.simpleMessage("Date of Birth"),
         "elderlyCareItems": MessageLookupByLibrary.simpleMessage(
@@ -68,6 +86,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please select your gender"),
         "errorSkillsRequired": MessageLookupByLibrary.simpleMessage(
             "Please enter your skills or specialties"),
+        "errorUnexpected": MessageLookupByLibrary.simpleMessage(
+            "An unexpected error occurred"),
+        "errorUserAlreadyExists":
+            MessageLookupByLibrary.simpleMessage("email already exists"),
+        "errorUserNotFoundAfterSignIn":
+            MessageLookupByLibrary.simpleMessage("User not found"),
+        "errorWrongPassword":
+            MessageLookupByLibrary.simpleMessage("Wrong password"),
         "experience1to3Years":
             MessageLookupByLibrary.simpleMessage("1-3 years"),
         "experience3to5Years":
@@ -81,10 +107,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
         "genderLabel": MessageLookupByLibrary.simpleMessage("Gender"),
         "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
         "howItWorks": MessageLookupByLibrary.simpleMessage("How It Works"),
         "joinAsNurse": MessageLookupByLibrary.simpleMessage("Join as Nurse"),
         "joinAsPatient":
             MessageLookupByLibrary.simpleMessage("Join as Patient"),
+        "makeSure": MessageLookupByLibrary.simpleMessage(
+            "Make sure the data is correct and try again"),
         "maleLabel": MessageLookupByLibrary.simpleMessage("Male"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "noApp":
@@ -96,7 +125,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "No Guarantee or Verification"),
         "noVerificationDesc": MessageLookupByLibrary.simpleMessage(
             "No way to verify a nurse\'s qualifications or professional background"),
-        "nurseButton": MessageLookupByLibrary.simpleMessage("I\'m a Nurse"),
+        "nurseButton":
+            MessageLookupByLibrary.simpleMessage("Sign Up as a Nurse"),
+        "nurseButtonSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Join our network of certified nurses and start providing high-quality, fast home care."),
         "nurseSignupSubtitle": MessageLookupByLibrary.simpleMessage(
             "Provide Care. Make a Difference."),
         "nurseSignupSuccess": MessageLookupByLibrary.simpleMessage(
@@ -104,7 +136,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "nurseSignupTitle":
             MessageLookupByLibrary.simpleMessage("Join as a Nurse"),
         "passwordLabel": MessageLookupByLibrary.simpleMessage("Password"),
-        "patientButton": MessageLookupByLibrary.simpleMessage("I\'m a Patient"),
+        "patientButton":
+            MessageLookupByLibrary.simpleMessage("Sign Up as a Patient"),
+        "patientButtonSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Get fast and secure home care from our network of certified nurses in less than 15 minutes."),
         "patientSignupSubtitle": MessageLookupByLibrary.simpleMessage(
             "Sign up to access home nursing services"),
         "patientSignupSuccess":
@@ -112,6 +147,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "patientSignupTitle":
             MessageLookupByLibrary.simpleMessage("Create your patient account"),
         "personalDetails":
+            MessageLookupByLibrary.simpleMessage("Personal Details"),
+        "personalDetailsHeaderSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Complete your profile with birthdate and gender"),
+        "personalDetailsHeaderTitle":
             MessageLookupByLibrary.simpleMessage("Personal Details"),
         "personalInformation":
             MessageLookupByLibrary.simpleMessage("Personal Information"),
@@ -128,6 +167,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Price Manipulation"),
         "professionalInformation":
             MessageLookupByLibrary.simpleMessage("Professional Information"),
+        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "profilePhotoHeaderSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Choose a profile photo to personalize your nurse profile"),
+        "profilePhotoHeaderTitle":
+            MessageLookupByLibrary.simpleMessage("Profile Photo"),
         "psychologicalCareItems": MessageLookupByLibrary.simpleMessage(
             "🧠 Basic psychological support for patient\n👨‍👩‍👧 Family support in dealing with condition\n🧘 Simple rehabilitation exercises at home\n🦵 Light physical therapy (Mobility)\n🪑 Training patient on movement"),
         "psychologicalCareTitle": MessageLookupByLibrary.simpleMessage(
@@ -150,6 +194,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Choose whether you are a patient seeking care or a nurse offering services"),
         "servicesIntro": MessageLookupByLibrary.simpleMessage(
             "We provide a wide range of home nursing services tailored to all cases"),
+        "signInButtonLabel": MessageLookupByLibrary.simpleMessage("Sign In"),
+        "signInToContinue":
+            MessageLookupByLibrary.simpleMessage("Sign In to Continue"),
         "skillsSpecialties":
             MessageLookupByLibrary.simpleMessage("Skills & Specialties"),
         "splashSlide1Line1":
@@ -190,6 +237,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "step4Desc": MessageLookupByLibrary.simpleMessage(
             "After service completion, pay securely and rate the nurse. Your ratings help maintain service quality for everyone."),
         "step4Title": MessageLookupByLibrary.simpleMessage("Pay and Rate"),
+        "storagePermissionDenied": MessageLookupByLibrary.simpleMessage(
+            "Storage permission denied. Please allow access to select a profile photo."),
+        "storagePermissionDenirdTitle":
+            MessageLookupByLibrary.simpleMessage("Permission Denied issue"),
+        "storagePermissionDialogLater":
+            MessageLookupByLibrary.simpleMessage("Later"),
+        "storagePermissionDialogMessage": MessageLookupByLibrary.simpleMessage(
+            "Storage access is required to save and manage files. Please enable the permission from app settings."),
+        "storagePermissionDialogOpenSettings":
+            MessageLookupByLibrary.simpleMessage("Open Settings"),
+        "storagePermissionDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Storage Permission Required"),
         "threeSteps":
             MessageLookupByLibrary.simpleMessage("3 Steps Only for Home Care"),
         "unfairPrice":
@@ -202,6 +261,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "waitingPercent": MessageLookupByLibrary.simpleMessage(
             "73% of patients suffered from long waiting times"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome to CURE"),
+        "welcomeBackTitle":
+            MessageLookupByLibrary.simpleMessage("Welcome back"),
         "woundCareItems": MessageLookupByLibrary.simpleMessage(
             "🩹 Dressing simple and deep wounds\n🧬 Cleaning and sterilizing wounds\n🦶 Diabetic foot dressing\n🧴 Treating bed sores\n🪡 Monitoring post-operative wounds\n🧷 Simple suture removal"),
         "woundCareTitle":

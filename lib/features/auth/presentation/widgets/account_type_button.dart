@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 
 class AccountTypeButton extends StatefulWidget {
   final String icon;
-  final String label;
+  final String title;
+  final String subtitle;
   final Color color;
   final VoidCallback onTap;
 
   const AccountTypeButton({
     super.key,
     required this.icon,
-    required this.label,
+    required this.title,
+    required this.subtitle,
     required this.color,
     required this.onTap,
   });
@@ -123,7 +125,7 @@ class _AccountTypeButtonState extends State<AccountTypeButton>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        widget.label,
+                        widget.title,
                         style: theme.textTheme.titleMedium?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -131,7 +133,7 @@ class _AccountTypeButtonState extends State<AccountTypeButton>
                       ),
                       const SizedBox(height: 6),
                       Text(
-                        'اضغط للمتابعة',
+                        widget.subtitle,
                         style: theme.textTheme.bodySmall?.copyWith(
                           color: Colors.white70,
                         ),

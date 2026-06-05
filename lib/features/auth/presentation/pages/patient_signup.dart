@@ -1,9 +1,18 @@
+import 'dart:io';
+import 'package:cure/features/auth/domain/entities/patient.dart';
+import 'package:cure/features/auth/presentation/widgets/bottom_nav_bar.dart';
 import 'package:cure/features/auth/presentation/widgets/button.dart';
-import 'package:cure/features/auth/presentation/widgets/section_title.dart';
+import 'package:cure/features/auth/presentation/widgets/profile_photo_picker.dart';
+import 'package:cure/features/auth/presentation/widgets/slide_header.dart';
 import 'package:cure/features/auth/presentation/widgets/text_field.dart';
 import 'package:cure/generated/l10n.dart';
+import 'package:cure/shared/di/injection.dart';
+import 'package:cure/shared/utils/result.dart';
 import 'package:cure/shared/widgets/gradient_scaffold.dart';
+import 'package:cure/shared/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class PatientSignupPage extends StatefulWidget {
   const PatientSignupPage({super.key});
@@ -27,6 +36,13 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
   bool _submitted = false;
 
   String? selectedGender;
+  String profileImagePath = 'default';
+
+  void _onProfileImagePicked(String pickedPath) {
+    setState(() {
+      profileImagePath = pickedPath;
+    });
+  }
 
   Future<void> _pickDateOfBirth() async {
     final selectedDate = await showDatePicker(
@@ -56,15 +72,178 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
     super.dispose();
   }
 
-  void _submitForm() {
+  Future<void> _showSuccessAnimationAndNavigateToProfile() async {
+    if (!mounted) return;
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Scaffold(
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            leading: const SizedBox(),
+            surfaceTintColor: Colors.white,
+            backgroundColor: Colors.white,
+          ),
+          body: Center(child: Lottie.asset('lib/assets/animations/bomb.json')),
+        );
+      },
+    );
+
+    Future.delayed(const Duration(milliseconds: 2200), () {
+      if (!mounted) return;
+      Navigator.of(context).pop();
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return Scaffold(
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              leading: const SizedBox(),
+              surfaceTintColor: Colors.white,
+              backgroundColor: Colors.white,
+            ),
+            body: Center(
+              child: Lottie.asset('lib/assets/animations/success.json'),
+            ),
+          );
+        },
+      );
+      Future.delayed(const Duration(milliseconds: 2200), () {
+        if (!mounted) return;
+        Navigator.of(context).pop();
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const BottomNavBar()),
+        );
+      });
+    });
+  }
+
+  Future<String?> uploadProfileImage(String imagePath) async {
+    final supabase = Supabase.instance.client;
+    try {
+      final file = File(imagePath);
+
+      final fileName = '${DateTime.now().millisecondsSinceEpoch}.jpg';
+
+      await supabase.storage
+          .from('patients_profile_images')
+          .upload(fileName, file, fileOptions: const FileOptions(upsert: true));
+
+      final imageUrl = supabase.storage
+          .from('patients_profile_images')
+          .getPublicUrl(fileName);
+
+      return imageUrl;
+    } catch (e) {
+      print('Upload failed: $e');
+      return null;
+    }
+  }
+
+  void _submitForm() async {
     setState(() {
       _submitted = true;
     });
 
     if (_formKey.currentState?.validate() ?? false) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(S.of(context).patientSignupSuccess)),
+      // Show loading indicator
+      if (!mounted) return;
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => Center(child: LoadingWidget()),
       );
+
+      try {
+        // Create Patient entity with form data
+        final patient = Patient(
+          id: '', // Will be assigned by backend
+          name: nameController.text.trim(),
+          profileImageUrl: 'default',
+          email: emailController.text.trim(),
+          phoneNumber: phoneController.text.trim(),
+          dateOfBirth: DateTime.parse(dobController.text),
+          gender: selectedGender ?? '',
+        );
+
+        final profileImageUrl = await uploadProfileImage(profileImagePath);
+        if (profileImageUrl != null) {
+          patient.profileImageUrl = profileImageUrl;
+        }
+        patient.profileImageUrl = profileImageUrl ?? 'default';
+
+        // Call signup firebase
+        final result = await di.authUseCase.patientRegisterUseCase(
+          patient: patient,
+          password: passwordController.text,
+        );
+
+        if (!mounted) return;
+        Navigator.pop(context); // Close loading dialog
+
+        // Handle result
+        if (result is Success) {
+          await _showSuccessAnimationAndNavigateToProfile();
+        } else if (result is Failure) {
+          final failure = result as Failure;
+          final errorMessage = failure.error.toString();
+          if (errorMessage.contains('email-already-in-use')) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  S.of(context).errorUserAlreadyExists,
+                  style: const TextStyle(color: Colors.white),
+                ),
+                behavior: SnackBarBehavior.floating,
+                backgroundColor: Colors.red,
+              ),
+            );
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  errorMessage,
+                  style: const TextStyle(color: Colors.white),
+                ),
+                behavior: SnackBarBehavior.floating,
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
+
+          print('Signup failed: ${failure.error}');
+        }
+      } catch (e) {
+        if (!mounted) return;
+        Navigator.pop(context); // Close loading dialog
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
+        );
+      }
+    } else {
+      if (_validateName(nameController.text) != null ||
+          _validateEmail(emailController.text) != null ||
+          _validatePhone(phoneController.text) != null ||
+          _validatePassword(passwordController.text) != null ||
+          _validateConfirmPassword(confirmPasswordController.text) != null ||
+          _validateDob(dobController.text) != null ||
+          _validateGender(selectedGender) != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              S.of(context).makeSure,
+              style: const TextStyle(color: Colors.white),
+            ),
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
   }
 
@@ -148,7 +327,10 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const SizedBox(height: 12),
-                Image.asset('lib/assets/cure_logo.png', height: 180),
+                Image.asset(
+                  'lib/assets/images/crop_cure_logo.png',
+                  height: 140,
+                ),
                 const SizedBox(height: 24),
                 Text(
                   S.of(context).patientSignupTitle,
@@ -169,8 +351,10 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
 
                 const SizedBox(height: 32),
 
-                SectionTitle(title: S.of(context).personalInformation),
-
+                SlideHeader(
+                  title: S.of(context).accountDetailsHeaderTitle,
+                  subtitle: S.of(context).accountDetailsHeaderSubtitle,
+                ),
                 const SizedBox(height: 16),
 
                 MyTextField(
@@ -200,10 +384,6 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
                   validator: _validatePhone,
                 ),
 
-                const SizedBox(height: 28),
-
-                SectionTitle(title: S.of(context).accountSecurity),
-
                 const SizedBox(height: 16),
 
                 MyTextField(
@@ -232,12 +412,19 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
                   validator: _validateConfirmPassword,
                 ),
 
-                const SizedBox(height: 28),
-
-                SectionTitle(title: S.of(context).personalDetails),
-
+                const SizedBox(height: 16),
+                ProfilePhotoPicker(
+                  imagePath: profileImagePath,
+                  onImagePicked: _onProfileImagePicked,
+                  page: 'patient',
+                ),
                 const SizedBox(height: 16),
 
+                SlideHeader(
+                  title: S.of(context).personalDetailsHeaderTitle,
+                  subtitle: S.of(context).personalDetailsHeaderSubtitle,
+                ),
+                const SizedBox(height: 16),
                 MyTextField(
                   keyboardType: TextInputType.datetime,
                   controller: dobController,

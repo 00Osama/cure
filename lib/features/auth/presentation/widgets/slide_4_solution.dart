@@ -52,26 +52,12 @@ class _Slide4SolutionState extends State<Slide4Solution>
               mainAxisSize: MainAxisSize.min,
               children: [
                 // Solution icon with gradient
-                Container(
+                SizedBox(
                   width: 100,
                   height: 100,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: const LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [Color(0xFF26E8F3), Color(0xFF00D4FF)],
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: const Color(0xFF26E8F3).withValues(alpha: 0.3),
-                        blurRadius: 30,
-                        offset: const Offset(0, 10),
-                      ),
-                    ],
-                  ),
+
                   child: const Center(
-                    child: Text('✨', style: TextStyle(fontSize: 52)),
+                    child: Text('🌱', style: TextStyle(fontSize: 52)),
                   ),
                 ),
                 const SizedBox(height: 32),
@@ -136,7 +122,6 @@ class _Slide4SolutionState extends State<Slide4Solution>
               ),
             ),
           ),
-          Icon(Icons.check_circle, color: const Color(0xFF26E8F3), size: 20),
         ],
       ),
     );
