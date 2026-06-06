@@ -27,6 +27,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "PatientProfilePhotoNote": MessageLookupByLibrary.simpleMessage(
             "صورة الملف الشخصي تساعد الممرضين على التعرف عليك بسهولة."),
         "SelectPhoto": MessageLookupByLibrary.simpleMessage("اختر صورة"),
+        "account": MessageLookupByLibrary.simpleMessage("الحساب"),
+        "accountDeleted":
+            MessageLookupByLibrary.simpleMessage("تم حذف الحساب بنجاح"),
         "accountDetailsHeaderSubtitle": MessageLookupByLibrary.simpleMessage(
             "أضف كلمة مرور قوية لتأمين حسابك"),
         "accountDetailsHeaderTitle":
@@ -36,10 +39,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لدي حساب بالفعل"),
         "alreadyHaveAccountSubtitle": MessageLookupByLibrary.simpleMessage(
             "سجل الدخول إلى حسابك للوصول السريع إلى خدمات التمريض المنزلي أو لإدارة حسابك كممرض."),
+        "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
         "basicCareItems": MessageLookupByLibrary.simpleMessage(
             "💉 إعطاء الحقن (عضل / تحت الجلد / وريد)\n🩸 قياس السكر العشوائي والتراكمي\n❤️ قياس ضغط الدم\n🌡️ قياس الحرارة\n📊 قياس العلامات الحيوية (Pulse – O2 – R)\n💊 إعطاء الأدوية في مواعيدها\n🧪 تركيب كانيولا (IV Cannula)\n💧 تركيب المحاليل الوريدية\n🧴 متابعة الجفاف وتعويض السوائل"),
         "basicCareTitle": MessageLookupByLibrary.simpleMessage(
             "📋 الخدمات الأساسية (Basic Care)"),
+        "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
         "careerDetailsHeaderSubtitle": MessageLookupByLibrary.simpleMessage(
             "أخبرنا عن خبرتك ومنطقة الخدمة"),
         "careerDetailsHeaderTitle":
@@ -52,11 +57,21 @@ class MessageLookup extends MessageLookupByLibrary {
             "🫀 متابعة مرضى القلب\n🩸 متابعة مرضى السكر\n🧠 متابعة الضغط المرتفع\n🫁 متابعة مرضى الربو وضيق التنفس\n📅 إعداد خطة متابعة دورية\n📊 تسجيل قراءات يومية وتحليلها"),
         "chronicCareTitle": MessageLookupByLibrary.simpleMessage(
             "🫀 الأمراض المزمنة (Chronic Care)"),
+        "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "confirmPasswordLabel":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
+        "customizeThemeAndLanguage":
+            MessageLookupByLibrary.simpleMessage("تخصيص السمة واللغة"),
+        "dark": MessageLookupByLibrary.simpleMessage("داكن"),
+        "darkMode": MessageLookupByLibrary.simpleMessage("الوضع الداكن"),
         "dashboard": MessageLookupByLibrary.simpleMessage("لوحة التحكم"),
         "dateOfBirthLabel":
             MessageLookupByLibrary.simpleMessage("تاريخ الميلاد"),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
+        "deleteAccountDialogMessage": MessageLookupByLibrary.simpleMessage(
+            "هل أنت متأكد أنك تريد حذف حسابك؟ هذا الإجراء لا يمكن التراجع عنه."),
+        "editProfile":
+            MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
         "elderlyCareItems": MessageLookupByLibrary.simpleMessage(
             "🛏️ رعاية كاملة للمريض طريح الفراش\n🚿 استحمام وتنظيف المريض غير القادر\n🔄 تغيير وضعية المريض لمنع القرح\n🍽️ المساعدة في التغذية\n🚻 المساعدة في قضاء الحاجة\n🧠 متابعة الحالة النفسية والوعي\n💊 تنظيم الأدوية اليومية"),
         "elderlyCareTitle": MessageLookupByLibrary.simpleMessage(
@@ -67,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "🚨 تقييم حالة طارئة في المنزل\n📉 قياس سريع للحالة الصحية\n🏥 تجهيز المريض للنقل للمستشفى\n📞 استشارة تمريضية عاجلة"),
         "emergencyCareTitle":
             MessageLookupByLibrary.simpleMessage("🚨 خدمات طوارئ وتقييم سريع"),
+        "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
         "errorExperienceRequired":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال سنوات الخبرة"),
         "errorInvalidDOB":
@@ -110,8 +126,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "getStarted": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
         "howItWorks": MessageLookupByLibrary.simpleMessage("كيف يعمل"),
+        "invalidEmail": MessageLookupByLibrary.simpleMessage(
+            "عنوان البريد الإلكتروني غير صالح"),
         "joinAsNurse": MessageLookupByLibrary.simpleMessage("انضم كممرض"),
         "joinAsPatient": MessageLookupByLibrary.simpleMessage("انضم كمريض"),
+        "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+        "languageAndTheme":
+            MessageLookupByLibrary.simpleMessage("اللغة والسمة"),
+        "light": MessageLookupByLibrary.simpleMessage("فاتح"),
+        "lightMode": MessageLookupByLibrary.simpleMessage("الوضع الفاتح"),
         "makeSure": MessageLookupByLibrary.simpleMessage(
             "تأكد من صحة البيانات وحاول مرة أخرى"),
         "maleLabel": MessageLookupByLibrary.simpleMessage("ذكر"),
@@ -125,6 +148,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لا توجد كفالة أو تحقق"),
         "noVerificationDesc": MessageLookupByLibrary.simpleMessage(
             "لا توجد طريقة للتحقق من مؤهلات الممرض أو خلفيته المهنية قبل استقباله"),
+        "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
         "nurseButton": MessageLookupByLibrary.simpleMessage("سجل كممرض"),
         "nurseButtonSubtitle": MessageLookupByLibrary.simpleMessage(
             "انضم إلى شبكة الممرضين المعتمدين لدينا وابدأ في تقديم الرعاية المنزلية بجودة عالية وسرعة فائقة."),
@@ -147,7 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "personalDetailsHeaderSubtitle": MessageLookupByLibrary.simpleMessage(
             "أكمل ملفك الشخصي بتاريخ الميلاد والجنس"),
         "personalDetailsHeaderTitle":
-            MessageLookupByLibrary.simpleMessage("التفاصيل شخصية"),
+            MessageLookupByLibrary.simpleMessage("تفاصيل شخصية"),
         "personalInformation":
             MessageLookupByLibrary.simpleMessage("المعلومات الشخصية"),
         "phoneNumberLabel": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
@@ -155,6 +179,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "🏥 متابعة ما بعد العمليات الجراحية\n🩹 تغيير الضمادات الجراحية\n💉 إعطاء مضادات حيوية بعد العمليات\n🧼 تنظيف الجروح الجراحية\n📉 متابعة الالتهابات أو المضاعفات\n🛏️ مساعدة المريض في الحركة التدريجية"),
         "postOpCareTitle":
             MessageLookupByLibrary.simpleMessage("🚑 خدمات ما بعد العمليات"),
+        "preferences": MessageLookupByLibrary.simpleMessage("التفضيلات"),
         "previous": MessageLookupByLibrary.simpleMessage("السابق"),
         "priceDesc": MessageLookupByLibrary.simpleMessage(
             "نفس الخدمة بـ 50 جنيه في شارع، و500 جنيه في الشارع المجاور — بدون أي مبرر"),
@@ -194,6 +219,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "signInToContinue":
             MessageLookupByLibrary.simpleMessage("سجل الدخول للمتابعة"),
+        "signOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "signOutDialogMessage": MessageLookupByLibrary.simpleMessage(
+            "هل أنت متأكد أنك تريد تسجيل الخروج؟"),
         "skillsSpecialties":
             MessageLookupByLibrary.simpleMessage("المهارات والتخصصات"),
         "splashSlide1Line1":
@@ -245,6 +273,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("فتح الإعدادات"),
         "storagePermissionDialogTitle":
             MessageLookupByLibrary.simpleMessage("مطلوب إذن التخزين"),
+        "theme": MessageLookupByLibrary.simpleMessage("السمة"),
+        "themeMode": MessageLookupByLibrary.simpleMessage("السمة"),
         "threeSteps": MessageLookupByLibrary.simpleMessage(
             "3 خطوات فقط للرعاية المنزلية"),
         "unfairPrice":

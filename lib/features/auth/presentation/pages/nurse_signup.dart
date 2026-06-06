@@ -198,6 +198,11 @@ class _NurseSignupPageState extends State<NurseSignupPage>
               backgroundColor: Colors.red,
             ),
           );
+          setState(() {
+            emailErrorText = S.of(context).invalidEmail;
+            _currentPage = 0;
+            _pageController.jumpToPage(0);
+          });
         }
       }
     } catch (e) {

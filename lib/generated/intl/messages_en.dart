@@ -27,6 +27,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "PatientProfilePhotoNote": MessageLookupByLibrary.simpleMessage(
             "A profile photo helps nurses recognize you easily."),
         "SelectPhoto": MessageLookupByLibrary.simpleMessage("Select Photo"),
+        "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "accountDeleted": MessageLookupByLibrary.simpleMessage(
+            "Account deleted successfully"),
         "accountDetailsHeaderSubtitle": MessageLookupByLibrary.simpleMessage(
             "Secure your account with a strong password"),
         "accountDetailsHeaderTitle":
@@ -37,9 +40,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Already have an account"),
         "alreadyHaveAccountSubtitle": MessageLookupByLibrary.simpleMessage(
             "Sign in to your account for quick access to home nursing services or to manage your nurse account."),
+        "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "basicCareItems": MessageLookupByLibrary.simpleMessage(
             "💉 Giving injections (IM / SC / IV)\n🩸 Random and cumulative blood sugar measurement\n❤️ Blood pressure measurement\n🌡️ Temperature measurement\n📊 Measuring vital signs (Pulse – O2 – R)\n💊 Administering medications on schedule\n🧪 IV Cannula insertion\n💧 Setting up intravenous fluids\n🧴 Monitoring dehydration and fluid replacement"),
         "basicCareTitle": MessageLookupByLibrary.simpleMessage("📋 Basic Care"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "careerDetailsHeaderSubtitle": MessageLookupByLibrary.simpleMessage(
             "Tell us about your experience and service area"),
         "careerDetailsHeaderTitle":
@@ -52,11 +57,20 @@ class MessageLookup extends MessageLookupByLibrary {
             "🫀 Monitoring heart disease patients\n🩸 Monitoring diabetes patients\n🧠 Monitoring high blood pressure\n🫁 Monitoring asthma and breathing difficulty patients\n📅 Preparing periodic follow-up plan\n📊 Recording and analyzing daily readings"),
         "chronicCareTitle":
             MessageLookupByLibrary.simpleMessage("🫀 Chronic Diseases Care"),
+        "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "confirmPasswordLabel":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "customizeThemeAndLanguage": MessageLookupByLibrary.simpleMessage(
+            "Customize Theme and Language"),
+        "dark": MessageLookupByLibrary.simpleMessage("Dark"),
+        "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
         "dateOfBirthLabel":
             MessageLookupByLibrary.simpleMessage("Date of Birth"),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
+        "deleteAccountDialogMessage": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete your account? This action cannot be undone."),
+        "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "elderlyCareItems": MessageLookupByLibrary.simpleMessage(
             "🛏️ Complete care for bedridden patients\n🚿 Bathing and cleaning unable patients\n🔄 Changing patient position to prevent sores\n🍽️ Assistance with nutrition\n🚻 Assistance with toilet needs\n🧠 Monitoring mental state and consciousness\n💊 Organizing daily medications"),
         "elderlyCareTitle":
@@ -66,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "🚨 Emergency case assessment at home\n📉 Rapid health status measurement\n🏥 Preparing patient for hospital transfer\n📞 Urgent nursing consultation"),
         "emergencyCareTitle": MessageLookupByLibrary.simpleMessage(
             "🚨 Emergency and Rapid Assessment Services"),
+        "english": MessageLookupByLibrary.simpleMessage("English"),
         "errorExperienceRequired": MessageLookupByLibrary.simpleMessage(
             "Please enter years of experience"),
         "errorInvalidDOB": MessageLookupByLibrary.simpleMessage(
@@ -109,9 +124,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "howItWorks": MessageLookupByLibrary.simpleMessage("How It Works"),
+        "invalidEmail":
+            MessageLookupByLibrary.simpleMessage("Invalid email address"),
         "joinAsNurse": MessageLookupByLibrary.simpleMessage("Join as Nurse"),
         "joinAsPatient":
             MessageLookupByLibrary.simpleMessage("Join as Patient"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "languageAndTheme":
+            MessageLookupByLibrary.simpleMessage("Language And Theme"),
+        "light": MessageLookupByLibrary.simpleMessage("Light"),
+        "lightMode": MessageLookupByLibrary.simpleMessage("Light Mode"),
         "makeSure": MessageLookupByLibrary.simpleMessage(
             "Make sure the data is correct and try again"),
         "maleLabel": MessageLookupByLibrary.simpleMessage("Male"),
@@ -125,6 +147,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "No Guarantee or Verification"),
         "noVerificationDesc": MessageLookupByLibrary.simpleMessage(
             "No way to verify a nurse\'s qualifications or professional background"),
+        "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "nurseButton":
             MessageLookupByLibrary.simpleMessage("Sign Up as a Nurse"),
         "nurseButtonSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -160,6 +183,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "🏥 Post-operative surgical monitoring\n🩹 Changing surgical bandages\n💉 Administering post-operative antibiotics\n🧼 Cleaning surgical wounds\n📉 Monitoring infections or complications\n🛏️ Helping patient gradual movement"),
         "postOpCareTitle":
             MessageLookupByLibrary.simpleMessage("🚑 Post-Operative Care"),
+        "preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
         "previous": MessageLookupByLibrary.simpleMessage("Previous"),
         "priceDesc": MessageLookupByLibrary.simpleMessage(
             "Same service costs 50 pounds in one street, 500 in the next — for no reason"),
@@ -197,6 +221,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "signInButtonLabel": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signInToContinue":
             MessageLookupByLibrary.simpleMessage("Sign In to Continue"),
+        "signOut": MessageLookupByLibrary.simpleMessage("Sign Out"),
+        "signOutDialogMessage": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to sign out?"),
         "skillsSpecialties":
             MessageLookupByLibrary.simpleMessage("Skills & Specialties"),
         "splashSlide1Line1":
@@ -249,6 +276,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Open Settings"),
         "storagePermissionDialogTitle":
             MessageLookupByLibrary.simpleMessage("Storage Permission Required"),
+        "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "themeMode": MessageLookupByLibrary.simpleMessage("Theme Mode"),
         "threeSteps":
             MessageLookupByLibrary.simpleMessage("3 Steps Only for Home Care"),
         "unfairPrice":

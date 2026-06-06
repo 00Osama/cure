@@ -55,6 +55,10 @@ dependencies:
   image_picker: ^1.2.2
   permission_handler: ^12.0.3
   path_provider: ^2.1.5
+  fancy_shimmer_image: ^2.0.3
+  shimmer: 3.0.0
+
+
 
 dev_dependencies:
   flutter_test:

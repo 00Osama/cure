@@ -6,7 +6,7 @@ enum ThemeState { system, light, dark }
 
 class ThemeCubit extends Cubit<ThemeState> {
   final Box settingsBox;
-  
+
   ThemeCubit({required this.settingsBox}) : super(ThemeState.system);
 
   void setThemeMode(ThemeState themeState) {

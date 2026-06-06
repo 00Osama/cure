@@ -1,3 +1,4 @@
+import 'package:cure/features/profile/presentation/pages/profile.dart';
 import 'package:cure/generated/l10n.dart';
 import 'package:cure/shared/widgets/gradient_scaffold.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         bottomLeft: Radius.circular(25),
         bottomRight: Radius.circular(25),
       ),
-      child: Center(child: Text('Profile Screen')),
+      child: Center(child: ProfilePage()),
     ),
   ];
 
@@ -43,9 +44,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
 
     // Colors fixed for both mobile and tablet
-    Color backgroundColor = isDark
-        ? Colors.grey.shade900
-        : Colors.grey.shade400;
+    Color backgroundColor = isDark ? Color(0xFF0A2B38) : Colors.grey.shade400;
     Color iconColor = isDark ? Colors.grey[400]! : Colors.grey[500]!;
     Color activeColor = isDark ? Colors.grey[100]! : Colors.grey[800]!;
     Color tabBorderColor = isDark ? Colors.grey : Colors.white;
@@ -61,7 +60,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       body: screens[_selectedIndex],
       bottomNavigationBar: GNav(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        backgroundColor: Color(0xFF1d1940),
+        backgroundColor: backgroundColor,
         color: iconColor,
         activeColor: activeColor,
         tabActiveBorder: Border.all(color: tabBorderColor),

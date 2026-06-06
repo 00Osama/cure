@@ -20,7 +20,7 @@ class AppTheme {
   }
 
   static ThemeData darkTheme(BuildContext context) {
-    final Color scaffoldColor = Color(0xFF4A7C8C);
+    final Color scaffoldColor = Color(0xFF051923);
     return ThemeData(
       brightness: Brightness.dark,
       primaryColor: const Color(0xFF1C1C1E),
