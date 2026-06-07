@@ -49,6 +49,7 @@ class NavButton extends StatelessWidget {
               color: enabled
                   ? (isPrimary ? primaryColor : Colors.white)
                   : Colors.grey.shade500,
+              textDirection: TextDirection.ltr,
             ),
           ),
         ),

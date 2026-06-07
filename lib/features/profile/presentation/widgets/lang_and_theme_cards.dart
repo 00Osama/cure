@@ -1,7 +1,5 @@
-import 'dart:ui';
-
+import 'package:cure/shared/models/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ThemeCard extends StatelessWidget {
   final String title;
@@ -21,6 +19,7 @@ class ThemeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = AppColors.of(context);
     return GestureDetector(
       onTap: onTap,
       child: ClipRRect(
@@ -31,9 +30,10 @@ class ThemeCard extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
             border: Border.all(
-              color: selected ? color : Colors.grey.shade400,
+              color: selected ? color : appColors.border,
               width: selected ? 3 : 1,
             ),
+            color: selected ? color.withValues(alpha: .16) : appColors.surface,
             boxShadow: selected
                 ? [
                     BoxShadow(
@@ -53,7 +53,14 @@ class ThemeCard extends StatelessWidget {
                 child: Icon(icon, color: color),
               ),
               const SizedBox(height: 12),
-              Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
+              Text(
+                title,
+                style: TextStyle(
+                  color: appColors.onSurface,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
             ],
           ),
         ),
@@ -80,6 +87,7 @@ class LanguageCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = AppColors.of(context);
     return GestureDetector(
       onTap: onTap,
       child: ClipRRect(
@@ -91,9 +99,10 @@ class LanguageCard extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(22),
             border: Border.all(
-              color: selected ? color : Colors.grey.shade400,
+              color: selected ? color : appColors.border,
               width: selected ? 3 : 1,
             ),
+            color: selected ? color.withValues(alpha: .16) : appColors.surface,
             boxShadow: selected
                 ? [
                     BoxShadow(
@@ -119,7 +128,9 @@ class LanguageCard extends StatelessWidget {
                 Flexible(
                   child: Text(
                     title,
-                    style: Theme.of(context).textTheme.titleMedium,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: appColors.onSurface,
+                    ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,

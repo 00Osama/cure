@@ -1,3 +1,4 @@
+import 'package:cure/core/network/api_config.dart';
 import 'package:cure/features/auth/presentation/widgets/auth_gate.dart';
 import 'package:cure/shared/di/injection.dart';
 import 'package:cure/shared/theme_and_locals/app_theme.dart';
@@ -24,15 +25,30 @@ Future<void> main() async {
   // Initialize Firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  // Initialize Supabase
-  await Supabase.initialize(
-    url: 'https://wrzvjdmcylevmohoaqmv.supabase.co',
-    anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndyenZqZG1jeWxldm1vaG9hcW12Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MDM0MzU1NywiZXhwIjoyMDk1OTE5NTU3fQ.5nYbqIIgh3fN5vCl6Z84clFsnf6PJq55RaYX8yvyoXs',
-  );
+  // Initialize Supabase using the anon key supplied via --dart-define
+  // (never hardcode a privileged key in the client — see README "Security").
+  if (ApiConfig.hasAnonKey) {
+    await Supabase.initialize(
+      url: ApiConfig.supabaseUrl,
+      anonKey: ApiConfig.supabaseAnonKey,
+    );
+  } else {
+    debugPrint(
+      '⚠️  SUPABASE_ANON_KEY is not set. Pass it via '
+      '--dart-define-file=dart_define.dev.json. '
+      'Supabase-backed features (booking, image upload) are disabled.',
+    );
+  }
 
   // Initialize dependency injection
   await di.initialize();
+
+  // Initialize push notifications (best-effort; unsupported on desktop).
+  try {
+    await di.notificationService.initialize();
+  } catch (e) {
+    debugPrint('Notification init skipped: $e');
+  }
 
   // main app entry with theme, locals features provider
   runApp(

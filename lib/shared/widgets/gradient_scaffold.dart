@@ -1,4 +1,5 @@
 import 'package:cure/shared/theme_and_locals/app_gradients.dart';
+import 'package:cure/shared/models/app_colors.dart';
 import 'package:flutter/material.dart';
 
 /// Custom Scaffold with gradient background
@@ -50,6 +51,7 @@ class GradientScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final gradient = context.appGradient;
+    final colors = AppColors.of(context);
 
     return Scaffold(
       appBar: appBar,
@@ -69,7 +71,7 @@ class GradientScaffold extends StatelessWidget {
       onEndDrawerChanged: onEndDrawerChanged,
       bottomNavigationBar: bottomNavigationBar,
       bottomSheet: bottomSheet,
-      backgroundColor: Colors.transparent,
+      backgroundColor: backgroundColor ?? colors.gradientStart,
       extendBody: extendBody,
       primary: primary,
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,

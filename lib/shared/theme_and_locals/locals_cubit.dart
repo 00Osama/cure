@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-enum LanguageState { english, arabic, french }
+enum LanguageState { english, arabic }
 
 class LanguageCubit extends Cubit<LanguageState> {
   final Box settingsBox;
@@ -19,13 +19,11 @@ class LanguageCubit extends Cubit<LanguageState> {
     if (storedLanguage != null) {
       if (storedLanguage == 'LanguageState.arabic') {
         emit(LanguageState.arabic);
-      } else if (storedLanguage == 'LanguageState.french') {
-        emit(LanguageState.french);
       } else {
         emit(LanguageState.english);
       }
     } else {
-      emit(LanguageState.arabic);
+      emit(LanguageState.english);
     }
   }
 
@@ -33,8 +31,6 @@ class LanguageCubit extends Cubit<LanguageState> {
     switch (state) {
       case LanguageState.arabic:
         return const Locale('ar');
-      case LanguageState.french:
-        return const Locale('fr');
       case LanguageState.english:
         return const Locale('en');
     }

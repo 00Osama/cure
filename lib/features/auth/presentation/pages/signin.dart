@@ -101,10 +101,11 @@ class _SigninState extends State<Signin> {
     } catch (e) {
       if (!mounted) return;
       Navigator.pop(context);
+      debugPrint('sign in failed: $e');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'Error: $e',
+            S.of(context).errorUnexpected,
             style: const TextStyle(color: Colors.white),
           ),
           backgroundColor: Colors.red,

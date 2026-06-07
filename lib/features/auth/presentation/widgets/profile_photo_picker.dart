@@ -2,9 +2,9 @@ import 'dart:io';
 import 'package:cure/features/auth/presentation/widgets/button.dart';
 import 'package:cure/features/auth/presentation/widgets/slide_header.dart';
 import 'package:cure/generated/l10n.dart';
+import 'package:cure/shared/utils/media_permission.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class ProfilePhotoPicker extends StatelessWidget {
   const ProfilePhotoPicker({
@@ -63,9 +63,22 @@ class ProfilePhotoPicker extends StatelessWidget {
                     color: const Color.fromARGB(255, 106, 182, 74),
                     title: S.of(context).SelectPhoto,
                     onPressed: () async {
-                      await Permission.storage.request();
-                      if (await Permission.storage.status.isDenied) {
-                        await showStoragePermissionDialog(context);
+                      final permission =
+                          await MediaPermission.requestGalleryAccess();
+                      if (!context.mounted) return;
+                      if (permission == MediaPermissionResult.denied) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              S.of(context).storagePermissionDenied,
+                            ),
+                          ),
+                        );
+                        return;
+                      }
+                      if (permission ==
+                          MediaPermissionResult.permanentlyDenied) {
+                        await MediaPermission.showOpenSettingsDialog(context);
                         return;
                       }
                       final pickedFile = await ImagePicker().pickImage(
@@ -82,99 +95,6 @@ class ProfilePhotoPicker extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Future<void> showStoragePermissionDialog(BuildContext context) async {
-    await showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) {
-        return Dialog(
-          backgroundColor: Colors.transparent,
-          child: Container(
-            padding: const EdgeInsets.all(24),
-            decoration: BoxDecoration(
-              color: Theme.of(context).scaffoldBackgroundColor,
-              borderRadius: BorderRadius.circular(28),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  width: 72,
-                  height: 72,
-                  decoration: BoxDecoration(
-                    color: Colors.red.withValues(alpha: 0.1),
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.folder_off_rounded,
-                    size: 36,
-                    color: Colors.red,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  S.of(context).storagePermissionDialogTitle,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  S.of(context).storagePermissionDialogMessage,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey.shade600,
-                    height: 1.5,
-                  ),
-                ),
-                const SizedBox(height: 24),
-                Row(
-                  children: [
-                    Expanded(
-                      child: OutlinedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        style: OutlinedButton.styleFrom(
-                          minimumSize: const Size.fromHeight(50),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                        ),
-                        child: Text(S.of(context).storagePermissionDialogLater),
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: FilledButton(
-                        onPressed: () async {
-                          Navigator.pop(context);
-                          await openAppSettings();
-                        },
-                        style: FilledButton.styleFrom(
-                          minimumSize: const Size.fromHeight(50),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                        ),
-                        child: Text(
-                          S.of(context).storagePermissionDialogOpenSettings,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        );
-      },
     );
   }
 }

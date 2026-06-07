@@ -1,5 +1,6 @@
 import 'package:cure/features/auth/presentation/pages/splash_page.dart';
 import 'package:cure/features/auth/presentation/widgets/bottom_nav_bar.dart';
+import 'package:cure/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -13,10 +14,14 @@ class AuthGate extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           // Show a loading indicator while waiting for the authentication state
-          return const Center(child: CircularProgressIndicator());
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
         } else if (snapshot.hasError) {
           // Handle error state
-          return const Center(child: Text('Something went wrong.'));
+          return Scaffold(
+            body: Center(child: Text(S.of(context).somethingWentWrong)),
+          );
         } else if (snapshot.hasData) {
           // If the user is authenticated, show the main app controller
           return const BottomNavBar();

@@ -196,7 +196,7 @@ class _Slide6HowItWorksState extends State<Slide6HowItWorks>
               const SizedBox(height: 12),
               // Description
               Padding(
-                padding: const EdgeInsets.only(left: 58),
+                padding: const EdgeInsetsDirectional.only(start: 58),
                 child: Text(
                   desc,
                   style: theme.textTheme.bodySmall?.copyWith(

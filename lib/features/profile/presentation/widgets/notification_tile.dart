@@ -1,4 +1,5 @@
 import 'package:cure/generated/l10n.dart';
+import 'package:cure/shared/models/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class NotificationTile extends StatelessWidget {
@@ -13,24 +14,25 @@ class NotificationTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = AppColors.of(context);
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       leading: Container(
         width: 38,
         height: 38,
         decoration: BoxDecoration(
-          color: Colors.white10,
+          color: colors.iconBackground,
           borderRadius: BorderRadius.circular(12),
         ),
-        child: const Icon(
+        child: Icon(
           Icons.notifications_none_rounded,
-          color: Colors.white,
+          color: colors.onSurface,
           size: 20,
         ),
       ),
       title: Text(
-        S().notifications,
-        style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+        S.of(context).notifications,
+        style: TextStyle(color: colors.onSurface, fontWeight: FontWeight.w600),
       ),
       trailing: Transform.scale(
         scale: 0.9,
@@ -38,9 +40,9 @@ class NotificationTile extends StatelessWidget {
           value: value,
           onChanged: onChanged,
           activeThumbColor: Colors.white,
-          activeTrackColor: Colors.green,
-          inactiveThumbColor: Colors.white70,
-          inactiveTrackColor: Colors.white24,
+          activeTrackColor: colors.success,
+          inactiveThumbColor: colors.onSurfaceSubtle,
+          inactiveTrackColor: colors.border,
         ),
       ),
     );

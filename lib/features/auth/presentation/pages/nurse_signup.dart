@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cure/core/network/api_config.dart';
 import 'package:cure/features/auth/presentation/widgets/bottom_nav_bar.dart';
 import 'package:cure/features/auth/presentation/widgets/button.dart';
 import 'package:cure/features/auth/presentation/widgets/nav_button.dart';
@@ -208,8 +209,15 @@ class _NurseSignupPageState extends State<NurseSignupPage>
     } catch (e) {
       if (!mounted) return;
       Navigator.pop(context);
+      debugPrint('nurse signup failed: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
+        SnackBar(
+          content: Text(
+            S.of(context).errorUnexpected,
+            style: const TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Colors.red,
+        ),
       );
     }
   }
@@ -438,8 +446,11 @@ class _NurseSignupPageState extends State<NurseSignupPage>
   }
 
   Future<String?> uploadProfileImage(String imagePath) async {
-    final supabase = Supabase.instance.client;
+    // No image picked, or Supabase not configured — skip upload.
+    if (imagePath.isEmpty || imagePath == 'default') return null;
+    if (!ApiConfig.hasAnonKey) return null;
     try {
+      final supabase = Supabase.instance.client;
       final file = File(imagePath);
 
       final fileName = '${DateTime.now().millisecondsSinceEpoch}.jpg';
@@ -454,7 +465,7 @@ class _NurseSignupPageState extends State<NurseSignupPage>
 
       return imageUrl;
     } catch (e) {
-      print('Upload failed: $e');
+      debugPrint('Upload failed: $e');
       return null;
     }
   }
@@ -462,111 +473,113 @@ class _NurseSignupPageState extends State<NurseSignupPage>
   Widget _buildCareerInfoSlide() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 24),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SlideHeader(
-            title: S.of(context).careerDetailsHeaderTitle,
-            subtitle: S.of(context).careerDetailsHeaderSubtitle,
-          ),
-          const SizedBox(height: 30),
-          DropdownButtonFormField<String>(
-            isExpanded: true,
-            initialValue: _selectedExperience,
-            decoration: InputDecoration(
-              labelText: S.of(context).yearsOfExperience,
-              prefixIcon: const Icon(Icons.workspace_premium_outlined),
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: 16,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(18),
-              ),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SlideHeader(
+              title: S.of(context).careerDetailsHeaderTitle,
+              subtitle: S.of(context).careerDetailsHeaderSubtitle,
             ),
-            items: [
-              DropdownMenuItem(
-                value: 'lessThanOne',
-                child: Text(S.of(context).experienceLessThanOneYear),
+            const SizedBox(height: 30),
+            DropdownButtonFormField<String>(
+              isExpanded: true,
+              initialValue: _selectedExperience,
+              decoration: InputDecoration(
+                labelText: S.of(context).yearsOfExperience,
+                prefixIcon: const Icon(Icons.workspace_premium_outlined),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 16,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(18),
+                ),
               ),
-              DropdownMenuItem(
-                value: 'oneToThree',
-                child: Text(S.of(context).experience1to3Years),
-              ),
-              DropdownMenuItem(
-                value: 'threeToFive',
-                child: Text(S.of(context).experience3to5Years),
-              ),
-              DropdownMenuItem(
-                value: 'moreThanFive',
-                child: Text(S.of(context).experienceMoreThan5Years),
-              ),
-            ],
-            onChanged: (value) {
-              setState(() {
-                _selectedExperience = value;
-              });
-            },
-            validator: _validateExperience,
-          ),
-          const SizedBox(height: 16),
-          DropdownButtonFormField<String>(
-            isExpanded: true,
-            initialValue: _selectedRegion,
-            decoration: InputDecoration(
-              labelText: S.of(context).regionLabel,
-              prefixIcon: const Icon(Icons.location_on_outlined),
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: 16,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(18),
-              ),
+              items: [
+                DropdownMenuItem(
+                  value: 'lessThanOne',
+                  child: Text(S.of(context).experienceLessThanOneYear),
+                ),
+                DropdownMenuItem(
+                  value: 'oneToThree',
+                  child: Text(S.of(context).experience1to3Years),
+                ),
+                DropdownMenuItem(
+                  value: 'threeToFive',
+                  child: Text(S.of(context).experience3to5Years),
+                ),
+                DropdownMenuItem(
+                  value: 'moreThanFive',
+                  child: Text(S.of(context).experienceMoreThan5Years),
+                ),
+              ],
+              onChanged: (value) {
+                setState(() {
+                  _selectedExperience = value;
+                });
+              },
+              validator: _validateExperience,
             ),
-            items: [
-              DropdownMenuItem(
-                value: 'fayoumCity',
-                child: Text(S.of(context).regionFayoumCity),
+            const SizedBox(height: 16),
+            DropdownButtonFormField<String>(
+              isExpanded: true,
+              initialValue: _selectedRegion,
+              decoration: InputDecoration(
+                labelText: S.of(context).regionLabel,
+                prefixIcon: const Icon(Icons.location_on_outlined),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 16,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(18),
+                ),
               ),
-              DropdownMenuItem(
-                value: 'itsa',
-                child: Text(S.of(context).regionItsa),
-              ),
-              DropdownMenuItem(
-                value: 'tamiya',
-                child: Text(S.of(context).regionTamiya),
-              ),
-              DropdownMenuItem(
-                value: 'youssefElSeddik',
-                child: Text(S.of(context).regionYoussefElSeddik),
-              ),
-              DropdownMenuItem(
-                value: 'snores',
-                child: Text(S.of(context).regionSnores),
-              ),
-              DropdownMenuItem(
-                value: 'other',
-                child: Text(S.of(context).regionOther),
-              ),
-            ],
-            onChanged: (value) {
-              setState(() {
-                _selectedRegion = value;
-              });
-            },
-            validator: _validateRegion,
-          ),
-          const SizedBox(height: 16),
-          MyTextField(
-            controller: _skillsController,
-            label: S.of(context).skillsSpecialties,
-            icon: Icons.medical_services_outlined,
-            maxLines: 3,
-            validator: _validateSkills,
-            textInputAction: TextInputAction.done,
-          ),
-        ],
+              items: [
+                DropdownMenuItem(
+                  value: 'fayoumCity',
+                  child: Text(S.of(context).regionFayoumCity),
+                ),
+                DropdownMenuItem(
+                  value: 'itsa',
+                  child: Text(S.of(context).regionItsa),
+                ),
+                DropdownMenuItem(
+                  value: 'tamiya',
+                  child: Text(S.of(context).regionTamiya),
+                ),
+                DropdownMenuItem(
+                  value: 'youssefElSeddik',
+                  child: Text(S.of(context).regionYoussefElSeddik),
+                ),
+                DropdownMenuItem(
+                  value: 'snores',
+                  child: Text(S.of(context).regionSnores),
+                ),
+                DropdownMenuItem(
+                  value: 'other',
+                  child: Text(S.of(context).regionOther),
+                ),
+              ],
+              onChanged: (value) {
+                setState(() {
+                  _selectedRegion = value;
+                });
+              },
+              validator: _validateRegion,
+            ),
+            const SizedBox(height: 16),
+            MyTextField(
+              controller: _skillsController,
+              label: S.of(context).skillsSpecialties,
+              icon: Icons.medical_services_outlined,
+              maxLines: 3,
+              validator: _validateSkills,
+              textInputAction: TextInputAction.done,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -574,70 +587,73 @@ class _NurseSignupPageState extends State<NurseSignupPage>
   Widget _buildPersonalInfoSlide() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 24),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SlideHeader(
-            title: S.of(context).personalDetailsHeaderTitle,
-            subtitle: S.of(context).personalDetailsHeaderSubtitle,
-          ),
-          const SizedBox(height: 30),
-          MyTextField(
-            controller: _dobController,
-            label: S.of(context).dateOfBirthLabel,
-            readOnly: true,
-            suffixIcon: Icons.calendar_month_outlined,
-            onTap: _pickDateOfBirth,
-            validator: _validateDob,
-          ),
-          const SizedBox(height: 16),
-          DropdownButtonFormField<String>(
-            initialValue: selectedGender,
-            decoration: InputDecoration(
-              labelText: S.of(context).genderLabel,
-              prefixIcon: const Icon(Icons.wc_rounded),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(18),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SlideHeader(
+              title: S.of(context).personalDetailsHeaderTitle,
+              subtitle: S.of(context).personalDetailsHeaderSubtitle,
+            ),
+            const SizedBox(height: 30),
+            MyTextField(
+              controller: _dobController,
+              label: S.of(context).dateOfBirthLabel,
+              readOnly: true,
+              suffixIcon: Icons.calendar_month_outlined,
+              onTap: _pickDateOfBirth,
+              validator: _validateDob,
+            ),
+            const SizedBox(height: 16),
+            DropdownButtonFormField<String>(
+              initialValue: selectedGender,
+              decoration: InputDecoration(
+                labelText: S.of(context).genderLabel,
+                prefixIcon: const Icon(Icons.wc_rounded),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(18),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(18),
+                  borderSide: BorderSide(color: Colors.grey.shade300),
+                ),
               ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(18),
-                borderSide: BorderSide(color: Colors.grey.shade300),
+              validator: _validateGender,
+              items: [
+                DropdownMenuItem(
+                  value: 'Male',
+                  child: Text(S.of(context).maleLabel),
+                ),
+                DropdownMenuItem(
+                  value: 'Female',
+                  child: Text(S.of(context).femaleLabel),
+                ),
+              ],
+              onChanged: (value) {
+                setState(() {
+                  selectedGender = value;
+                });
+              },
+            ),
+            const SizedBox(height: 28),
+            Center(
+              child: SizedBox(
+                width: double.infinity,
+                child: AppPrimaryButton(
+                  title: S.of(context).joinAsNurse,
+                  onPressed: _submitForm,
+                ),
               ),
             ),
-            validator: _validateGender,
-            items: [
-              DropdownMenuItem(
-                value: 'Male',
-                child: Text(S.of(context).maleLabel),
-              ),
-              DropdownMenuItem(
-                value: 'Female',
-                child: Text(S.of(context).femaleLabel),
-              ),
-            ],
-            onChanged: (value) {
-              setState(() {
-                selectedGender = value;
-              });
-            },
-          ),
-          const SizedBox(height: 28),
-          Center(
-            child: SizedBox(
-              width: double.infinity,
-              child: AppPrimaryButton(
-                title: S.of(context).joinAsNurse,
-                onPressed: _submitForm,
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final isRtl = Directionality.of(context) == TextDirection.rtl;
     return GradientScaffold(
       body: SafeArea(
         child: Stack(
@@ -671,7 +687,9 @@ class _NurseSignupPageState extends State<NurseSignupPage>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     NavButton(
-                      icon: Icons.chevron_left_rounded,
+                      icon: isRtl
+                          ? Icons.chevron_right_rounded
+                          : Icons.chevron_left_rounded,
                       enabled: _currentPage > 0,
                       onPressed: _goToPreviousPage,
                       isPrimary: false,
@@ -697,7 +715,9 @@ class _NurseSignupPageState extends State<NurseSignupPage>
                     NavButton(
                       icon: _currentPage == 3
                           ? Icons.check_rounded
-                          : Icons.chevron_right_rounded,
+                          : (isRtl
+                                ? Icons.chevron_left_rounded
+                                : Icons.chevron_right_rounded),
                       enabled: true,
                       onPressed: _goToNextPage,
                       isPrimary: true,

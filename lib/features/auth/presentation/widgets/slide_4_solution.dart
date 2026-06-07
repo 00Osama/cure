@@ -86,11 +86,11 @@ class _Slide4SolutionState extends State<Slide4Solution>
                 // Benefits
                 Column(
                   children: [
-                    _buildBenefitItem(theme, '⚡', '15 دقيقة أو أقل'),
+                    _buildBenefitItem(theme, '⚡', s.splashSlide4Benefit1),
                     const SizedBox(height: 16),
-                    _buildBenefitItem(theme, '🔒', 'ممرضون معتمدون مختارون'),
+                    _buildBenefitItem(theme, '🔒', s.splashSlide4Benefit2),
                     const SizedBox(height: 16),
-                    _buildBenefitItem(theme, '💯', 'أسعار شفافة وعادلة'),
+                    _buildBenefitItem(theme, '💯', s.splashSlide4Benefit3),
                   ],
                 ),
               ],

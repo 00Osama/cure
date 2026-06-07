@@ -57,6 +57,7 @@ class _AccountTypeButtonState extends State<AccountTypeButton>
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isRtl = Directionality.of(context) == TextDirection.rtl;
 
     return ScaleTransition(
       scale: _scale,
@@ -144,9 +145,12 @@ class _AccountTypeButtonState extends State<AccountTypeButton>
 
                 // Arrow
                 Icon(
-                  Icons.arrow_forward_ios_rounded,
+                  isRtl
+                      ? Icons.arrow_back_ios_new_rounded
+                      : Icons.arrow_forward_ios_rounded,
                   size: 18,
                   color: widget.color,
+                  textDirection: TextDirection.ltr,
                 ),
               ],
             ),

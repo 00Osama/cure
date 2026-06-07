@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cure/core/network/api_config.dart';
 import 'package:cure/features/auth/domain/entities/patient.dart';
 import 'package:cure/features/auth/presentation/widgets/bottom_nav_bar.dart';
 import 'package:cure/features/auth/presentation/widgets/button.dart';
@@ -123,8 +124,11 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
   }
 
   Future<String?> uploadProfileImage(String imagePath) async {
-    final supabase = Supabase.instance.client;
+    // No image picked, or Supabase not configured — skip upload.
+    if (imagePath.isEmpty || imagePath == 'default') return null;
+    if (!ApiConfig.hasAnonKey) return null;
     try {
+      final supabase = Supabase.instance.client;
       final file = File(imagePath);
 
       final fileName = '${DateTime.now().millisecondsSinceEpoch}.jpg';
@@ -139,7 +143,7 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
 
       return imageUrl;
     } catch (e) {
-      print('Upload failed: $e');
+      debugPrint('Upload failed: $e');
       return null;
     }
   }
@@ -215,14 +219,20 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
             );
           }
 
-          print('Signup failed: ${failure.error}');
+          debugPrint('Signup failed: ${failure.error}');
         }
       } catch (e) {
         if (!mounted) return;
         Navigator.pop(context); // Close loading dialog
-
+        debugPrint('patient signup failed: $e');
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
+          SnackBar(
+            content: Text(
+              S.of(context).errorUnexpected,
+              style: const TextStyle(color: Colors.white),
+            ),
+            backgroundColor: Colors.red,
+          ),
         );
       }
     } else {

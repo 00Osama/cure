@@ -1,26 +1,37 @@
+import 'package:cure/shared/models/app_colors.dart';
 import 'package:flutter/material.dart';
 
 /// Gradient definitions for light and dark modes
 class AppGradients {
-  /// Dark mode gradient: #1d1940 to #181a2d from top-right to bottom-left
-  static const Gradient darkGradient = LinearGradient(
+  static Gradient fromColors(AppColors colors) {
+    return LinearGradient(
+      begin: Alignment.topRight,
+      end: Alignment.bottomLeft,
+      colors: [colors.gradientStart, colors.gradientEnd],
+    );
+  }
+
+  /// Dark mode gradient: kept close to the existing visual direction.
+  static final Gradient darkGradient = fromColors(AppColors.dark);
+
+  /// Light mode gradient: clean, low-contrast background with readable surfaces.
+  static final Gradient lightGradient = fromColors(AppColors.light);
+
+  static const Gradient darkGradientFallback = LinearGradient(
     begin: Alignment.topRight,
     end: Alignment.bottomLeft,
     colors: [Color(0xFF1d1940), Color(0xFF181a2d)],
   );
 
-  /// Light mode gradient: matched colors from top-right to bottom-left
-  /// Using lighter versions: #E8E6F0 to #E0DBF0
-  static const Gradient lightGradient = LinearGradient(
+  static const Gradient lightGradientFallback = LinearGradient(
     begin: Alignment.topRight,
     end: Alignment.bottomLeft,
-    colors: [Color(0xFFE8E6F0), Color(0xFFE0DBF0)],
+    colors: [Color(0xFFF8FAFC), Color(0xFFEAF1F5)],
   );
 
   /// Get the appropriate gradient based on brightness
   static Gradient getGradient(BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    return isDarkMode ? darkGradient : lightGradient;
+    return fromColors(AppColors.of(context));
   }
 
   /// Get the appropriate gradient based on brightness (without context)

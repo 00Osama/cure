@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
+import 'package:cure/shared/models/app_colors.dart';
+
 class LoadingWidget extends StatelessWidget {
   const LoadingWidget({super.key});
 
@@ -9,7 +11,7 @@ class LoadingWidget extends StatelessWidget {
     return Center(
       child: LoadingAnimationWidget.staggeredDotsWave(
         size: 90,
-        color: Colors.white,
+        color: AppColors.of(context).accent,
       ),
     );
   }

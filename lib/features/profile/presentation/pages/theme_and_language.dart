@@ -90,39 +90,36 @@ class _LanguageAndThemePageState extends State<LanguageAndThemePage> {
 
           BlocBuilder<LanguageCubit, LanguageState>(
             builder: (context, state) {
-              return Directionality(
-                textDirection: TextDirection.ltr,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: LanguageCard(
-                        title: S.of(context).english,
-                        icon: '🇺🇸',
-                        selected: state == LanguageState.english,
-                        color: Colors.blue,
-                        onTap: () {
-                          context.read<LanguageCubit>().setLanguage(
-                            LanguageState.english,
-                          );
-                        },
-                      ),
+              return Row(
+                children: [
+                  Expanded(
+                    child: LanguageCard(
+                      title: S.of(context).english,
+                      icon: '🇺🇸',
+                      selected: state == LanguageState.english,
+                      color: Colors.blue,
+                      onTap: () {
+                        context.read<LanguageCubit>().setLanguage(
+                          LanguageState.english,
+                        );
+                      },
                     ),
-                    const SizedBox(width: 15),
-                    Expanded(
-                      child: LanguageCard(
-                        title: S.of(context).arabic,
-                        icon: '🇸🇦',
-                        selected: state == LanguageState.arabic,
-                        color: Colors.green,
-                        onTap: () {
-                          context.read<LanguageCubit>().setLanguage(
-                            LanguageState.arabic,
-                          );
-                        },
-                      ),
+                  ),
+                  const SizedBox(width: 15),
+                  Expanded(
+                    child: LanguageCard(
+                      title: S.of(context).arabic,
+                      icon: '🇸🇦',
+                      selected: state == LanguageState.arabic,
+                      color: Colors.green,
+                      onTap: () {
+                        context.read<LanguageCubit>().setLanguage(
+                          LanguageState.arabic,
+                        );
+                      },
                     ),
-                  ],
-                ),
+                  ),
+                ],
               );
             },
           ),

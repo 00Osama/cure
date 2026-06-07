@@ -19,6 +19,7 @@ class SplashNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isRtl = Directionality.of(context) == TextDirection.rtl;
     return Positioned(
       bottom: 32,
       left: 20,
@@ -28,7 +29,9 @@ class SplashNavigationBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             NavButton(
-              icon: Icons.chevron_left_rounded,
+              icon: isRtl
+                  ? Icons.chevron_right_rounded
+                  : Icons.chevron_left_rounded,
               enabled: previousEnabled,
               onPressed: onPreviousPressed,
               isPrimary: false,
@@ -75,7 +78,9 @@ class SplashNavigationBar extends StatelessWidget {
             ),
 
             NavButton(
-              icon: Icons.chevron_right_rounded,
+              icon: isRtl
+                  ? Icons.chevron_left_rounded
+                  : Icons.chevron_right_rounded,
               enabled: true,
               onPressed: onNextPressed,
               isPrimary: true,

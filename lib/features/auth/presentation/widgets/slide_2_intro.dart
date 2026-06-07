@@ -96,9 +96,9 @@ class _Slide2IntroState extends State<Slide2Intro>
                   runSpacing: 8,
                   alignment: WrapAlignment.center,
                   children: [
-                    _buildFeaturePill(theme, '⚡', 'سريع'),
-                    _buildFeaturePill(theme, '🔒', 'آمن'),
-                    _buildFeaturePill(theme, '💰', 'عادل'),
+                    _buildFeaturePill(theme, '⚡', s.featureFast),
+                    _buildFeaturePill(theme, '🔒', s.featureSafe),
+                    _buildFeaturePill(theme, '💰', s.featureFair),
                   ],
                 ),
               ],
