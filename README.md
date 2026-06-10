@@ -139,7 +139,7 @@ dart run intl_utils:generate          # localization (S class)
 dart run build_runner build           # freezed + json_serializable
 
 cp dart_define.example.json dart_define.dev.json   # then fill in your keys
-flutter run --dart-define-file=dart_define.dev.json
+flutter run --dart-define-file=dart_define.dev.json 
 ```
 
 `dart_define*.json` is gitignored (except the example).
@@ -153,13 +153,13 @@ flutter test
 
 ## Tech stack
 
-Flutter 3.x → Building cross-platform user interfaces
-Dart → Implementing application logic and handling user interactions
-flutter_bloc → State management 
-freezed → Immutable models and union/sealed classes generation
-json_serializable → JSON serialization/deserialization code generation
-firebase_auth → User authentication
-cloud_firestore → Cloud database
-firebase_messaging → Push notifications
-supabase_flutter → profile image storage
+Flutter 3.x → Building cross-platform user interfaces<br>
+Dart → Implementing application logic and handling user interactions<br>
+flutter_bloc → State management<br>
+freezed → Immutable models and union/sealed classes generation<br>
+json_serializable → JSON serialization/deserialization code generation<br>
+firebase_auth → User authentication<br>
+cloud_firestore → Cloud database<br>
+firebase_messaging → Push notifications<br>
+supabase_flutter → Profile image storage<br>
 intl → Internationalization and localization (English/Arabic)
