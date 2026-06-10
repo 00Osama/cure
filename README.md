@@ -138,11 +138,9 @@ flutter pub get
 dart run intl_utils:generate          # localization (S class)
 dart run build_runner build           # freezed + json_serializable
 
-cp dart_define.example.json dart_define.dev.json   # then fill in your keys
-flutter run --dart-define-file=dart_define.dev.json 
+define api_config.dart   # then fill in your keys
+`api_config.dart` is gitignored.
 ```
-
-`dart_define*.json` is gitignored (except the example).
 
 ## Testing
 
