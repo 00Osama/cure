@@ -1,3 +1,4 @@
+import 'package:cure/core/models/app_colors.dart';
 import 'package:cure/features/auth/presentation/pages/splash_page.dart';
 import 'package:cure/features/auth/presentation/widgets/bottom_nav_bar.dart';
 import 'package:cure/generated/l10n.dart';
@@ -15,11 +16,17 @@ class AuthGate extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           // Show a loading indicator while waiting for the authentication state
-          return const Scaffold(body: Center(child: LoadingWidget()));
+          return Scaffold(
+            backgroundColor: AppColors.of(context).gradientEnd,
+            body: Center(child: LoadingWidget()),
+          );
         } else if (snapshot.hasError) {
           // Handle error state
           return Scaffold(
-            body: Center(child: Text(S.of(context).somethingWentWrong)),
+            backgroundColor: AppColors.of(context).gradientEnd,
+            body: Center(
+              child: Center(child: Text(S.of(context).somethingWentWrong)),
+            ),
           );
         } else if (snapshot.hasData) {
           // If the user is authenticated, show the main app controller

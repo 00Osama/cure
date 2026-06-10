@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:cure/features/profile/presentation/cubits/edit_profile_info_cubit.dart';
+import 'package:cure/features/profile/presentation/cubits/edit_profile_info_state.dart';
 import 'package:flutter/material.dart';
 import 'package:cure/features/auth/presentation/widgets/button.dart';
 import 'package:cure/features/auth/presentation/widgets/text_field.dart';
@@ -230,6 +231,7 @@ class _EditProfileState extends State<EditProfile> {
           final imageProvider = _imageProvider(state.imagePath);
 
           return GradientScaffold(
+            backgroundColor: colors.gradientEnd,
             appBar: AppBar(
               backgroundColor: Colors.transparent,
               elevation: 0,

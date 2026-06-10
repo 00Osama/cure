@@ -1,9 +1,10 @@
 import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cure/core/models/app_colors.dart';
 import 'package:cure/core/theme_and_locals/locals_cubit.dart';
 import 'package:cure/core/theme_and_locals/them_cubit.dart';
 import 'package:cure/features/auth/presentation/pages/onbording_page.dart';
+import 'package:cure/features/profile/presentation/cubits/profile_cubit.dart';
+import 'package:cure/features/profile/presentation/cubits/profile_state.dart';
 import 'package:cure/features/profile/presentation/pages/edit_profile.dart';
 import 'package:cure/features/profile/presentation/pages/theme_and_language.dart';
 import 'package:cure/features/profile/presentation/widgets/circle_avatar.dart';
@@ -13,7 +14,6 @@ import 'package:cure/features/profile/presentation/widgets/settings_section.dart
 import 'package:cure/generated/l10n.dart';
 import 'package:cure/core/di/injection.dart';
 import 'package:cure/core/widgets/loading_widget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,53 +28,21 @@ class _ProfilePageState extends State<ProfilePage> {
   bool notificationsEnabled = true;
   bool isDark = false;
   bool isArabic = false;
-  String _name = '';
-  String _profileImagePath = 'default';
-  String _role = 'patient';
-  bool _profileLoading = true;
 
-  String _roleLabel(BuildContext context) {
-    return _role.toLowerCase() == 'nurse'
+  String _roleLabel(BuildContext context, String role) {
+    return role.toLowerCase() == 'nurse'
         ? S.of(context).nurse
         : S.of(context).patient;
   }
 
-  @override
-  void initState() {
-    super.initState();
-    _loadProfile();
-  }
-
-  Future<void> _loadProfile() async {
-    final uid = FirebaseAuth.instance.currentUser?.uid;
-    if (uid == null) {
-      setState(() => _profileLoading = false);
-      return;
+  ImageProvider? _profileImageProvider(String profileImagePath) {
+    if (profileImagePath.startsWith('http')) {
+      return NetworkImage(profileImagePath);
     }
-
-    try {
-      final profile = await di.profileRemoteDataSource.getProfileById(uid);
-      if (!mounted) return;
-      setState(() {
-        _name = profile?.name ?? '';
-        _profileImagePath = profile?.profileImagePath ?? 'default';
-        _role = profile?.role ?? 'patient';
-        _profileLoading = false;
-      });
-    } catch (e) {
-      debugPrint('load profile failed: $e');
-      if (mounted) setState(() => _profileLoading = false);
-    }
-  }
-
-  ImageProvider? _profileImageProvider() {
-    if (_profileImagePath.startsWith('http')) {
-      return NetworkImage(_profileImagePath);
-    }
-    if (_profileImagePath != 'default' &&
-        _profileImagePath.isNotEmpty &&
-        File(_profileImagePath).existsSync()) {
-      return FileImage(File(_profileImagePath));
+    if (profileImagePath != 'default' &&
+        profileImagePath.isNotEmpty &&
+        File(profileImagePath).existsSync()) {
+      return FileImage(File(profileImagePath));
     }
     return null;
   }
@@ -158,76 +126,45 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  Future<bool> deleteAccount(BuildContext context) async {
-    final messenger = ScaffoldMessenger.of(context);
-    final l10n = S.of(context);
-    try {
-      final user = FirebaseAuth.instance.currentUser;
-
-      if (user == null) {
-        return false;
-      }
-
-      final uid = user.uid;
-
-      // delete user data from Firestore
-      final query = await FirebaseFirestore.instance
-          .collection('users')
-          .where('id', isEqualTo: uid)
-          .get();
-
-      for (final doc in query.docs) {
-        await doc.reference.delete();
-      }
-      await user.delete();
-
-      // logout
-      await FirebaseAuth.instance.signOut();
-
-      return true;
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'requires-recent-login') {
-        messenger.showSnackBar(
-          SnackBar(content: Text(l10n.reauthRequiredToDelete)),
-        );
-      }
-      return false;
-    } catch (e) {
-      debugPrint('delete account failed: $e');
-      messenger.showSnackBar(SnackBar(content: Text(l10n.errorUnexpected)));
-      return false;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    final colors = AppColors.of(context);
-    return Scaffold(
-      backgroundColor: colors.gradientEnd,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          S.of(context).profile,
-          style: TextStyle(
-            color: colors.onSurface,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
+    return BlocProvider(
+      create: (_) => di.createProfileCubit()..loadProfile(),
+      child: BlocBuilder<ProfileCubit, ProfileState>(
+        builder: (context, state) {
+          final colors = AppColors.of(context);
+          final profile = state.profile;
+          final name = profile?.name ?? '';
+          final role = profile?.role ?? 'patient';
+          final profileImagePath = profile?.profileImagePath ?? 'default';
+          final profileLoading = state.isLoading && profile == null;
+
+          return Scaffold(
+            backgroundColor: colors.gradientEnd,
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              centerTitle: true,
+              title: Text(
+                S.of(context).profile,
+                style: TextStyle(
+                  color: colors.onSurface,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            body: SingleChildScrollView(
         padding: const EdgeInsets.all(18),
         child: Column(
           children: [
             ProfileAvatar(
-              imageProvider: _profileImageProvider(),
-              loading: _profileLoading,
+              imageProvider: _profileImageProvider(profileImagePath),
+              loading: profileLoading,
             ),
 
-            if (!_profileLoading) ...[
+            if (!profileLoading) ...[
               Text(
-                _name.isEmpty ? S.of(context).profile : _name,
+                name.isEmpty ? S.of(context).profile : name,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: colors.onSurface,
@@ -249,7 +186,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 child: Text(
-                  _roleLabel(context),
+                  _roleLabel(context, role),
                   style: TextStyle(
                     color: colors.accent,
                     fontSize: 13,
@@ -274,7 +211,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       MaterialPageRoute(builder: (_) => const EditProfile()),
                     );
                     if (!mounted) return;
-                    _loadProfile();
+                    context.read<ProfileCubit>().loadProfile();
                   },
                 ),
                 Divider(height: 1, color: colors.border),
@@ -302,10 +239,29 @@ class _ProfilePageState extends State<ProfilePage> {
                           const Center(child: LoadingWidget()),
                     );
 
-                    final deleted = await deleteAccount(context);
+                    final deleted = await context
+                        .read<ProfileCubit>()
+                        .deleteAccount();
 
                     if (!context.mounted) return;
                     Navigator.of(context, rootNavigator: true).pop();
+
+                    if (!deleted) {
+                      final error = context
+                          .read<ProfileCubit>()
+                          .state
+                          .errorMessage;
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            error != null &&
+                                    error.contains('requires-recent-login')
+                                ? l10n.reauthRequiredToDelete
+                                : l10n.errorUnexpected,
+                          ),
+                        ),
+                      );
+                    }
 
                     if (deleted) {
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -393,21 +349,16 @@ class _ProfilePageState extends State<ProfilePage> {
                     builder: (context) => const Center(child: LoadingWidget()),
                   );
 
-                  try {
-                    await FirebaseAuth.instance.signOut();
-                  } catch (e) {
-                    if (context.mounted) {
-                      Navigator.of(context, rootNavigator: true).pop();
-                      debugPrint('sign out failed: $e');
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text(l10n.signOutFailed)),
-                      );
-                    }
-                    return;
-                  }
+                  final signedOut = await context.read<ProfileCubit>().logout();
 
                   if (!context.mounted) return;
                   Navigator.of(context, rootNavigator: true).pop();
+                  if (!signedOut) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(l10n.signOutFailed)),
+                    );
+                    return;
+                  }
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (_) => const OnBordingPage()),
@@ -433,6 +384,9 @@ class _ProfilePageState extends State<ProfilePage> {
             const SizedBox(height: 30),
           ],
         ),
+      ),
+          );
+        },
       ),
     );
   }

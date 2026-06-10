@@ -1,4 +1,5 @@
-import '../../../profile/data_sources/profile_remote_datasource.dart';
+import 'package:cure/features/profile/data/data_sources/profile_remote_data_source.dart';
+import 'package:cure/features/profile/data/models/profile_model.dart';
 import 'package:cure/features/auth/domain/entities/nurse.dart';
 import 'package:cure/features/auth/domain/entities/patient.dart';
 import 'package:cure/features/auth/domain/entities/user.dart' as domain;
@@ -131,7 +132,7 @@ class AuthRepositoryImpl implements AuthRepository {
       await _saveSession();
 
       // 4. Return domain model
-      return Success(profile.toDomain());
+      return Success(_profileToAuthUser(profile));
     } on datasource.AuthException catch (e) {
       return Failure(e);
     } catch (e) {
@@ -178,7 +179,7 @@ class AuthRepositoryImpl implements AuthRepository {
         return const Success(null);
       }
 
-      return Success(profile.toDomain());
+      return Success(_profileToAuthUser(profile));
     } catch (e) {
       await _clearSession();
       return const Success(null);
@@ -193,7 +194,7 @@ class AuthRepositoryImpl implements AuthRepository {
         return null;
       }
       final profile = await _fetchUserProfile(currentUser.id);
-      return profile?.toDomain();
+      return profile == null ? null : _profileToAuthUser(profile);
     } catch (e) {
       return null;
     }
@@ -210,12 +211,39 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   /// Fetches a user profile document from Firestore by auth user id.
-  Future<UserModel?> _fetchUserProfile(String id) async {
+  Future<ProfileModel?> _fetchUserProfile(String id) async {
     try {
       return await profileRemoteDataSource.getProfileById(id);
     } catch (e) {
       return null;
     }
+  }
+
+  domain.User _profileToAuthUser(ProfileModel profile) {
+    if (profile.role == 'nurse') {
+      return Nurse(
+        id: profile.id,
+        name: profile.name,
+        email: profile.email,
+        phoneNumber: profile.phoneNumber,
+        dateOfBirth: profile.dateOfBirth,
+        gender: profile.gender,
+        yearOfExperience: profile.yearOfExperience,
+        region: profile.region,
+        skillSet: profile.skillSet,
+        profileImageUrl: profile.profileImagePath,
+      );
+    }
+
+    return Patient(
+      id: profile.id,
+      name: profile.name,
+      email: profile.email,
+      phoneNumber: profile.phoneNumber,
+      dateOfBirth: profile.dateOfBirth,
+      gender: profile.gender,
+      profileImageUrl: profile.profileImagePath,
+    );
   }
 
   /// Clear session flag from secure storage

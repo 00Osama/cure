@@ -25,20 +25,11 @@ Future<void> main() async {
   // Initialize Firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  // Initialize Supabase using the anon key supplied via --dart-define
-  // (never hardcode a privileged key in the client — see README "Security").
-  if (ApiConfig.hasAnonKey) {
-    await Supabase.initialize(
-      url: ApiConfig.supabaseUrl,
-      anonKey: ApiConfig.supabaseAnonKey,
-    );
-  } else {
-    debugPrint(
-      '⚠️  SUPABASE_ANON_KEY is not set. Pass it via '
-      '--dart-define-file=dart_define.dev.json. '
-      'Supabase-backed features (booking, image upload) are disabled.',
-    );
-  }
+  // Initialize Supabase
+  await Supabase.initialize(
+    url: ApiConfig.supabaseUrl,
+    anonKey: ApiConfig.supabaseAnonKey,
+  );
 
   // Initialize dependency injection
   await di.initialize();

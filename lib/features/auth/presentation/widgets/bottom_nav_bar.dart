@@ -86,9 +86,15 @@ class _BottomNavBarState extends State<BottomNavBar> {
               ),
               child: _screens[_selectedIndex],
             )
-          : ColoredBox(
-              color: colors.gradientEnd,
-              child: const Center(child: LoadingWidget()),
+          : ClipRRect(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(25),
+                bottomRight: Radius.circular(25),
+              ),
+              child: ColoredBox(
+                color: colors.gradientEnd,
+                child: const Center(child: LoadingWidget()),
+              ),
             ),
       backgroundColor: colors.navBackground,
       bottomNavigationBar: Container(
