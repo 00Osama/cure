@@ -187,6 +187,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noVerificationDesc": MessageLookupByLibrary.simpleMessage(
             "No way to verify a nurse\'s qualifications or professional background"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+        "nurse": MessageLookupByLibrary.simpleMessage("Nurse"),
         "nurseButton":
             MessageLookupByLibrary.simpleMessage("Sign Up as a Nurse"),
         "nurseButtonSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -198,6 +199,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "nurseSignupTitle":
             MessageLookupByLibrary.simpleMessage("Join as a Nurse"),
         "passwordLabel": MessageLookupByLibrary.simpleMessage("Password"),
+        "patient": MessageLookupByLibrary.simpleMessage("Patient"),
         "patientButton":
             MessageLookupByLibrary.simpleMessage("Sign Up as a Patient"),
         "patientButtonSubtitle": MessageLookupByLibrary.simpleMessage(

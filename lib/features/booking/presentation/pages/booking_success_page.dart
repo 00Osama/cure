@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:cure/features/auth/presentation/widgets/button.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/shared/widgets/gradient_scaffold.dart';
+import 'package:cure/core/widgets/gradient_scaffold.dart';
 
 /// Terminal step: confirmation. "Done" returns to the app shell (root route).
 class BookingSuccessPage extends StatelessWidget {

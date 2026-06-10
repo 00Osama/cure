@@ -1,9 +1,9 @@
-import '../data_sources/profile_remote_datasource.dart';
+import '../../../profile/data_sources/profile_remote_datasource.dart';
 import 'package:cure/features/auth/domain/entities/nurse.dart';
 import 'package:cure/features/auth/domain/entities/patient.dart';
 import 'package:cure/features/auth/domain/entities/user.dart' as domain;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import '../../../../shared/utils/result.dart';
+import '../../../../core/utils/result.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../data_sources/auth_remote_datasource.dart' as datasource;
 import '../models/user_model.dart';

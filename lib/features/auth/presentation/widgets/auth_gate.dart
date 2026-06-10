@@ -1,6 +1,7 @@
 import 'package:cure/features/auth/presentation/pages/splash_page.dart';
 import 'package:cure/features/auth/presentation/widgets/bottom_nav_bar.dart';
 import 'package:cure/generated/l10n.dart';
+import 'package:cure/core/widgets/loading_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -14,9 +15,7 @@ class AuthGate extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           // Show a loading indicator while waiting for the authentication state
-          return const Scaffold(
-            body: Center(child: CircularProgressIndicator()),
-          );
+          return const Scaffold(body: Center(child: LoadingWidget()));
         } else if (snapshot.hasError) {
           // Handle error state
           return Scaffold(

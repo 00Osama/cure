@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../shared/utils/failures.dart';
+import '../utils/failures.dart';
 
 /// Maps any error thrown by the network layer into a domain [Failure].
 ///

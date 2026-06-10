@@ -3,8 +3,8 @@ import 'package:cure/features/booking/domain/entities/service.dart';
 import 'package:cure/features/booking/domain/usecase/booking_usecase.dart';
 import 'package:cure/features/booking/presentation/cubits/booking_cubit.dart';
 import 'package:cure/features/booking/presentation/cubits/booking_state.dart';
-import 'package:cure/shared/utils/failures.dart' as f;
-import 'package:cure/shared/utils/result.dart';
+import 'package:cure/core/utils/failures.dart' as f;
+import 'package:cure/core/utils/result.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

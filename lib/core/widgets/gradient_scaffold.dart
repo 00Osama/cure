@@ -1,5 +1,5 @@
-import 'package:cure/shared/theme_and_locals/app_gradients.dart';
-import 'package:cure/shared/models/app_colors.dart';
+import 'package:cure/core/theme_and_locals/app_gradients.dart';
+import 'package:cure/core/models/app_colors.dart';
 import 'package:flutter/material.dart';
 
 /// Custom Scaffold with gradient background

@@ -1,15 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import '../../core/network/api_client.dart';
-import '../../core/network/auth_token_provider.dart';
-import '../../core/notifications/notification_service.dart';
+import '../network/api_client.dart';
+import '../network/auth_token_provider.dart';
+import '../notifications/notification_service.dart';
 import '../../features/auth/data/data_sources/auth_remote_datasource.dart';
-import '../../features/auth/data/data_sources/profile_remote_datasource.dart';
+import '../../features/profile/data_sources/profile_remote_datasource.dart';
 import '../../features/auth/data/repositories/auth_repository_impl.dart';
 import '../../features/auth/domain/repositories/auth_repository.dart';
 import '../../features/auth/domain/usecase/auth_usecase.dart';
 import '../../features/auth/presentation/cubits/auth_cubit.dart';
+import '../../features/profile/presentation/cubits/edit_profile_info_cubit.dart';
 import '../../features/booking/data/datasources/booking_remote_datasource.dart';
 import '../../features/booking/data/repositories/booking_repository_impl.dart';
 import '../../features/booking/domain/repositories/booking_repository.dart';
@@ -125,6 +126,13 @@ class DependencyInjection {
   /// Cubits should not be singletons - create new instances as needed
   AuthCubit createAuthCubit() {
     return AuthCubit(authUseCase: _authUseCase);
+  }
+
+  EditProfileInfoCubit createEditProfileInfoCubit() {
+    return EditProfileInfoCubit(
+      profileRemoteDataSource: _profileRemoteDataSource,
+      currentUid: () => currentUid,
+    );
   }
 
   BookingCubit createBookingCubit() {

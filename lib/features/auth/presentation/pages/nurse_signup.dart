@@ -7,11 +7,11 @@ import 'package:cure/features/auth/presentation/widgets/profile_photo_picker.dar
 import 'package:cure/features/auth/presentation/widgets/slide_header.dart';
 import 'package:cure/features/auth/presentation/widgets/text_field.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/shared/widgets/gradient_scaffold.dart';
+import 'package:cure/core/widgets/gradient_scaffold.dart';
 import 'package:cure/features/auth/domain/entities/nurse.dart';
-import 'package:cure/shared/di/injection.dart';
-import 'package:cure/shared/utils/result.dart';
-import 'package:cure/shared/widgets/loading_widget.dart';
+import 'package:cure/core/di/injection.dart';
+import 'package:cure/core/utils/result.dart';
+import 'package:cure/core/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

@@ -1,5 +1,5 @@
-import 'package:cure/shared/models/app_colors.dart';
-import 'package:cure/shared/widgets/directional_chevron.dart';
+import 'package:cure/core/models/app_colors.dart';
+import 'package:cure/core/widgets/directional_chevron.dart';
 import 'package:flutter/material.dart';
 
 class SettingsTile extends StatelessWidget {

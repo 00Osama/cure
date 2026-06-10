@@ -4,7 +4,7 @@ import 'package:cure/features/booking/presentation/cubits/booking_cubit.dart';
 import 'package:cure/features/booking/presentation/pages/service_selection_page.dart';
 import 'package:cure/features/booking/presentation/widgets/service_card.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/shared/utils/result.dart';
+import 'package:cure/core/utils/result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

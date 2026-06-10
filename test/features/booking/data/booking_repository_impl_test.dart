@@ -4,8 +4,8 @@ import 'package:cure/features/booking/data/repositories/booking_repository_impl.
 import 'package:cure/features/booking/domain/entities/booking.dart';
 import 'package:cure/features/booking/domain/entities/booking_status.dart';
 import 'package:cure/features/booking/domain/entities/service.dart';
-import 'package:cure/shared/utils/failures.dart' as f;
-import 'package:cure/shared/utils/result.dart';
+import 'package:cure/core/utils/failures.dart' as f;
+import 'package:cure/core/utils/result.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

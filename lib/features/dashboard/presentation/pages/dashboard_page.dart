@@ -8,9 +8,8 @@ import 'package:cure/features/dashboard/presentation/cubits/dashboard_cubit.dart
 import 'package:cure/features/dashboard/presentation/cubits/dashboard_state.dart';
 import 'package:cure/features/dashboard/presentation/widgets/summary_card.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/shared/models/app_colors.dart';
-import 'package:cure/shared/widgets/gradient_scaffold.dart';
-import 'package:cure/shared/widgets/loading_widget.dart';
+import 'package:cure/core/models/app_colors.dart';
+import 'package:cure/core/widgets/loading_widget.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -18,7 +17,9 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
-    return GradientScaffold(
+    final colors = AppColors.of(context);
+    return Scaffold(
+      backgroundColor: colors.gradientEnd,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:cure/features/booking/presentation/cubits/booking_state.dart';
-import 'package:cure/shared/models/app_colors.dart';
+import 'package:cure/core/models/app_colors.dart';
 
 /// Compact progress dots for the four input steps of the booking wizard.
 class BookingStepIndicator extends StatelessWidget {

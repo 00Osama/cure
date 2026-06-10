@@ -1,6 +1,6 @@
 import '../../../../core/network/network_exception_mapper.dart';
-import '../../../../shared/utils/failures.dart' as f;
-import '../../../../shared/utils/result.dart';
+import '../../../../core/utils/failures.dart' as f;
+import '../../../../core/utils/result.dart';
 import '../../domain/entities/availability_slot.dart';
 import '../../domain/entities/booking.dart';
 import '../../domain/entities/booking_status.dart';

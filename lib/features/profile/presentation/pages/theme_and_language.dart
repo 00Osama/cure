@@ -1,7 +1,7 @@
 import 'package:cure/features/profile/presentation/widgets/lang_and_theme_cards.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/shared/theme_and_locals/locals_cubit.dart';
-import 'package:cure/shared/theme_and_locals/them_cubit.dart';
+import 'package:cure/core/theme_and_locals/locals_cubit.dart';
+import 'package:cure/core/theme_and_locals/them_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,14 +30,56 @@ class _LanguageAndThemePageState extends State<LanguageAndThemePage> {
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
+          /// Language Section
+          Text(
+            S.of(context).language,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          const SizedBox(height: 10),
+          BlocBuilder<LanguageCubit, LanguageState>(
+            builder: (context, state) {
+              return Row(
+                children: [
+                  Expanded(
+                    child: LanguageCard(
+                      title: S.of(context).english,
+                      icon: '🇺🇸',
+                      selected: state == LanguageState.english,
+                      color: Colors.blue,
+                      onTap: () {
+                        context.read<LanguageCubit>().setLanguage(
+                          LanguageState.english,
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 15),
+                  Expanded(
+                    child: LanguageCard(
+                      title: S.of(context).arabic,
+                      icon: '🇸🇦',
+                      selected: state == LanguageState.arabic,
+                      color: Colors.green,
+                      onTap: () {
+                        context.read<LanguageCubit>().setLanguage(
+                          LanguageState.arabic,
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+
+          const SizedBox(height: 25),
+
           /// Theme Section
           Text(
             S.of(context).themeMode,
             style: Theme.of(context).textTheme.titleLarge,
           ),
-
           const SizedBox(height: 10),
-
           BlocBuilder<ThemeCubit, ThemeState>(
             builder: (context, state) {
               return Row(
@@ -79,50 +121,6 @@ class _LanguageAndThemePageState extends State<LanguageAndThemePage> {
           ),
 
           const SizedBox(height: 40),
-
-          /// Language Section
-          Text(
-            S.of(context).language,
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-
-          const SizedBox(height: 10),
-
-          BlocBuilder<LanguageCubit, LanguageState>(
-            builder: (context, state) {
-              return Row(
-                children: [
-                  Expanded(
-                    child: LanguageCard(
-                      title: S.of(context).english,
-                      icon: '🇺🇸',
-                      selected: state == LanguageState.english,
-                      color: Colors.blue,
-                      onTap: () {
-                        context.read<LanguageCubit>().setLanguage(
-                          LanguageState.english,
-                        );
-                      },
-                    ),
-                  ),
-                  const SizedBox(width: 15),
-                  Expanded(
-                    child: LanguageCard(
-                      title: S.of(context).arabic,
-                      icon: '🇸🇦',
-                      selected: state == LanguageState.arabic,
-                      color: Colors.green,
-                      onTap: () {
-                        context.read<LanguageCubit>().setLanguage(
-                          LanguageState.arabic,
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
         ],
       ),
     );

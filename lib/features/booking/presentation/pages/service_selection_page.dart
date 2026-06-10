@@ -7,9 +7,8 @@ import 'package:cure/features/booking/presentation/cubits/booking_state.dart';
 import 'package:cure/features/booking/presentation/pages/schedule_page.dart';
 import 'package:cure/features/booking/presentation/widgets/service_card.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/shared/models/app_colors.dart';
-import 'package:cure/shared/widgets/gradient_scaffold.dart';
-import 'package:cure/shared/widgets/loading_widget.dart';
+import 'package:cure/core/models/app_colors.dart';
+import 'package:cure/core/widgets/loading_widget.dart';
 
 /// Step 1 of the booking wizard: choose a clinical service. The
 /// [BookingCubit] is provided by the caller (the Home tab) so the same
@@ -21,7 +20,8 @@ class ServiceSelectionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final s = S.of(context);
     final colors = AppColors.of(context);
-    return GradientScaffold(
+    return Scaffold(
+      backgroundColor: colors.gradientEnd,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,

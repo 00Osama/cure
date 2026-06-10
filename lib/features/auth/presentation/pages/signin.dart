@@ -2,10 +2,10 @@ import 'package:cure/features/auth/presentation/widgets/bottom_nav_bar.dart';
 import 'package:cure/features/auth/presentation/widgets/button.dart';
 import 'package:cure/features/auth/presentation/widgets/text_field.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/shared/di/injection.dart';
-import 'package:cure/shared/utils/result.dart';
-import 'package:cure/shared/widgets/gradient_scaffold.dart';
-import 'package:cure/shared/widgets/loading_widget.dart';
+import 'package:cure/core/di/injection.dart';
+import 'package:cure/core/utils/result.dart';
+import 'package:cure/core/widgets/gradient_scaffold.dart';
+import 'package:cure/core/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 
 class Signin extends StatefulWidget {

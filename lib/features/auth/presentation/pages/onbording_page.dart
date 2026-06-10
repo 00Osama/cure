@@ -6,7 +6,7 @@ import 'package:cure/features/auth/presentation/widgets/slide_4_solution.dart';
 import 'package:cure/features/auth/presentation/widgets/slide_5_services.dart';
 import 'package:cure/features/auth/presentation/widgets/slide_6_how_it_works.dart';
 import 'package:cure/features/auth/presentation/widgets/splash_navigation_bar.dart';
-import 'package:cure/shared/widgets/gradient_scaffold.dart';
+import 'package:cure/core/widgets/gradient_scaffold.dart';
 import 'package:flutter/material.dart';
 
 class OnBordingPage extends StatefulWidget {

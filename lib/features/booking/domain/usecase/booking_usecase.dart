@@ -1,4 +1,4 @@
-import '../../../../shared/utils/result.dart';
+import '../../../../core/utils/result.dart';
 import '../entities/availability_slot.dart';
 import '../entities/booking.dart';
 import '../entities/booking_status.dart';

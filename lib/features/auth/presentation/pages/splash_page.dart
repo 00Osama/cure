@@ -1,5 +1,5 @@
-import 'package:cure/features/auth/presentation/pages/onbording_page.dart';
-import 'package:cure/shared/widgets/gradient_scaffold.dart';
+import 'package:cure/features/auth/presentation/widgets/auth_gate.dart';
+import 'package:cure/core/widgets/gradient_scaffold.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -13,19 +13,32 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), _navigateToOnboarding);
+    Future.delayed(const Duration(seconds: 3), _navigateToAuthGate);
   }
 
-  void _navigateToOnboarding() {
+  void _navigateToAuthGate() {
     if (!mounted) return;
     Navigator.of(
       context,
-    ).pushReplacement(MaterialPageRoute(builder: (_) => const OnBordingPage()));
+    ).pushReplacement(MaterialPageRoute(builder: (_) => const AuthGate()));
   }
 
   @override
   Widget build(BuildContext context) {
     return GradientScaffold(
+      bottomSheet: Material(
+        color: Colors.transparent,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Text(
+            'CURE',
+            style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -34,13 +47,6 @@ class _SplashPageState extends State<SplashPage> {
             children: [
               Image.asset('lib/assets/images/cure_logo.png', height: 140),
               const SizedBox(height: 20),
-              Text(
-                'CURE',
-                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
             ],
           ),
         ),

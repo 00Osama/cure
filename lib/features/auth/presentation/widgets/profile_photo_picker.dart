@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:cure/features/auth/presentation/widgets/button.dart';
 import 'package:cure/features/auth/presentation/widgets/slide_header.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/shared/utils/media_permission.dart';
+import 'package:cure/core/utils/media_permission.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 

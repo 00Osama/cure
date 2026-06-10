@@ -1,7 +1,7 @@
 import 'package:cure/features/auth/domain/entities/nurse.dart';
 import 'package:cure/features/auth/domain/entities/patient.dart';
 import 'package:cure/features/auth/domain/entities/user.dart';
-import '../../../../shared/utils/result.dart';
+import '../../../../core/utils/result.dart';
 
 // outline for auth operations
 

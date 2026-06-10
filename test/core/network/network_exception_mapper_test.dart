@@ -1,5 +1,5 @@
 import 'package:cure/core/network/network_exception_mapper.dart';
-import 'package:cure/shared/utils/failures.dart';
+import 'package:cure/core/utils/failures.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 

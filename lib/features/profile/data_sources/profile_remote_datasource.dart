@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../models/user_model.dart';
+import '../../auth/data/models/user_model.dart';
 
 abstract class ProfileRemoteDataSource {
   Future<void> createProfile(Map<String, dynamic> data);

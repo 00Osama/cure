@@ -1,6 +1,6 @@
 import 'package:cure/features/auth/domain/entities/user.dart';
 import 'package:cure/features/auth/domain/usecase/auth_usecase.dart';
-import 'package:cure/shared/utils/result.dart';
+import 'package:cure/core/utils/result.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthState {}

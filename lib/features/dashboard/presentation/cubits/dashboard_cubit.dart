@@ -5,7 +5,7 @@ import 'package:cure/features/booking/domain/entities/booking.dart';
 import 'package:cure/features/booking/domain/entities/booking_status.dart';
 import 'package:cure/features/dashboard/domain/usecase/dashboard_usecase.dart';
 import 'package:cure/features/dashboard/presentation/cubits/dashboard_state.dart';
-import 'package:cure/shared/utils/result.dart';
+import 'package:cure/core/utils/result.dart';
 
 class DashboardCubit extends Cubit<DashboardState> {
   DashboardCubit({

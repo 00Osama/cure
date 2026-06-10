@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../shared/utils/result.dart';
+import '../../../../core/utils/result.dart';
 import '../../domain/entities/availability_slot.dart';
 import '../../domain/entities/booking.dart';
 import '../../domain/entities/booking_status.dart';

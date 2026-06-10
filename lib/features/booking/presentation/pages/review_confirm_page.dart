@@ -8,9 +8,9 @@ import 'package:cure/features/booking/presentation/cubits/booking_cubit.dart';
 import 'package:cure/features/booking/presentation/cubits/booking_state.dart';
 import 'package:cure/features/booking/presentation/pages/booking_success_page.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/shared/models/app_colors.dart';
-import 'package:cure/shared/widgets/gradient_scaffold.dart';
-import 'package:cure/shared/widgets/loading_widget.dart';
+import 'package:cure/core/models/app_colors.dart';
+import 'package:cure/core/widgets/gradient_scaffold.dart';
+import 'package:cure/core/widgets/loading_widget.dart';
 
 /// Step 4: review the assembled booking and confirm. Navigation to the success
 /// screen happens in a [BlocConsumer] listener once the booking is created.

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:cure/features/booking/domain/entities/availability_slot.dart';
-import 'package:cure/shared/models/app_colors.dart';
+import 'package:cure/core/models/app_colors.dart';
 
 class SlotTile extends StatelessWidget {
   const SlotTile({

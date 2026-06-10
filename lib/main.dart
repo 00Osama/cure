@@ -1,9 +1,9 @@
 import 'package:cure/core/network/api_config.dart';
-import 'package:cure/features/auth/presentation/widgets/auth_gate.dart';
-import 'package:cure/shared/di/injection.dart';
-import 'package:cure/shared/theme_and_locals/app_theme.dart';
-import 'package:cure/shared/theme_and_locals/locals_cubit.dart';
-import 'package:cure/shared/theme_and_locals/them_cubit.dart';
+import 'package:cure/features/auth/presentation/pages/splash_page.dart';
+import 'package:cure/core/di/injection.dart';
+import 'package:cure/core/theme_and_locals/app_theme.dart';
+import 'package:cure/core/theme_and_locals/locals_cubit.dart';
+import 'package:cure/core/theme_and_locals/them_cubit.dart';
 import 'package:cure/firebase_options.dart';
 import 'package:cure/generated/l10n.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -90,7 +90,7 @@ class MyApp extends StatelessWidget {
               theme: AppTheme.lightTheme(context),
               darkTheme: AppTheme.darkTheme(context),
               themeMode: context.watch<ThemeCubit>().themeMode,
-              home: const AuthGate(),
+              home: const SplashPage(),
             );
           },
         );

@@ -2129,6 +2129,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Nurse`
+  String get nurse {
+    return Intl.message(
+      'Nurse',
+      name: 'nurse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Patient`
+  String get patient {
+    return Intl.message(
+      'Patient',
+      name: 'patient',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

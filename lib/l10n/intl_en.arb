@@ -205,6 +205,8 @@
   "incomingRequests": "Incoming requests",
   "noIncomingRequests": "No incoming requests",
   "save": "Save",
-  "profileUpdated": "Profile updated"
+  "profileUpdated": "Profile updated", 
+  "nurse": "Nurse",
+  "patient": "Patient"
 
 }

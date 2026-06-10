@@ -206,7 +206,9 @@
   "incomingRequests": "الطلبات الواردة",
   "noIncomingRequests": "لا توجد طلبات واردة",
   "save": "حفظ",
-  "profileUpdated": "تم تحديث الملف الشخصي"
+  "profileUpdated": "تم تحديث الملف الشخصي", 
+  "nurse": "ممرض",
+  "patient": "مريض"
 
 
 }

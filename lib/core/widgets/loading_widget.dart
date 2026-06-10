@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-import 'package:cure/shared/models/app_colors.dart';
+import 'package:cure/core/models/app_colors.dart';
 
 class LoadingWidget extends StatelessWidget {
   const LoadingWidget({super.key});

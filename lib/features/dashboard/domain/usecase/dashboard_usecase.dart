@@ -2,7 +2,7 @@ import 'package:cure/features/booking/domain/entities/booking.dart';
 import 'package:cure/features/booking/domain/entities/booking_status.dart';
 import 'package:cure/features/booking/domain/repositories/booking_repository.dart';
 import 'package:cure/features/dashboard/domain/entities/dashboard_summary.dart';
-import 'package:cure/shared/utils/result.dart';
+import 'package:cure/core/utils/result.dart';
 
 /// Builds the dashboard aggregate from the patient's bookings. Reuses the
 /// booking repository (the dashboard is a read-only projection of bookings).

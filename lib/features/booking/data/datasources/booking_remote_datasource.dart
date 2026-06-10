@@ -1,5 +1,5 @@
 import '../../../../core/network/api_client.dart';
-import '../../../../shared/utils/failures.dart';
+import '../../../../core/utils/failures.dart';
 import '../../domain/entities/booking_status.dart';
 import '../models/availability_slot_model.dart';
 import '../models/booking_model.dart';

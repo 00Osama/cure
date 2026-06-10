@@ -4,9 +4,9 @@ import 'package:cure/features/booking/domain/entities/booking.dart';
 import 'package:cure/features/booking/domain/usecase/booking_usecase.dart';
 import 'package:cure/features/booking/presentation/widgets/booking_list_item.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/shared/utils/result.dart';
-import 'package:cure/shared/widgets/gradient_scaffold.dart';
-import 'package:cure/shared/widgets/loading_widget.dart';
+import 'package:cure/core/models/app_colors.dart';
+import 'package:cure/core/utils/result.dart';
+import 'package:cure/core/widgets/loading_widget.dart';
 
 /// Light, read-only list of incoming (`requested`) bookings for nurses.
 /// Intentionally simple (FutureBuilder, no actions) per the patient-centric
@@ -37,7 +37,9 @@ class _NurseIncomingPageState extends State<NurseIncomingPage> {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
-    return GradientScaffold(
+    final colors = AppColors.of(context);
+    return Scaffold(
+      backgroundColor: colors.gradientEnd,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,

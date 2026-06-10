@@ -188,6 +188,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noVerificationDesc": MessageLookupByLibrary.simpleMessage(
             "لا توجد طريقة للتحقق من مؤهلات الممرض أو خلفيته المهنية قبل استقباله"),
         "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+        "nurse": MessageLookupByLibrary.simpleMessage("ممرض"),
         "nurseButton": MessageLookupByLibrary.simpleMessage("سجل كممرض"),
         "nurseButtonSubtitle": MessageLookupByLibrary.simpleMessage(
             "انضم إلى شبكة الممرضين المعتمدين لدينا وابدأ في تقديم الرعاية المنزلية بجودة عالية وسرعة فائقة."),
@@ -197,6 +198,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم إنشاء حساب الممرض بنجاح"),
         "nurseSignupTitle": MessageLookupByLibrary.simpleMessage("انضم كممرض"),
         "passwordLabel": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "patient": MessageLookupByLibrary.simpleMessage("مريض"),
         "patientButton": MessageLookupByLibrary.simpleMessage("سجل كمريض"),
         "patientButtonSubtitle": MessageLookupByLibrary.simpleMessage(
             "احصل على رعاية منزلية سريعة وآمنة من خلال شبكة الممرضين المعتمدين لدينا في أقل من 15 دقيقة."),

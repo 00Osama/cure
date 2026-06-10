@@ -4,19 +4,14 @@ import 'package:cure/features/booking/presentation/pages/service_selection_page.
 import 'package:cure/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:cure/features/profile/presentation/pages/profile.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/shared/di/injection.dart';
-import 'package:cure/shared/models/app_colors.dart';
-import 'package:cure/shared/widgets/gradient_scaffold.dart';
-import 'package:cure/shared/widgets/loading_widget.dart';
+import 'package:cure/core/di/injection.dart';
+import 'package:cure/core/models/app_colors.dart';
+import 'package:cure/core/widgets/loading_widget.dart';
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-/// App shell. Patients get [Book] + [Dashboard] tabs; nurses get a light
-/// read-only incoming-requests view. Screens are built once and kept alive in
-/// an [IndexedStack] so cubit state survives tab switches.
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
 
@@ -50,7 +45,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   List<Widget> _buildScreens() {
     if (_isNurse) {
-      // Light, read-only nurse experience (patient-centric scope).
       return [
         NurseIncomingPage(useCase: di.bookingUseCase),
         NurseIncomingPage(useCase: di.bookingUseCase),
@@ -75,55 +69,72 @@ class _BottomNavBarState extends State<BottomNavBar> {
     final s = S.of(context);
     final screenWidth = MediaQuery.of(context).size.width;
     final colors = AppColors.of(context);
-
     final navPadding = screenWidth < 600 ? 15.0 : 30.0;
     final tabBorderRadius = screenWidth < 600 ? 20.0 : 35.0;
     final textFontSize = screenWidth < 600 ? 14.0 : 37.0;
     final iconSize = screenWidth < 600 ? 24.0 : 33.0;
+    final homeLabel = _roleLoaded
+        ? (_isNurse ? s.incomingRequests : s.home)
+        : '';
 
-    final homeLabel = _isNurse ? s.incomingRequests : s.home;
-
-    return GradientScaffold(
+    return Scaffold(
       body: _roleLoaded
-          ? IndexedStack(index: _selectedIndex, children: _screens)
-          : const Center(child: LoadingWidget()),
-      bottomNavigationBar: GNav(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        backgroundColor: colors.navBackground,
-        color: colors.navIcon,
-        activeColor: colors.navActive,
-        tabActiveBorder: Border.all(color: colors.navBorder),
-        tabBorderRadius: tabBorderRadius,
-        padding: EdgeInsets.all(navPadding),
-        tabs: [
-          GButton(
-            icon: Icons.home_rounded,
-            iconSize: iconSize,
-            text: ' $homeLabel',
-            textStyle: TextStyle(fontSize: textFontSize),
-            margin: EdgeInsets.symmetric(vertical: navPadding / 2),
+          ? ClipRRect(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(25),
+                bottomRight: Radius.circular(25),
+              ),
+              child: _screens[_selectedIndex],
+            )
+          : ColoredBox(
+              color: colors.gradientEnd,
+              child: const Center(child: LoadingWidget()),
+            ),
+      backgroundColor: colors.navBackground,
+      bottomNavigationBar: Container(
+        color: colors.navBackground,
+        child: SafeArea(
+          top: false,
+          child: GNav(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            backgroundColor: colors.navBackground,
+            color: colors.navIcon,
+            activeColor: colors.navActive,
+            tabBackgroundColor: colors.navBorder.withValues(alpha: 0.18),
+            tabActiveBorder: Border.all(color: colors.navBorder),
+            tabBorderRadius: tabBorderRadius,
+            padding: EdgeInsets.all(navPadding),
+            tabs: [
+              GButton(
+                icon: Icons.home_rounded,
+                iconSize: iconSize,
+                text: homeLabel,
+                textStyle: TextStyle(fontSize: textFontSize),
+                margin: EdgeInsets.symmetric(vertical: navPadding / 2),
+              ),
+              GButton(
+                icon: Icons.dashboard_rounded,
+                iconSize: iconSize,
+                text: s.dashboard,
+                textStyle: TextStyle(fontSize: textFontSize),
+                margin: EdgeInsets.symmetric(vertical: navPadding / 2),
+              ),
+              GButton(
+                icon: Icons.person_rounded,
+                iconSize: iconSize,
+                text: s.profile,
+                textStyle: TextStyle(fontSize: textFontSize),
+                margin: EdgeInsets.symmetric(vertical: navPadding / 2),
+              ),
+            ],
+            selectedIndex: _selectedIndex,
+            onTabChange: (index) {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
           ),
-          GButton(
-            icon: Icons.dashboard_rounded,
-            iconSize: iconSize,
-            text: ' ${s.dashboard}',
-            textStyle: TextStyle(fontSize: textFontSize),
-            margin: EdgeInsets.symmetric(vertical: navPadding / 2),
-          ),
-          GButton(
-            icon: Icons.person_rounded,
-            iconSize: iconSize,
-            text: ' ${s.profile}',
-            textStyle: TextStyle(fontSize: textFontSize),
-            margin: EdgeInsets.symmetric(vertical: navPadding / 2),
-          ),
-        ],
-        selectedIndex: _selectedIndex,
-        onTabChange: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
+        ),
       ),
     );
   }

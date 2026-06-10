@@ -8,9 +8,9 @@ import 'package:cure/features/booking/presentation/cubits/booking_state.dart';
 import 'package:cure/features/booking/presentation/pages/remarks_address_page.dart';
 import 'package:cure/features/booking/presentation/widgets/slot_tile.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/shared/models/app_colors.dart';
-import 'package:cure/shared/widgets/gradient_scaffold.dart';
-import 'package:cure/shared/widgets/loading_widget.dart';
+import 'package:cure/core/models/app_colors.dart';
+import 'package:cure/core/widgets/gradient_scaffold.dart';
+import 'package:cure/core/widgets/loading_widget.dart';
 
 /// Step 2: pick a region + day, then a concrete availability slot.
 class SchedulePage extends StatefulWidget {

@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 
 import 'package:cure/features/booking/domain/entities/booking.dart';
 import 'package:cure/features/booking/presentation/booking_l10n.dart';
-import 'package:cure/shared/models/app_colors.dart';
+import 'package:cure/core/models/app_colors.dart';
 
 /// Reusable summary row for a booking (used by the dashboard and the nurse
 /// incoming list). Wrapped in a [Card] so the [ListTile] has a Material

@@ -6,7 +6,7 @@ import 'package:cure/features/booking/presentation/pages/review_confirm_page.dar
 import 'package:cure/features/auth/presentation/widgets/button.dart';
 import 'package:cure/features/auth/presentation/widgets/text_field.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/shared/widgets/gradient_scaffold.dart';
+import 'package:cure/core/widgets/gradient_scaffold.dart';
 
 /// Step 3: capture the visit address (required) and optional clinical remarks.
 class RemarksAddressPage extends StatefulWidget {
