@@ -6,10 +6,6 @@ clinical remarks, and moves the booking through a **deterministic state
 machine**; a data‑driven dashboard shows aggregates, active requests and
 history.
 
-Built with **Clean Architecture**, **BLoC**, a **dio** network layer
-(interceptors + automated retry), **freezed**, and localization (English /
-Arabic with full RTL).
-
 ---
 
 ## Architecture
@@ -112,26 +108,6 @@ The previous build hardcoded a Supabase **`service_role`** key in the client
 
 ---
 
-## Running
-
-```bash
-flutter pub get
-dart run intl_utils:generate          # localization (S class)
-dart run build_runner build           # freezed + json_serializable
-
-cp dart_define.example.json dart_define.dev.json   # then fill in your keys
-flutter run --dart-define-file=dart_define.dev.json
-```
-
-`dart_define*.json` is gitignored (except the example).
-
-## Testing
-
-```bash
-flutter analyze
-flutter test
-```
-
 Tests cover the state machine, JSON mapping, the repository (mocked data
 source), the booking cubit (`bloc_test`), the dashboard aggregation, the retry
 interceptor, the error mapper, and a service‑selection widget test.
@@ -155,8 +131,35 @@ notifications. Booking‑status changes are surfaced two ways:
 `flutter build apk`. Set `SUPABASE_URL` / `SUPABASE_ANON_KEY` as repository
 secrets.
 
+## Running
+
+```bash
+flutter pub get
+dart run intl_utils:generate          # localization (S class)
+dart run build_runner build           # freezed + json_serializable
+
+cp dart_define.example.json dart_define.dev.json   # then fill in your keys
+flutter run --dart-define-file=dart_define.dev.json
+```
+
+`dart_define*.json` is gitignored (except the example).
+
+## Testing
+
+```bash
+flutter analyze
+flutter test
+```
+
 ## Tech stack
 
-Flutter 3.x · `flutter_bloc` · `dio` · `freezed` · `json_serializable` ·
-`firebase_auth` / `cloud_firestore` / `firebase_messaging` · `supabase_flutter`
-(REST + storage) · `intl` (en/ar) · `mocktail` / `bloc_test`.
+Flutter 3.x → Building cross-platform user interfaces
+Dart → Implementing application logic and handling user interactions
+flutter_bloc → State management 
+freezed → Immutable models and union/sealed classes generation
+json_serializable → JSON serialization/deserialization code generation
+firebase_auth → User authentication
+cloud_firestore → Cloud database
+firebase_messaging → Push notifications
+supabase_flutter → profile image storage
+intl → Internationalization and localization (English/Arabic)
