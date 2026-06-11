@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:cure/features/auth/presentation/widgets/button.dart';
 import 'package:cure/features/auth/presentation/widgets/slide_header.dart';
 import 'package:cure/generated/l10n.dart';
@@ -26,6 +27,8 @@ class ProfilePhotoPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = AppColors.of(context);
+
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: page == 'nurse' ? 20.0 : 0,
@@ -44,15 +47,15 @@ class ProfilePhotoPicker extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 90,
-                  backgroundColor: Colors.white.withValues(alpha: 0.12),
+                  backgroundColor: colors.iconBackground,
                   backgroundImage: _hasImage
                       ? FileImage(File(imagePath))
                       : null,
                   child: !_hasImage
-                      ? const Icon(
+                      ? Icon(
                           Icons.camera_alt_outlined,
                           size: 56,
-                          color: Colors.white70,
+                          color: colors.onSurfaceMuted,
                         )
                       : null,
                 ),
@@ -60,7 +63,6 @@ class ProfilePhotoPicker extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.6,
                   child: AppPrimaryButton(
-                    color: const Color.fromARGB(255, 106, 182, 74),
                     title: S.of(context).SelectPhoto,
                     onPressed: () async {
                       final permission =

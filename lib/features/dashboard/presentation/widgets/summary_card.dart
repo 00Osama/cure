@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:cure/core/models/app_colors.dart';
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 
 /// Compact stat tile used in the dashboard summary row.
 class SummaryCard extends StatelessWidget {

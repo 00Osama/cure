@@ -1,5 +1,5 @@
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/core/models/app_colors.dart';
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class NotificationTile extends StatelessWidget {

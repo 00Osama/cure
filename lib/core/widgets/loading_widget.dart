@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-
-import 'package:cure/core/models/app_colors.dart';
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 
 class LoadingWidget extends StatelessWidget {
   const LoadingWidget({super.key});
@@ -9,9 +8,9 @@ class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: LoadingAnimationWidget.staggeredDotsWave(
-        size: 90,
+      child: LoadingAnimationWidget.fourRotatingDots(
         color: AppColors.of(context).accent,
+        size: 90,
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppPrimaryButton extends StatelessWidget {
@@ -14,12 +15,16 @@ class AppPrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = AppColors.of(context);
+    final backgroundColor = color ?? colors.success;
+
     return SizedBox(
       height: 58,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: color ?? const Color.fromARGB(255, 117, 204, 80),
+          backgroundColor: backgroundColor,
+          foregroundColor: Colors.white,
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18),
@@ -30,7 +35,6 @@ class AppPrimaryButton extends StatelessWidget {
           style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w700,
-            color: Colors.white,
           ),
         ),
       ),

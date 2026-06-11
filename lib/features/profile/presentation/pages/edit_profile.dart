@@ -6,9 +6,8 @@ import 'package:cure/features/auth/presentation/widgets/button.dart';
 import 'package:cure/features/auth/presentation/widgets/text_field.dart';
 import 'package:cure/generated/l10n.dart';
 import 'package:cure/core/di/injection.dart';
-import 'package:cure/core/models/app_colors.dart';
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:cure/core/utils/media_permission.dart';
-import 'package:cure/core/widgets/gradient_scaffold.dart';
 import 'package:cure/core/widgets/loading_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -209,7 +208,10 @@ class _EditProfileState extends State<EditProfile> {
           if (state.status == EditProfileInfoStatus.saved) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(s.profileUpdated),
+                content: Text(
+                  s.profileUpdated,
+                  style: TextStyle(color: Colors.white),
+                ),
                 backgroundColor: colors.success,
                 behavior: SnackBarBehavior.floating,
               ),
@@ -220,7 +222,10 @@ class _EditProfileState extends State<EditProfile> {
           if (state.status == EditProfileInfoStatus.failure) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(s.errorUnexpected),
+                content: Text(
+                  s.errorUnexpected,
+                  style: TextStyle(color: Colors.white),
+                ),
                 backgroundColor: colors.danger,
                 behavior: SnackBarBehavior.floating,
               ),
@@ -230,10 +235,9 @@ class _EditProfileState extends State<EditProfile> {
         builder: (context, state) {
           final imageProvider = _imageProvider(state.imagePath);
 
-          return GradientScaffold(
-            backgroundColor: colors.gradientEnd,
+          return Scaffold(
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             appBar: AppBar(
-              backgroundColor: Colors.transparent,
               elevation: 0,
               centerTitle: true,
               title: Text(s.editProfile),

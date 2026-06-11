@@ -1,3 +1,4 @@
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class SlideHeader extends StatelessWidget {
@@ -8,6 +9,8 @@ class SlideHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = AppColors.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -15,7 +18,7 @@ class SlideHeader extends StatelessWidget {
           title,
           style: Theme.of(context).textTheme.headlineSmall?.copyWith(
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: colors.onSurface,
           ),
         ),
         const SizedBox(height: 3),
@@ -23,7 +26,7 @@ class SlideHeader extends StatelessWidget {
           subtitle,
           style: Theme.of(
             context,
-          ).textTheme.bodyMedium?.copyWith(color: Colors.white70),
+          ).textTheme.bodyMedium?.copyWith(color: colors.onSurfaceMuted),
         ),
       ],
     );

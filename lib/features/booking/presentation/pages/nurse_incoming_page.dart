@@ -4,7 +4,7 @@ import 'package:cure/features/booking/domain/entities/booking.dart';
 import 'package:cure/features/booking/domain/usecase/booking_usecase.dart';
 import 'package:cure/features/booking/presentation/widgets/booking_list_item.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/core/models/app_colors.dart';
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:cure/core/utils/result.dart';
 import 'package:cure/core/widgets/loading_widget.dart';
 

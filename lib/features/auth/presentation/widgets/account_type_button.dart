@@ -1,3 +1,4 @@
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AccountTypeButton extends StatefulWidget {
@@ -57,6 +58,7 @@ class _AccountTypeButtonState extends State<AccountTypeButton>
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final colors = AppColors.of(context);
     final isRtl = Directionality.of(context) == TextDirection.rtl;
 
     return ScaleTransition(
@@ -75,21 +77,23 @@ class _AccountTypeButtonState extends State<AccountTypeButton>
             padding: const EdgeInsets.symmetric(vertical: 28, horizontal: 20),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
+              color: colors.surface,
 
               // soft gradient background
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [
-                  widget.color.withValues(alpha: 0.12),
-                  widget.color.withValues(alpha: 0.04),
-                ],
+                colors: [widget.color.withValues(alpha: 0.12), colors.surface],
               ),
 
-              border: Border.all(
-                color: widget.color.withValues(alpha: 0.25),
-                width: 1.5,
-              ),
+              border: Border.all(color: colors.border, width: 1.5),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.08),
+                  blurRadius: 18,
+                  offset: const Offset(0, 8),
+                ),
+              ],
             ),
             child: Row(
               children: [
@@ -128,7 +132,7 @@ class _AccountTypeButtonState extends State<AccountTypeButton>
                       Text(
                         widget.title,
                         style: theme.textTheme.titleMedium?.copyWith(
-                          color: Colors.white,
+                          color: colors.onSurface,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -136,7 +140,7 @@ class _AccountTypeButtonState extends State<AccountTypeButton>
                       Text(
                         widget.subtitle,
                         style: theme.textTheme.bodySmall?.copyWith(
-                          color: Colors.white70,
+                          color: colors.onSurfaceMuted,
                         ),
                       ),
                     ],

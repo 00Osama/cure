@@ -1,3 +1,4 @@
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:cure/features/auth/presentation/pages/nurse_signup.dart';
 import 'package:cure/features/auth/presentation/pages/patient_signup.dart';
 import 'package:cure/features/auth/presentation/pages/signin.dart';
@@ -75,7 +76,7 @@ class _AccountTypeSelectionPageState extends State<AccountTypeSelectionPage>
                         s.selectAccountType,
                         textAlign: TextAlign.center,
                         style: theme.textTheme.headlineMedium?.copyWith(
-                          color: Colors.white,
+                          color: AppColors.of(context).onSurface,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 0.5,
                         ),
@@ -86,7 +87,9 @@ class _AccountTypeSelectionPageState extends State<AccountTypeSelectionPage>
                         s.selectAccountTypeDesc,
                         textAlign: TextAlign.center,
                         style: theme.textTheme.bodyMedium?.copyWith(
-                          color: Colors.white70,
+                          color: AppColors.of(
+                            context,
+                          ).onSurface.withValues(alpha: 0.7),
                           height: 1.6,
                         ),
                       ),

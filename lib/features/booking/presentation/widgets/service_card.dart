@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cure/features/booking/domain/entities/service.dart';
 import 'package:cure/features/booking/presentation/booking_l10n.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/core/models/app_colors.dart';
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:cure/core/widgets/directional_chevron.dart';
 
 class ServiceCard extends StatelessWidget {

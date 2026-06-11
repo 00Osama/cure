@@ -7,7 +7,7 @@ import 'package:cure/features/booking/presentation/cubits/booking_state.dart';
 import 'package:cure/features/booking/presentation/pages/schedule_page.dart';
 import 'package:cure/features/booking/presentation/widgets/service_card.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/core/models/app_colors.dart';
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:cure/core/widgets/loading_widget.dart';
 
 /// Step 1 of the booking wizard: choose a clinical service. The

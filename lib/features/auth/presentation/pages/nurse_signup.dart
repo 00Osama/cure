@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:cure/core/network/api_config.dart';
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:cure/features/auth/presentation/widgets/bottom_nav_bar.dart';
 import 'package:cure/features/auth/presentation/widgets/button.dart';
 import 'package:cure/features/auth/presentation/widgets/nav_button.dart';
@@ -81,6 +82,9 @@ class _NurseSignupPageState extends State<NurseSignupPage>
   void _goToNextPage() {
     if (_currentPage < 3) {
       if (_validateCurrentSlide()) {
+        setState(() {
+          _submitted = false;
+        });
         _pageController.nextPage(
           duration: const Duration(milliseconds: 350),
           curve: Curves.easeInOut,
@@ -93,6 +97,9 @@ class _NurseSignupPageState extends State<NurseSignupPage>
 
   void _goToPreviousPage() {
     if (_currentPage > 0) {
+      setState(() {
+        _submitted = false;
+      });
       _pageController.previousPage(
         duration: const Duration(milliseconds: 350),
         curve: Curves.easeInOut,
@@ -224,17 +231,18 @@ class _NurseSignupPageState extends State<NurseSignupPage>
 
   Future<void> _showSuccessAnimationAndNavigateToProfile() async {
     if (!mounted) return;
+    final colors = AppColors.of(context);
 
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: colors.surface,
           appBar: AppBar(
             leading: const SizedBox(),
-            surfaceTintColor: Colors.white,
-            backgroundColor: Colors.white,
+            surfaceTintColor: Colors.transparent,
+            backgroundColor: colors.surface,
           ),
           body: Center(child: Lottie.asset('lib/assets/animations/bomb.json')),
         );
@@ -249,11 +257,11 @@ class _NurseSignupPageState extends State<NurseSignupPage>
         barrierDismissible: false,
         builder: (BuildContext context) {
           return Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: colors.surface,
             appBar: AppBar(
               leading: const SizedBox(),
-              surfaceTintColor: Colors.white,
-              backgroundColor: Colors.white,
+              surfaceTintColor: Colors.transparent,
+              backgroundColor: colors.surface,
             ),
             body: Center(
               child: Lottie.asset('lib/assets/animations/success.json'),
@@ -264,6 +272,8 @@ class _NurseSignupPageState extends State<NurseSignupPage>
       Future.delayed(const Duration(milliseconds: 2200), () {
         if (!mounted) return;
         Navigator.of(context).pop();
+        Navigator.pop(context);
+        Navigator.pop(context);
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (_) => const BottomNavBar()),
@@ -287,6 +297,10 @@ class _NurseSignupPageState extends State<NurseSignupPage>
       r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
     );
     if (!emailRegex.hasMatch(value.trim())) {
+      return S.of(context).errorInvalidEmail;
+    }
+    if (_emailController.text.trim().contains('.@') ||
+        _emailController.text.trim().contains('@.')) {
       return S.of(context).errorInvalidEmail;
     }
     return null;
@@ -654,6 +668,8 @@ class _NurseSignupPageState extends State<NurseSignupPage>
   @override
   Widget build(BuildContext context) {
     final isRtl = Directionality.of(context) == TextDirection.rtl;
+    final colors = AppColors.of(context);
+
     return GradientScaffold(
       body: SafeArea(
         child: Stack(
@@ -704,9 +720,7 @@ class _NurseSignupPageState extends State<NurseSignupPage>
                           width: isActive ? 28 : 8,
                           height: 8,
                           decoration: BoxDecoration(
-                            color: Colors.white.withValues(
-                              alpha: isActive ? 1 : 0.35,
-                            ),
+                            color: isActive ? colors.accent : colors.border,
                             borderRadius: BorderRadius.circular(10),
                           ),
                         );

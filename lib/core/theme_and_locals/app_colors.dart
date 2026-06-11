@@ -21,6 +21,7 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.success,
     required this.warning,
     required this.danger,
+    required this.cureLogoColor,
   });
 
   final Color gradientStart;
@@ -41,8 +42,10 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color success;
   final Color warning;
   final Color danger;
+  final Color cureLogoColor;
 
   static const light = AppColors(
+    cureLogoColor: Color.fromARGB(193, 11, 52, 66),
     gradientStart: Color(0xFFF8FAFC),
     gradientEnd: Color(0xFFEAF1F5),
     surface: Color(0xFFFFFFFF),
@@ -64,6 +67,7 @@ class AppColors extends ThemeExtension<AppColors> {
   );
 
   static const dark = AppColors(
+    cureLogoColor: Colors.white,
     gradientStart: Color(0xFF1D1940),
     gradientEnd: Color(0xFF181A2D),
     surface: Color(0xFF202136),
@@ -109,8 +113,10 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? success,
     Color? warning,
     Color? danger,
+    Color? cureLogoColor,
   }) {
     return AppColors(
+      cureLogoColor: cureLogoColor ?? this.cureLogoColor,
       gradientStart: gradientStart ?? this.gradientStart,
       gradientEnd: gradientEnd ?? this.gradientEnd,
       surface: surface ?? this.surface,
@@ -136,6 +142,7 @@ class AppColors extends ThemeExtension<AppColors> {
   AppColors lerp(ThemeExtension<AppColors>? other, double t) {
     if (other is! AppColors) return this;
     return AppColors(
+      cureLogoColor: Color.lerp(cureLogoColor, other.cureLogoColor, t)!,
       gradientStart: Color.lerp(gradientStart, other.gradientStart, t)!,
       gradientEnd: Color.lerp(gradientEnd, other.gradientEnd, t)!,
       surface: Color.lerp(surface, other.surface, t)!,

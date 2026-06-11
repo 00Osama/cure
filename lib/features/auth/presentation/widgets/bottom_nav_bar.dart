@@ -5,7 +5,7 @@ import 'package:cure/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:cure/features/profile/presentation/pages/profile.dart';
 import 'package:cure/generated/l10n.dart';
 import 'package:cure/core/di/injection.dart';
-import 'package:cure/core/models/app_colors.dart';
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:cure/core/widgets/loading_widget.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -114,21 +114,21 @@ class _BottomNavBarState extends State<BottomNavBar> {
               GButton(
                 icon: Icons.home_rounded,
                 iconSize: iconSize,
-                text: homeLabel,
+                text: ' $homeLabel',
                 textStyle: TextStyle(fontSize: textFontSize),
                 margin: EdgeInsets.symmetric(vertical: navPadding / 2),
               ),
               GButton(
                 icon: Icons.dashboard_rounded,
                 iconSize: iconSize,
-                text: s.dashboard,
+                text: ' ${s.dashboard}',
                 textStyle: TextStyle(fontSize: textFontSize),
                 margin: EdgeInsets.symmetric(vertical: navPadding / 2),
               ),
               GButton(
                 icon: Icons.person_rounded,
                 iconSize: iconSize,
-                text: s.profile,
+                text: ' ${s.profile}',
                 textStyle: TextStyle(fontSize: textFontSize),
                 margin: EdgeInsets.symmetric(vertical: navPadding / 2),
               ),

@@ -8,7 +8,7 @@ import 'package:cure/features/dashboard/presentation/cubits/dashboard_cubit.dart
 import 'package:cure/features/dashboard/presentation/cubits/dashboard_state.dart';
 import 'package:cure/features/dashboard/presentation/widgets/summary_card.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/core/models/app_colors.dart';
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:cure/core/widgets/loading_widget.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -24,7 +24,7 @@ class DashboardPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: Text(s.dashboardTitle),
+        title: Text(s.dashboard),
       ),
       body: BlocBuilder<DashboardCubit, DashboardState>(
         builder: (context, state) {

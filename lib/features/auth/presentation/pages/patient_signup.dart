@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:cure/core/network/api_config.dart';
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:cure/features/auth/domain/entities/patient.dart';
 import 'package:cure/features/auth/presentation/widgets/bottom_nav_bar.dart';
 import 'package:cure/features/auth/presentation/widgets/button.dart';
@@ -31,6 +32,8 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
   final dobController = TextEditingController();
+
+  String? emailErrorText;
 
   bool obscurePassword = true;
   bool obscureConfirmPassword = true;
@@ -75,17 +78,18 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
 
   Future<void> _showSuccessAnimationAndNavigateToProfile() async {
     if (!mounted) return;
+    final colors = AppColors.of(context);
 
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: colors.surface,
           appBar: AppBar(
             leading: const SizedBox(),
-            surfaceTintColor: Colors.white,
-            backgroundColor: Colors.white,
+            surfaceTintColor: Colors.transparent,
+            backgroundColor: colors.surface,
           ),
           body: Center(child: Lottie.asset('lib/assets/animations/bomb.json')),
         );
@@ -100,11 +104,11 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
         barrierDismissible: false,
         builder: (BuildContext context) {
           return Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: colors.surface,
             appBar: AppBar(
               leading: const SizedBox(),
-              surfaceTintColor: Colors.white,
-              backgroundColor: Colors.white,
+              surfaceTintColor: Colors.transparent,
+              backgroundColor: colors.surface,
             ),
             body: Center(
               child: Lottie.asset('lib/assets/animations/success.json'),
@@ -115,6 +119,8 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
       Future.delayed(const Duration(milliseconds: 2200), () {
         if (!mounted) return;
         Navigator.of(context).pop();
+        Navigator.pop(context);
+        Navigator.pop(context);
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (_) => const BottomNavBar()),
@@ -196,6 +202,9 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
           final failure = result as Failure;
           final errorMessage = failure.error.toString();
           if (errorMessage.contains('email-already-in-use')) {
+            setState(() {
+              emailErrorText = S.of(context).errorUserAlreadyExists;
+            });
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(
@@ -274,6 +283,10 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
     if (!emailRegex.hasMatch(value.trim())) {
       return S.of(context).errorInvalidEmail;
     }
+    if (emailController.text.trim().contains('.@') ||
+        emailController.text.trim().contains('@.')) {
+      return S.of(context).errorInvalidEmail;
+    }
     return null;
   }
 
@@ -324,6 +337,8 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = AppColors.of(context);
+
     return GradientScaffold(
       body: SafeArea(
         child: Form(
@@ -340,6 +355,7 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
                 Image.asset(
                   'lib/assets/images/crop_cure_logo.png',
                   height: 140,
+                  color: AppColors.of(context).cureLogoColor,
                 ),
                 const SizedBox(height: 24),
                 Text(
@@ -347,16 +363,16 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF7ED957),
+                    color: colors.onSurface,
                   ),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   S.of(context).patientSignupSubtitle,
                   textAlign: TextAlign.center,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodyMedium?.copyWith(color: Color(0xFF7ED957)),
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: colors.onSurfaceMuted,
+                  ),
                 ),
 
                 const SizedBox(height: 32),
@@ -382,6 +398,7 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
                   icon: Icons.email_outlined,
                   keyboardType: TextInputType.emailAddress,
                   validator: _validateEmail,
+                  errorText: emailErrorText,
                 ),
 
                 const SizedBox(height: 16),

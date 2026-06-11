@@ -1,3 +1,4 @@
+import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:cure/features/auth/presentation/widgets/bottom_nav_bar.dart';
 import 'package:cure/features/auth/presentation/widgets/button.dart';
 import 'package:cure/features/auth/presentation/widgets/text_field.dart';
@@ -57,6 +58,8 @@ class _SigninState extends State<Signin> {
       Navigator.pop(context);
 
       if (result is Success) {
+        Navigator.pop(context);
+        Navigator.pop(context);
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (_) => const BottomNavBar()),
         );
@@ -119,11 +122,14 @@ class _SigninState extends State<Signin> {
     if (value == null || value.trim().isEmpty) {
       return S.of(context).errorRequired;
     }
-
     final emailRegex = RegExp(
       r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
     );
     if (!emailRegex.hasMatch(value.trim())) {
+      return S.of(context).errorInvalidEmail;
+    }
+    if (_emailController.text.trim().contains('.@') ||
+        _emailController.text.trim().contains('@.')) {
       return S.of(context).errorInvalidEmail;
     }
     return null;
@@ -141,6 +147,8 @@ class _SigninState extends State<Signin> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = AppColors.of(context);
+
     return GradientScaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -149,23 +157,27 @@ class _SigninState extends State<Signin> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 30),
-              Image.asset('lib/assets/images/crop_cure_logo.png', height: 140),
+              Image.asset(
+                'lib/assets/images/crop_cure_logo.png',
+                height: 140,
+                color: AppColors.of(context).cureLogoColor,
+              ),
               const SizedBox(height: 24),
               Text(
                 S.of(context).welcomeBackTitle,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: const Color(0xFF7ED957),
+                  color: colors.onSurface,
                 ),
               ),
               const SizedBox(height: 8),
               Text(
                 S.of(context).signInToContinue,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: const Color(0xFF7ED957),
-                ),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.copyWith(color: colors.onSurfaceMuted),
               ),
               const SizedBox(height: 32),
               Form(
