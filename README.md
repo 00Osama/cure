@@ -70,48 +70,6 @@ touch Dio directly). `DioApiClient` wires three interceptors:
 
 ---
 
-## Backend (Supabase)
-
-Booking/services/availability live in Supabase and are reached over its
-auto‑generated REST API (PostgREST). Firebase remains the source of truth for
-auth + user profiles.
-
-1. Create a Supabase project.
-2. Run `docs/supabase_schema.sql` in the SQL editor (tables, RLS, seed services).
-3. Copy your project URL + **anon/publishable** key into config (below).
-
-### Auth bridge (documented trade‑off)
-Supabase RLS expects a Supabase‑issued JWT (`auth.uid()`); **Firebase ID tokens
-are not accepted by Supabase by default**. Two options:
-
-- **Option A (shipped):** authenticate REST with the anon key; store the
-  Firebase uid in `bookings.patient_id`; the repository always filters by uid.
-  Isolation is enforced app‑side (documented limitation). The network layer is
-  structured so this is a **one‑class swap** (`AuthTokenProvider`).
-- **Option B (future):** also sign into Supabase on Firebase login and return
-  the Supabase access token from `AuthTokenProvider`, enabling `auth.uid()`‑based
-  RLS (policies are included, commented, in the SQL).
-
----
-
-## Security
-
-The previous build hardcoded a Supabase **`service_role`** key in the client
-(it bypasses RLS). This is fixed:
-
-- The key is now read from `--dart-define=SUPABASE_ANON_KEY=…` (never hardcoded).
-- Use the **anon/publishable** key, not `service_role`.
-- **Rotate the leaked `service_role` key** in the Supabase dashboard (it remains
-  in git history).
-- After the swap, add a Storage RLS policy for the avatar buckets so signup
-  image upload keeps working (template in `docs/supabase_schema.sql`).
-
----
-
-Tests cover the state machine, JSON mapping, the repository (mocked data
-source), the booking cubit (`bloc_test`), the dashboard aggregation, the retry
-interceptor, the error mapper, and a service‑selection widget test.
-
 ## Push notifications (FCM)
 
 `lib/core/notifications/notification_service.dart` handles permission, the FCM
@@ -124,12 +82,30 @@ notifications. Booking‑status changes are surfaced two ways:
    Firebase Cloud Function) on `bookings` UPDATE that pushes via FCM to the
    stored token.
 
-## CI/CD
+---
 
-`.github/workflows/ci.yaml` runs on push/PR: `pub get` → codegen
-(`intl_utils` + `build_runner`) → `flutter analyze` → `flutter test` →
-`flutter build apk`. Set `SUPABASE_URL` / `SUPABASE_ANON_KEY` as repository
-secrets.
+## Backend 
+
+Firebase remains the source of truth for auth + user profiles, Supabase for managing user images. 
+
+1. Create a Supabase project.
+2. Copy your project URL + **anon/publishable** key into config (below).
+
+---
+
+## Security
+
+- Supabase keys is read from `--dart-define=SUPABASE_ANON_KEY=…` (never hardcoded).
+- Use Firebase Auth for secure login/signup.
+- Store nurses and patients in separate Firestore collections.
+- Add Firestore security rules so users can only edit their own profile.
+- Allow patients to read nurse public info only, not private data.
+- Never store passwords manually.
+- Validate all user input before saving.
+- Keep API keys restricted in Firebase/Supabase settings.
+- Log out users and clear local session data safely.
+
+---
 
 ## Running
 
