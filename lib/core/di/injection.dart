@@ -20,13 +20,17 @@ import '../../features/auth/domain/usecase/auth_usecase.dart';
 import '../../features/auth/presentation/cubits/auth_cubit.dart';
 import '../../features/profile/presentation/cubits/edit_profile_info_cubit.dart';
 import '../../features/profile/presentation/cubits/profile_cubit.dart';
-import '../../features/booking/data/datasources/booking_remote_datasource.dart';
-import '../../features/booking/data/repositories/booking_repository_impl.dart';
-import '../../features/booking/domain/repositories/booking_repository.dart';
-import '../../features/booking/domain/usecase/booking_usecase.dart';
-import '../../features/booking/presentation/cubits/booking_cubit.dart';
-import '../../features/dashboard/domain/usecase/dashboard_usecase.dart';
-import '../../features/dashboard/presentation/cubits/dashboard_cubit.dart';
+import '../../features/booking_nurse/data/datasources/booking_remote_datasource.dart';
+import '../../features/booking_nurse/data/datasources/nurse_remote_datasource.dart';
+import '../../features/booking_nurse/data/repositories/booking_repository_impl.dart';
+import '../../features/booking_nurse/data/repositories/nurse_repository_impl.dart';
+import '../../features/booking_nurse/domain/repositories/booking_repository.dart';
+import '../../features/booking_nurse/domain/repositories/nurse_repository.dart';
+import '../../features/booking_nurse/domain/usecase/booking_usecase.dart';
+import '../../features/booking_nurse/domain/usecase/get_available_nurses_usecase.dart';
+import '../../features/booking_nurse/presentation/cubits/nurses_cubit.dart';
+import '../../features/patient_dashboard/domain/usecase/dashboard_usecase.dart';
+import '../../features/patient_dashboard/presentation/cubits/dashboard_cubit.dart';
 
 /// Simple dependency injection container
 ///
@@ -62,6 +66,9 @@ class DependencyInjection {
   late final BookingRemoteDataSource _bookingRemoteDataSource;
   late final BookingRepository _bookingRepository;
   late final BookingUseCase _bookingUseCase;
+  late final NurseRemoteDataSource _nurseRemoteDataSource;
+  late final NurseRepository _nurseRepository;
+  late final GetAvailableNursesUseCase _getAvailableNursesUseCase;
   late final DashboardUseCase _dashboardUseCase;
   late final NotificationService _notificationService;
 
@@ -116,6 +123,9 @@ class DependencyInjection {
       remoteDataSource: _bookingRemoteDataSource,
     );
     _bookingUseCase = BookingUseCase(repository: _bookingRepository);
+    _nurseRemoteDataSource = NurseRemoteDataSourceImpl(_firestore);
+    _nurseRepository = NurseRepositoryImpl(_nurseRemoteDataSource);
+    _getAvailableNursesUseCase = GetAvailableNursesUseCase(_nurseRepository);
     _dashboardUseCase = DashboardUseCase(bookingRepository: _bookingRepository);
     _notificationService = NotificationService();
   }
@@ -170,16 +180,16 @@ class DependencyInjection {
     );
   }
 
-  BookingCubit createBookingCubit() {
-    return BookingCubit(useCase: _bookingUseCase, patientId: currentUid ?? '');
-  }
-
   DashboardCubit createDashboardCubit() {
     return DashboardCubit(
       useCase: _dashboardUseCase,
       patientId: currentUid ?? '',
       notificationService: _notificationService,
     );
+  }
+
+  NursesCubit createNursesCubit() {
+    return NursesCubit(_getAvailableNursesUseCase);
   }
 }
 

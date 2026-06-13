@@ -30,7 +30,7 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
 
   @override
   Future<void> createProfile(Map<String, dynamic> data) async {
-    await _firestore.collection('users').add(data);
+    await _firestore.collection(_collectionNameFor(data)).add(data);
   }
 
   @override
@@ -57,13 +57,15 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
 
   @override
   Future<void> deleteProfile(String id) async {
-    final query = await _firestore
-        .collection('users')
-        .where('id', isEqualTo: id)
-        .get();
+    for (final collectionName in _profileCollections) {
+      final query = await _firestore
+          .collection(collectionName)
+          .where('id', isEqualTo: id)
+          .get();
 
-    for (final document in query.docs) {
-      await document.reference.delete();
+      for (final document in query.docs) {
+        await document.reference.delete();
+      }
     }
   }
 
@@ -82,13 +84,22 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
   Future<QueryDocumentSnapshot<Map<String, dynamic>>?> _findProfileDocument(
     String id,
   ) async {
-    final query = await _firestore
-        .collection('users')
-        .where('id', isEqualTo: id)
-        .limit(1)
-        .get();
+    for (final collectionName in _profileCollections) {
+      final query = await _firestore
+          .collection(collectionName)
+          .where('id', isEqualTo: id)
+          .limit(1)
+          .get();
 
-    if (query.docs.isEmpty) return null;
-    return query.docs.first;
+      if (query.docs.isNotEmpty) return query.docs.first;
+    }
+
+    return null;
+  }
+
+  String _collectionNameFor(Map<String, dynamic> data) {
+    return data['role'] == 'nurse' ? 'nurses' : 'users';
   }
 }
+
+const _profileCollections = ['nurses', 'users'];

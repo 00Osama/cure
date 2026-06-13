@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addressHint":
             MessageLookupByLibrary.simpleMessage("المبنى، الشارع، المنطقة"),
         "addressLabel": MessageLookupByLibrary.simpleMessage("العنوان"),
+        "age": MessageLookupByLibrary.simpleMessage("العمر"),
         "alreadyHaveAccount":
             MessageLookupByLibrary.simpleMessage("لدي حساب بالفعل"),
         "alreadyHaveAccountSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -52,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "💉 إعطاء الحقن (عضل / تحت الجلد / وريد)\n🩸 قياس السكر العشوائي والتراكمي\n❤️ قياس ضغط الدم\n🌡️ قياس الحرارة\n📊 قياس العلامات الحيوية (Pulse – O2 – R)\n💊 إعطاء الأدوية في مواعيدها\n🧪 تركيب كانيولا (IV Cannula)\n💧 تركيب المحاليل الوريدية\n🧴 متابعة الجفاف وتعويض السوائل"),
         "basicCareTitle": MessageLookupByLibrary.simpleMessage(
             "📋 الخدمات الأساسية (Basic Care)"),
+        "bookAnurse": MessageLookupByLibrary.simpleMessage("احجز ممرض"),
+        "bookNow": MessageLookupByLibrary.simpleMessage("احجز الآن"),
         "bookService": MessageLookupByLibrary.simpleMessage("احجز خدمة"),
         "bookingConfirmed":
             MessageLookupByLibrary.simpleMessage("تم تأكيد الحجز"),
@@ -72,6 +75,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "🚿 تركيب قسطرة بولية\n🧼 تغيير القسطرة ومتابعتها\n💧 العناية بمريض القسطرة\n🧪 متابعة البول ومضاعفات القسطرة"),
         "catheterCareTitle": MessageLookupByLibrary.simpleMessage(
             "🚿 القسطرة والإجراءات الخاصة"),
+        "checkNurses":
+            MessageLookupByLibrary.simpleMessage("تحقق من ملفات الممرضين"),
         "chooseDateTime":
             MessageLookupByLibrary.simpleMessage("اختر التاريخ والوقت"),
         "chronicCareItems": MessageLookupByLibrary.simpleMessage(
@@ -153,6 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "femaleLabel": MessageLookupByLibrary.simpleMessage("أنثى"),
         "forPatient": MessageLookupByLibrary.simpleMessage("للمريض"),
         "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+        "gender": MessageLookupByLibrary.simpleMessage("الجنس"),
         "genderLabel": MessageLookupByLibrary.simpleMessage("الجنس"),
         "getStarted": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
@@ -166,11 +172,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "languageAndTheme":
             MessageLookupByLibrary.simpleMessage("اللغة والسمة"),
+        "lessThanOneExperience":
+            MessageLookupByLibrary.simpleMessage("أقل من سنة خبرة"),
         "light": MessageLookupByLibrary.simpleMessage("فاتح"),
         "lightMode": MessageLookupByLibrary.simpleMessage("الوضع الفاتح"),
         "makeSure": MessageLookupByLibrary.simpleMessage(
             "تأكد من صحة البيانات وحاول مرة أخرى"),
         "maleLabel": MessageLookupByLibrary.simpleMessage("ذكر"),
+        "moreThanFiveExperience":
+            MessageLookupByLibrary.simpleMessage("أكثر من 5 سنوات خبرة"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "noApp": MessageLookupByLibrary.simpleMessage(
             "100% لا يوجد تطبيق في الفيوم"),
@@ -192,11 +202,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "nurseButton": MessageLookupByLibrary.simpleMessage("سجل كممرض"),
         "nurseButtonSubtitle": MessageLookupByLibrary.simpleMessage(
             "انضم إلى شبكة الممرضين المعتمدين لدينا وابدأ في تقديم الرعاية المنزلية بجودة عالية وسرعة فائقة."),
+        "nurseDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الممرض"),
         "nurseSignupSubtitle":
             MessageLookupByLibrary.simpleMessage("قدّم الرعاية. اصنع فرقاً."),
         "nurseSignupSuccess":
             MessageLookupByLibrary.simpleMessage("تم إنشاء حساب الممرض بنجاح"),
         "nurseSignupTitle": MessageLookupByLibrary.simpleMessage("انضم كممرض"),
+        "nurses": MessageLookupByLibrary.simpleMessage("الممرضين"),
+        "oneToThreeExperience":
+            MessageLookupByLibrary.simpleMessage("من سنة إلى 3 سنوات خبرة"),
         "passwordLabel": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "patient": MessageLookupByLibrary.simpleMessage("مريض"),
         "patientButton": MessageLookupByLibrary.simpleMessage("سجل كمريض"),
@@ -215,6 +229,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تفاصيل شخصية"),
         "personalInformation":
             MessageLookupByLibrary.simpleMessage("المعلومات الشخصية"),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "phoneNumberLabel": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "postOpCareItems": MessageLookupByLibrary.simpleMessage(
             "🏥 متابعة ما بعد العمليات الجراحية\n🩹 تغيير الضمادات الجراحية\n💉 إعطاء مضادات حيوية بعد العمليات\n🧼 تنظيف الجروح الجراحية\n📉 متابعة الالتهابات أو المضاعفات\n🛏️ مساعدة المريض في الحركة التدريجية"),
@@ -242,6 +257,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("🧠 الدعم النفسي والتأهيلي"),
         "reauthRequiredToDelete": MessageLookupByLibrary.simpleMessage(
             "يرجى تسجيل الدخول مرة أخرى لحذف حسابك."),
+        "region": MessageLookupByLibrary.simpleMessage("المنطقة"),
         "regionFayoumCity":
             MessageLookupByLibrary.simpleMessage("مدينة الفيوم"),
         "regionItsa": MessageLookupByLibrary.simpleMessage("إطسا"),
@@ -277,6 +293,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "هل أنت متأكد أنك تريد تسجيل الخروج؟"),
         "signOutFailed":
             MessageLookupByLibrary.simpleMessage("فشل تسجيل الخروج"),
+        "skillSet": MessageLookupByLibrary.simpleMessage("المهارات"),
         "skillsSpecialties":
             MessageLookupByLibrary.simpleMessage("المهارات والتخصصات"),
         "somethingWentWrong":
@@ -346,6 +363,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "themeMode": MessageLookupByLibrary.simpleMessage("السمة"),
         "threeSteps": MessageLookupByLibrary.simpleMessage(
             "3 خطوات فقط للرعاية المنزلية"),
+        "threeToFiveExperience":
+            MessageLookupByLibrary.simpleMessage("من 3 إلى 5 سنوات خبرة"),
         "totalBookings": MessageLookupByLibrary.simpleMessage("الإجمالي"),
         "unfairPrice":
             MessageLookupByLibrary.simpleMessage("68% دفعوا أسعاراً غير عادلة"),
@@ -365,6 +384,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "woundCareTitle":
             MessageLookupByLibrary.simpleMessage("🩹 الجروح والرعاية الجلدية"),
         "yearsOfExperience":
-            MessageLookupByLibrary.simpleMessage("سنوات الخبرة")
+            MessageLookupByLibrary.simpleMessage("سنوات الخبرة"),
+        "yearsOld": MessageLookupByLibrary.simpleMessage("سنة")
       };
 }

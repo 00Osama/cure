@@ -1,5 +1,5 @@
-import 'package:cure/features/booking/domain/entities/service.dart';
-import 'package:cure/features/booking/domain/usecase/booking_usecase.dart';
+import 'package:cure/features/booking_nurse/domain/entities/service.dart';
+import 'package:cure/features/booking_nurse/domain/usecase/booking_usecase.dart';
 import 'package:cure/features/booking/presentation/cubits/booking_cubit.dart';
 import 'package:cure/features/booking/presentation/pages/service_selection_page.dart';
 import 'package:cure/features/booking/presentation/widgets/service_card.dart';

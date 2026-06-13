@@ -1,9 +1,9 @@
-import 'package:cure/features/booking/data/datasources/booking_remote_datasource.dart';
-import 'package:cure/features/booking/data/models/service_model.dart';
-import 'package:cure/features/booking/data/repositories/booking_repository_impl.dart';
-import 'package:cure/features/booking/domain/entities/booking.dart';
-import 'package:cure/features/booking/domain/entities/booking_status.dart';
-import 'package:cure/features/booking/domain/entities/service.dart';
+import 'package:cure/features/booking_nurse/data/datasources/booking_remote_datasource.dart';
+import 'package:cure/features/booking_nurse/data/models/service_model.dart';
+import 'package:cure/features/booking_nurse/data/repositories/booking_repository_impl.dart';
+import 'package:cure/features/booking_nurse/domain/entities/booking.dart';
+import 'package:cure/features/booking_nurse/domain/entities/booking_status.dart';
+import 'package:cure/features/booking_nurse/domain/entities/service.dart';
 import 'package:cure/core/utils/failures.dart' as f;
 import 'package:cure/core/utils/result.dart';
 import 'package:flutter_test/flutter_test.dart';

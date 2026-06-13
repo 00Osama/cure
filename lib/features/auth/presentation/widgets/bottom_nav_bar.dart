@@ -1,7 +1,7 @@
 import 'package:cure/features/auth/domain/entities/nurse.dart';
-import 'package:cure/features/booking/presentation/pages/nurse_incoming_page.dart';
-import 'package:cure/features/booking/presentation/pages/service_selection_page.dart';
-import 'package:cure/features/dashboard/presentation/pages/dashboard_page.dart';
+import 'package:cure/features/booking_nurse/presentation/pages/nurses_page.dart';
+import 'package:cure/features/nurse_dashboard/presentation/pages/nurse_dashboard_page.dart';
+import 'package:cure/features/patient_dashboard/presentation/pages/patient_dashboard_page.dart';
 import 'package:cure/features/profile/presentation/pages/profile.dart';
 import 'package:cure/generated/l10n.dart';
 import 'package:cure/core/di/injection.dart';
@@ -46,19 +46,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List<Widget> _buildScreens() {
     if (_isNurse) {
       return [
-        NurseIncomingPage(useCase: di.bookingUseCase),
-        NurseIncomingPage(useCase: di.bookingUseCase),
+        const NursesPage(role: 'nurse'),
+        const NurseDashboardPage(),
         const ProfilePage(),
       ];
     }
     return [
-      BlocProvider(
-        create: (_) => di.createBookingCubit()..loadServices(),
-        child: const ServiceSelectionPage(),
-      ),
+      const NursesPage(role: 'patient'),
       BlocProvider(
         create: (_) => di.createDashboardCubit()..load(),
-        child: const DashboardPage(),
+        child: const PatientDashboardPage(),
       ),
       const ProfilePage(),
     ];
@@ -73,9 +70,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
     final tabBorderRadius = screenWidth < 600 ? 20.0 : 35.0;
     final textFontSize = screenWidth < 600 ? 14.0 : 37.0;
     final iconSize = screenWidth < 600 ? 24.0 : 33.0;
-    final homeLabel = _roleLoaded
-        ? (_isNurse ? s.incomingRequests : s.home)
-        : '';
 
     return Scaffold(
       body: _roleLoaded
@@ -112,9 +106,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
             padding: EdgeInsets.all(navPadding),
             tabs: [
               GButton(
-                icon: Icons.home_rounded,
+                icon: Icons.medication_rounded,
                 iconSize: iconSize,
-                text: ' $homeLabel',
+                text: ' ${s.nurses}',
                 textStyle: TextStyle(fontSize: textFontSize),
                 margin: EdgeInsets.symmetric(vertical: navPadding / 2),
               ),

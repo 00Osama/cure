@@ -1,4 +1,4 @@
-import 'package:cure/features/booking/domain/entities/booking_status.dart';
+import 'package:cure/features/booking_nurse/domain/entities/booking_status.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

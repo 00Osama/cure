@@ -2149,6 +2149,156 @@ class S {
       args: [],
     );
   }
+
+  /// `Book a Nurse`
+  String get bookAnurse {
+    return Intl.message(
+      'Book a Nurse',
+      name: 'bookAnurse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check Nurses Profile`
+  String get checkNurses {
+    return Intl.message(
+      'Check Nurses Profile',
+      name: 'checkNurses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nurses`
+  String get nurses {
+    return Intl.message(
+      'Nurses',
+      name: 'nurses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nurse Details`
+  String get nurseDetails {
+    return Intl.message(
+      'Nurse Details',
+      name: 'nurseDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `years old`
+  String get yearsOld {
+    return Intl.message(
+      'years old',
+      name: 'yearsOld',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Skill set`
+  String get skillSet {
+    return Intl.message(
+      'Skill set',
+      name: 'skillSet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Region`
+  String get region {
+    return Intl.message(
+      'Region',
+      name: 'region',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gender`
+  String get gender {
+    return Intl.message(
+      'Gender',
+      name: 'gender',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Age`
+  String get age {
+    return Intl.message(
+      'Age',
+      name: 'age',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number`
+  String get phoneNumber {
+    return Intl.message(
+      'Phone number',
+      name: 'phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Less than 1 year of experience`
+  String get lessThanOneExperience {
+    return Intl.message(
+      'Less than 1 year of experience',
+      name: 'lessThanOneExperience',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1–3 years of experience`
+  String get oneToThreeExperience {
+    return Intl.message(
+      '1–3 years of experience',
+      name: 'oneToThreeExperience',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `3–5 years of experience`
+  String get threeToFiveExperience {
+    return Intl.message(
+      '3–5 years of experience',
+      name: 'threeToFiveExperience',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `5+ years of experience`
+  String get moreThanFiveExperience {
+    return Intl.message(
+      '5+ years of experience',
+      name: 'moreThanFiveExperience',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book Now`
+  String get bookNow {
+    return Intl.message(
+      'Book Now',
+      name: 'bookNow',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

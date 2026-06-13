@@ -208,7 +208,21 @@
   "save": "حفظ",
   "profileUpdated": "تم تحديث الملف الشخصي", 
   "nurse": "ممرض",
-  "patient": "مريض"
-
+  "patient": "مريض", 
+  "bookAnurse": "احجز ممرض",
+  "checkNurses": "تحقق من ملفات الممرضين",
+  "nurses": "الممرضين",
+  "nurseDetails": "تفاصيل الممرض", 
+  "yearsOld": "سنة", 
+  "skillSet": "المهارات",
+  "region": "المنطقة",
+  "gender": "الجنس",
+  "age": "العمر",
+  "phoneNumber": "رقم الهاتف", 
+   "lessThanOneExperience": "أقل من سنة خبرة",
+  "oneToThreeExperience": "من سنة إلى 3 سنوات خبرة",
+  "threeToFiveExperience": "من 3 إلى 5 سنوات خبرة",
+  "moreThanFiveExperience": "أكثر من 5 سنوات خبرة", 
+  "bookNow": "احجز الآن"
 
 }

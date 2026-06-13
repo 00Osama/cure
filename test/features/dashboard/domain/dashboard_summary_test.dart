@@ -1,7 +1,7 @@
-import 'package:cure/features/booking/domain/entities/booking.dart';
-import 'package:cure/features/booking/domain/entities/booking_status.dart';
-import 'package:cure/features/booking/domain/repositories/booking_repository.dart';
-import 'package:cure/features/dashboard/domain/usecase/dashboard_usecase.dart';
+import 'package:cure/features/booking_nurse/domain/entities/booking.dart';
+import 'package:cure/features/booking_nurse/domain/entities/booking_status.dart';
+import 'package:cure/features/booking_nurse/domain/repositories/booking_repository.dart';
+import 'package:cure/features/patient_dashboard/domain/usecase/dashboard_usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

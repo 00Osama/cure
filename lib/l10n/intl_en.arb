@@ -207,6 +207,23 @@
   "save": "Save",
   "profileUpdated": "Profile updated", 
   "nurse": "Nurse",
-  "patient": "Patient"
+  "patient": "Patient", 
+  "bookAnurse": "Book a Nurse",
+  "checkNurses": "Check Nurses Profile",
+  "nurses": "Nurses", 
+  "nurseDetails": "Nurse Details", 
+  "yearsOld": "years old", 
+  "skillSet": "Skill set",
+  "region": "Region",
+  "gender": "Gender",
+  "age": "Age",
+  "phoneNumber": "Phone number", 
+   "lessThanOneExperience": "Less than 1 year of experience",
+  "oneToThreeExperience": "1–3 years of experience",
+  "threeToFiveExperience": "3–5 years of experience",
+  "moreThanFiveExperience": "5+ years of experience", 
+  "bookNow": "Book Now"
+
+
 
 }

@@ -51,7 +51,7 @@ class _PatientSignupPageState extends State<PatientSignupPage> {
   Future<void> _pickDateOfBirth() async {
     final selectedDate = await showDatePicker(
       context: context,
-      initialDate: DateTime.now().subtract(const Duration(days: 365 * 18)),
+      initialDate: DateTime(2000, 1, 1),
       firstDate: DateTime(1900),
       lastDate: DateTime.now(),
       builder: (context, child) {

@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addressHint":
             MessageLookupByLibrary.simpleMessage("Building, street, area"),
         "addressLabel": MessageLookupByLibrary.simpleMessage("Address"),
+        "age": MessageLookupByLibrary.simpleMessage("Age"),
         "alreadyHaveAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account"),
         "alreadyHaveAccountSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -52,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "basicCareItems": MessageLookupByLibrary.simpleMessage(
             "💉 Giving injections (IM / SC / IV)\n🩸 Random and cumulative blood sugar measurement\n❤️ Blood pressure measurement\n🌡️ Temperature measurement\n📊 Measuring vital signs (Pulse – O2 – R)\n💊 Administering medications on schedule\n🧪 IV Cannula insertion\n💧 Setting up intravenous fluids\n🧴 Monitoring dehydration and fluid replacement"),
         "basicCareTitle": MessageLookupByLibrary.simpleMessage("📋 Basic Care"),
+        "bookAnurse": MessageLookupByLibrary.simpleMessage("Book a Nurse"),
+        "bookNow": MessageLookupByLibrary.simpleMessage("Book Now"),
         "bookService": MessageLookupByLibrary.simpleMessage("Book a Service"),
         "bookingConfirmed":
             MessageLookupByLibrary.simpleMessage("Booking confirmed"),
@@ -72,6 +75,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "🚿 Urinary catheter insertion\n🧼 Changing and monitoring catheter\n💧 Care for catheterized patient\n🧪 Monitoring urine and catheter complications"),
         "catheterCareTitle": MessageLookupByLibrary.simpleMessage(
             "🚿 Catheter and Special Procedures"),
+        "checkNurses":
+            MessageLookupByLibrary.simpleMessage("Check Nurses Profile"),
         "chooseDateTime":
             MessageLookupByLibrary.simpleMessage("Choose date & time"),
         "chronicCareItems": MessageLookupByLibrary.simpleMessage(
@@ -152,6 +157,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "femaleLabel": MessageLookupByLibrary.simpleMessage("Female"),
         "forPatient": MessageLookupByLibrary.simpleMessage("For Patient"),
         "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
+        "gender": MessageLookupByLibrary.simpleMessage("Gender"),
         "genderLabel": MessageLookupByLibrary.simpleMessage("Gender"),
         "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
@@ -166,11 +172,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "languageAndTheme":
             MessageLookupByLibrary.simpleMessage("Language And Theme"),
+        "lessThanOneExperience": MessageLookupByLibrary.simpleMessage(
+            "Less than 1 year of experience"),
         "light": MessageLookupByLibrary.simpleMessage("Light"),
         "lightMode": MessageLookupByLibrary.simpleMessage("Light Mode"),
         "makeSure": MessageLookupByLibrary.simpleMessage(
             "Make sure the data is correct and try again"),
         "maleLabel": MessageLookupByLibrary.simpleMessage("Male"),
+        "moreThanFiveExperience":
+            MessageLookupByLibrary.simpleMessage("5+ years of experience"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "noApp":
             MessageLookupByLibrary.simpleMessage("100% — No app in Fayoum"),
@@ -192,12 +202,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sign Up as a Nurse"),
         "nurseButtonSubtitle": MessageLookupByLibrary.simpleMessage(
             "Join our network of certified nurses and start providing high-quality, fast home care."),
+        "nurseDetails": MessageLookupByLibrary.simpleMessage("Nurse Details"),
         "nurseSignupSubtitle": MessageLookupByLibrary.simpleMessage(
             "Provide Care. Make a Difference."),
         "nurseSignupSuccess": MessageLookupByLibrary.simpleMessage(
             "Nurse account created successfully"),
         "nurseSignupTitle":
             MessageLookupByLibrary.simpleMessage("Join as a Nurse"),
+        "nurses": MessageLookupByLibrary.simpleMessage("Nurses"),
+        "oneToThreeExperience":
+            MessageLookupByLibrary.simpleMessage("1–3 years of experience"),
         "passwordLabel": MessageLookupByLibrary.simpleMessage("Password"),
         "patient": MessageLookupByLibrary.simpleMessage("Patient"),
         "patientButton":
@@ -218,6 +232,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Personal Details"),
         "personalInformation":
             MessageLookupByLibrary.simpleMessage("Personal Information"),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
         "phoneNumberLabel":
             MessageLookupByLibrary.simpleMessage("Phone Number"),
         "postOpCareItems": MessageLookupByLibrary.simpleMessage(
@@ -246,6 +261,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "🧠 Psychological and Rehabilitation Support"),
         "reauthRequiredToDelete": MessageLookupByLibrary.simpleMessage(
             "Please login again to delete your account."),
+        "region": MessageLookupByLibrary.simpleMessage("Region"),
         "regionFayoumCity": MessageLookupByLibrary.simpleMessage("Fayoum City"),
         "regionItsa": MessageLookupByLibrary.simpleMessage("Itsa"),
         "regionLabel": MessageLookupByLibrary.simpleMessage("Region"),
@@ -281,6 +297,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to sign out?"),
         "signOutFailed":
             MessageLookupByLibrary.simpleMessage("Sign out failed"),
+        "skillSet": MessageLookupByLibrary.simpleMessage("Skill set"),
         "skillsSpecialties":
             MessageLookupByLibrary.simpleMessage("Skills & Specialties"),
         "somethingWentWrong":
@@ -350,6 +367,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "themeMode": MessageLookupByLibrary.simpleMessage("Theme Mode"),
         "threeSteps":
             MessageLookupByLibrary.simpleMessage("3 Steps Only for Home Care"),
+        "threeToFiveExperience":
+            MessageLookupByLibrary.simpleMessage("3–5 years of experience"),
         "totalBookings": MessageLookupByLibrary.simpleMessage("Total"),
         "unfairPrice":
             MessageLookupByLibrary.simpleMessage("68% paid unfair prices"),
@@ -368,6 +387,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "woundCareTitle":
             MessageLookupByLibrary.simpleMessage("🩹 Wound and Skin Care"),
         "yearsOfExperience":
-            MessageLookupByLibrary.simpleMessage("Years of Experience")
+            MessageLookupByLibrary.simpleMessage("Years of Experience"),
+        "yearsOld": MessageLookupByLibrary.simpleMessage("years old")
       };
 }
