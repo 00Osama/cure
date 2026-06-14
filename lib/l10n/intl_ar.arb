@@ -177,7 +177,7 @@
   "noSlots": "لا توجد مواعيد متاحة في هذا اليوم",
   "selectRegion": "اختر المنطقة",
   "clinicalRemarks": "ملاحظات سريرية",
-  "remarksHint": "الأعراض أو الحالات أو ملاحظات للممرض (اختياري)",
+  "remarksHint": "اعراض أو ملاحظات للممرض",
   "addressLabel": "العنوان",
   "addressHint": "المبنى، الشارع، المنطقة",
   "reviewBooking": "راجع حجزك",
@@ -185,6 +185,10 @@
   "bookingConfirmed": "تم تأكيد الحجز",
   "bookingConfirmedSubtitle": "تم إرسال طلبك. يمكنك متابعته من لوحة التحكم.",
   "bookingFailed": "تعذّر إتمام الحجز",
+  "bookingSelectServiceError": "يرجى اختيار خدمة",
+  "bookingAddressRequiredError": "يرجى إدخال عنوانك",
+  "bookingClinicalNotesRequiredError": "يرجى إدخال الملاحظات السريرية",
+  "bookingDateTimeRequiredError": "يرجى اختيار التاريخ والوقت",
   "price": "السعر",
   "continueLabel": "متابعة",
   "done": "تم",
@@ -223,6 +227,90 @@
   "oneToThreeExperience": "من سنة إلى 3 سنوات خبرة",
   "threeToFiveExperience": "من 3 إلى 5 سنوات خبرة",
   "moreThanFiveExperience": "أكثر من 5 سنوات خبرة", 
-  "bookNow": "احجز الآن"
+  "bookNow": "احجز الآن", 
+  "bookAppointment": "حجز موعد",
+  
+ 
+  
+
+  "basic_services": "الخدمات الأساسية",
+  "basic_services_list1": "إعطاء الحقن (عضل / تحت الجلد / وريد)",
+  "basic_services_list2": "قياس السكر العشوائي والتراكمي",
+  "basic_services_list3": "قياس ضغط الدم",
+  "basic_services_list4": "قياس الحرارة",
+  "basic_services_list5": "قياس العلامات الحيوية (Pulse – O2 – R)",
+  "basic_services_list6": "إعطاء الأدوية في مواعيدها",
+  "basic_services_list7": "تركيب كانيولا",
+  "basic_services_list8": "تركيب المحاليل الوريدية",
+  "basic_services_list9": "متابعة الجفاف وتعويض السوائل",
+
+  "wound_care": "الجروح والرعاية الجلدية",
+  "wound_care_list1": "غيار الجروح البسيطة والعميقة",
+  "wound_care_list2": "تنظيف الجروح وتعقيمها",
+  "wound_care_list3": "غيار قدم السكري",
+  "wound_care_list4": "علاج قرح الفراش",
+  "wound_care_list5": "متابعة الجروح بعد العمليات",
+  "wound_care_list6": "إزالة غرز بسيطة",
+
+  "elderly_care": "رعاية كبار السن",
+  "elderly_care_list1": "رعاية كاملة للمريض طريح الفراش",
+  "elderly_care_list2": "استحمام وتنظيف المريض غير القادر",
+  "elderly_care_list3": "تغيير وضعية المريض لمنع القرح",
+  "elderly_care_list4": "المساعدة في التغذية",
+  "elderly_care_list5": "المساعدة في قضاء الحاجة",
+  "elderly_care_list6": "متابعة الحالة النفسية والوعي",
+  "elderly_care_list7": "تنظيم الأدوية اليومية",
+
+  "chronic_diseases": "الأمراض المزمنة",
+  "chronic_diseases_list1": "متابعة مرضى القلب",
+  "chronic_diseases_list2": "متابعة مرضى السكر",
+  "chronic_diseases_list3": "متابعة الضغط المرتفع",
+  "chronic_diseases_list4": "متابعة مرضى الربو وضيق التنفس",
+  "chronic_diseases_list5": "إعداد خطة متابعة دورية",
+  "chronic_diseases_list6": "تسجيل قراءات يومية وتحليلها",
+
+  "post_surgery": "خدمات ما بعد العمليات",
+  "post_surgery_list1": "متابعة ما بعد العمليات الجراحية",
+  "post_surgery_list2": "تغيير الضمادات الجراحية",
+  "post_surgery_list3": "إعطاء مضادات حيوية بعد العمليات",
+  "post_surgery_list4": "تنظيف الجروح الجراحية",
+  "post_surgery_list5": "متابعة الالتهابات أو المضاعفات",
+  "post_surgery_list6": "مساعدة المريض في الحركة التدريجية",
+
+  "respiratory_care": "الرعاية التنفسية المنزلية",
+  "respiratory_care_list1": "جلسات نيبولايزر (بخار)",
+  "respiratory_care_list2": "شفط بلغم",
+  "respiratory_care_list3": "متابعة الأكسجين المنزلي",
+  "respiratory_care_list4": "تعليم استخدام أجهزة التنفس",
+  "respiratory_care_list5": "متابعة حالات الربو",
+
+  "catheter_care": "القسطرة والإجراءات الخاصة",
+  "catheter_care_list1": "تركيب قسطرة بولية",
+  "catheter_care_list2": "تغيير القسطرة ومتابعتها",
+  "catheter_care_list3": "العناية بمريض القسطرة",
+  "catheter_care_list4": "متابعة البول ومضاعفات القسطرة",
+
+  "psych_support": "الدعم النفسي والتأهيلي",
+  "psych_support_list1": "دعم نفسي بسيط للمريض",
+  "psych_support_list2": "دعم الأسرة في التعامل مع الحالة",
+  "psych_support_list3": "تمارين تأهيل بسيطة في المنزل",
+  "psych_support_list4": "علاج طبيعي خفيف",
+  "psych_support_list5": "تدريب المريض على الحركة",
+
+  "emergency_services": "خدمات طوارئ وتقييم سريع",
+  "emergency_services_list1": "تقييم حالة طارئة في المنزل",
+  "emergency_services_list2": "قياس سريع للحالة الصحية",
+  "emergency_services_list3": "تجهيز المريض للنقل للمستشفى",
+  "emergency_services_list4": "استشارة تمريضية عاجلة",
+
+
+
+  "StepOneChooseService": "اختر الخدمة التي تريدها",
+  "StepTwoPatientDetails": "اكتب عنوانك والملاحظات السريرية", 
+  "StepThreeChosseDateAndTime": "اختر تاريخ ووقت الحجز"
+
+
 
 }
+
+

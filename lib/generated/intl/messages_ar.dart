@@ -27,6 +27,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "PatientProfilePhotoNote": MessageLookupByLibrary.simpleMessage(
             "صورة الملف الشخصي تساعد الممرضين على التعرف عليك بسهولة."),
         "SelectPhoto": MessageLookupByLibrary.simpleMessage("اختر صورة"),
+        "StepOneChooseService":
+            MessageLookupByLibrary.simpleMessage("اختر الخدمة التي تريدها"),
+        "StepThreeChosseDateAndTime":
+            MessageLookupByLibrary.simpleMessage("اختر تاريخ ووقت الحجز"),
+        "StepTwoPatientDetails": MessageLookupByLibrary.simpleMessage(
+            "اكتب عنوانك والملاحظات السريرية"),
         "account": MessageLookupByLibrary.simpleMessage("الحساب"),
         "accountDeleted":
             MessageLookupByLibrary.simpleMessage("تم حذف الحساب بنجاح"),
@@ -53,16 +59,46 @@ class MessageLookup extends MessageLookupByLibrary {
             "💉 إعطاء الحقن (عضل / تحت الجلد / وريد)\n🩸 قياس السكر العشوائي والتراكمي\n❤️ قياس ضغط الدم\n🌡️ قياس الحرارة\n📊 قياس العلامات الحيوية (Pulse – O2 – R)\n💊 إعطاء الأدوية في مواعيدها\n🧪 تركيب كانيولا (IV Cannula)\n💧 تركيب المحاليل الوريدية\n🧴 متابعة الجفاف وتعويض السوائل"),
         "basicCareTitle": MessageLookupByLibrary.simpleMessage(
             "📋 الخدمات الأساسية (Basic Care)"),
+        "basic_services":
+            MessageLookupByLibrary.simpleMessage("الخدمات الأساسية"),
+        "basic_services_list1": MessageLookupByLibrary.simpleMessage(
+            "إعطاء الحقن (عضل / تحت الجلد / وريد)"),
+        "basic_services_list2": MessageLookupByLibrary.simpleMessage(
+            "قياس السكر العشوائي والتراكمي"),
+        "basic_services_list3":
+            MessageLookupByLibrary.simpleMessage("قياس ضغط الدم"),
+        "basic_services_list4":
+            MessageLookupByLibrary.simpleMessage("قياس الحرارة"),
+        "basic_services_list5": MessageLookupByLibrary.simpleMessage(
+            "قياس العلامات الحيوية (Pulse – O2 – R)"),
+        "basic_services_list6":
+            MessageLookupByLibrary.simpleMessage("إعطاء الأدوية في مواعيدها"),
+        "basic_services_list7":
+            MessageLookupByLibrary.simpleMessage("تركيب كانيولا"),
+        "basic_services_list8":
+            MessageLookupByLibrary.simpleMessage("تركيب المحاليل الوريدية"),
+        "basic_services_list9": MessageLookupByLibrary.simpleMessage(
+            "متابعة الجفاف وتعويض السوائل"),
         "bookAnurse": MessageLookupByLibrary.simpleMessage("احجز ممرض"),
+        "bookAppointment": MessageLookupByLibrary.simpleMessage("حجز موعد"),
         "bookNow": MessageLookupByLibrary.simpleMessage("احجز الآن"),
         "bookService": MessageLookupByLibrary.simpleMessage("احجز خدمة"),
+        "bookingAddressRequiredError":
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال عنوانك"),
+        "bookingClinicalNotesRequiredError":
+            MessageLookupByLibrary.simpleMessage(
+                "يرجى إدخال الملاحظات السريرية"),
         "bookingConfirmed":
             MessageLookupByLibrary.simpleMessage("تم تأكيد الحجز"),
         "bookingConfirmedSubtitle": MessageLookupByLibrary.simpleMessage(
             "تم إرسال طلبك. يمكنك متابعته من لوحة التحكم."),
+        "bookingDateTimeRequiredError":
+            MessageLookupByLibrary.simpleMessage("يرجى اختيار التاريخ والوقت"),
         "bookingFailed":
             MessageLookupByLibrary.simpleMessage("تعذّر إتمام الحجز"),
         "bookingHistory": MessageLookupByLibrary.simpleMessage("السجل"),
+        "bookingSelectServiceError":
+            MessageLookupByLibrary.simpleMessage("يرجى اختيار خدمة"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
         "cancelBooking": MessageLookupByLibrary.simpleMessage("إلغاء الحجز"),
         "cancelBookingConfirm": MessageLookupByLibrary.simpleMessage(
@@ -75,6 +111,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "🚿 تركيب قسطرة بولية\n🧼 تغيير القسطرة ومتابعتها\n💧 العناية بمريض القسطرة\n🧪 متابعة البول ومضاعفات القسطرة"),
         "catheterCareTitle": MessageLookupByLibrary.simpleMessage(
             "🚿 القسطرة والإجراءات الخاصة"),
+        "catheter_care":
+            MessageLookupByLibrary.simpleMessage("القسطرة والإجراءات الخاصة"),
+        "catheter_care_list1":
+            MessageLookupByLibrary.simpleMessage("تركيب قسطرة بولية"),
+        "catheter_care_list2":
+            MessageLookupByLibrary.simpleMessage("تغيير القسطرة ومتابعتها"),
+        "catheter_care_list3":
+            MessageLookupByLibrary.simpleMessage("العناية بمريض القسطرة"),
+        "catheter_care_list4": MessageLookupByLibrary.simpleMessage(
+            "متابعة البول ومضاعفات القسطرة"),
         "checkNurses":
             MessageLookupByLibrary.simpleMessage("تحقق من ملفات الممرضين"),
         "chooseDateTime":
@@ -83,6 +129,20 @@ class MessageLookup extends MessageLookupByLibrary {
             "🫀 متابعة مرضى القلب\n🩸 متابعة مرضى السكر\n🧠 متابعة الضغط المرتفع\n🫁 متابعة مرضى الربو وضيق التنفس\n📅 إعداد خطة متابعة دورية\n📊 تسجيل قراءات يومية وتحليلها"),
         "chronicCareTitle": MessageLookupByLibrary.simpleMessage(
             "🫀 الأمراض المزمنة (Chronic Care)"),
+        "chronic_diseases":
+            MessageLookupByLibrary.simpleMessage("الأمراض المزمنة"),
+        "chronic_diseases_list1":
+            MessageLookupByLibrary.simpleMessage("متابعة مرضى القلب"),
+        "chronic_diseases_list2":
+            MessageLookupByLibrary.simpleMessage("متابعة مرضى السكر"),
+        "chronic_diseases_list3":
+            MessageLookupByLibrary.simpleMessage("متابعة الضغط المرتفع"),
+        "chronic_diseases_list4": MessageLookupByLibrary.simpleMessage(
+            "متابعة مرضى الربو وضيق التنفس"),
+        "chronic_diseases_list5":
+            MessageLookupByLibrary.simpleMessage("إعداد خطة متابعة دورية"),
+        "chronic_diseases_list6":
+            MessageLookupByLibrary.simpleMessage("تسجيل قراءات يومية وتحليلها"),
         "clinicalRemarks":
             MessageLookupByLibrary.simpleMessage("ملاحظات سريرية"),
         "completedLabel": MessageLookupByLibrary.simpleMessage("مكتمل"),
@@ -109,12 +169,37 @@ class MessageLookup extends MessageLookupByLibrary {
             "🛏️ رعاية كاملة للمريض طريح الفراش\n🚿 استحمام وتنظيف المريض غير القادر\n🔄 تغيير وضعية المريض لمنع القرح\n🍽️ المساعدة في التغذية\n🚻 المساعدة في قضاء الحاجة\n🧠 متابعة الحالة النفسية والوعي\n💊 تنظيم الأدوية اليومية"),
         "elderlyCareTitle": MessageLookupByLibrary.simpleMessage(
             "🧓 رعاية كبار السن (Elderly Care)"),
+        "elderly_care": MessageLookupByLibrary.simpleMessage("رعاية كبار السن"),
+        "elderly_care_list1": MessageLookupByLibrary.simpleMessage(
+            "رعاية كاملة للمريض طريح الفراش"),
+        "elderly_care_list2": MessageLookupByLibrary.simpleMessage(
+            "استحمام وتنظيف المريض غير القادر"),
+        "elderly_care_list3": MessageLookupByLibrary.simpleMessage(
+            "تغيير وضعية المريض لمنع القرح"),
+        "elderly_care_list4":
+            MessageLookupByLibrary.simpleMessage("المساعدة في التغذية"),
+        "elderly_care_list5":
+            MessageLookupByLibrary.simpleMessage("المساعدة في قضاء الحاجة"),
+        "elderly_care_list6": MessageLookupByLibrary.simpleMessage(
+            "متابعة الحالة النفسية والوعي"),
+        "elderly_care_list7":
+            MessageLookupByLibrary.simpleMessage("تنظيم الأدوية اليومية"),
         "emailAddress":
             MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "emergencyCareItems": MessageLookupByLibrary.simpleMessage(
             "🚨 تقييم حالة طارئة في المنزل\n📉 قياس سريع للحالة الصحية\n🏥 تجهيز المريض للنقل للمستشفى\n📞 استشارة تمريضية عاجلة"),
         "emergencyCareTitle":
             MessageLookupByLibrary.simpleMessage("🚨 خدمات طوارئ وتقييم سريع"),
+        "emergency_services":
+            MessageLookupByLibrary.simpleMessage("خدمات طوارئ وتقييم سريع"),
+        "emergency_services_list1":
+            MessageLookupByLibrary.simpleMessage("تقييم حالة طارئة في المنزل"),
+        "emergency_services_list2":
+            MessageLookupByLibrary.simpleMessage("قياس سريع للحالة الصحية"),
+        "emergency_services_list3":
+            MessageLookupByLibrary.simpleMessage("تجهيز المريض للنقل للمستشفى"),
+        "emergency_services_list4":
+            MessageLookupByLibrary.simpleMessage("استشارة تمريضية عاجلة"),
         "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
         "errorExperienceRequired":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال سنوات الخبرة"),
@@ -235,6 +320,20 @@ class MessageLookup extends MessageLookupByLibrary {
             "🏥 متابعة ما بعد العمليات الجراحية\n🩹 تغيير الضمادات الجراحية\n💉 إعطاء مضادات حيوية بعد العمليات\n🧼 تنظيف الجروح الجراحية\n📉 متابعة الالتهابات أو المضاعفات\n🛏️ مساعدة المريض في الحركة التدريجية"),
         "postOpCareTitle":
             MessageLookupByLibrary.simpleMessage("🚑 خدمات ما بعد العمليات"),
+        "post_surgery":
+            MessageLookupByLibrary.simpleMessage("خدمات ما بعد العمليات"),
+        "post_surgery_list1": MessageLookupByLibrary.simpleMessage(
+            "متابعة ما بعد العمليات الجراحية"),
+        "post_surgery_list2":
+            MessageLookupByLibrary.simpleMessage("تغيير الضمادات الجراحية"),
+        "post_surgery_list3": MessageLookupByLibrary.simpleMessage(
+            "إعطاء مضادات حيوية بعد العمليات"),
+        "post_surgery_list4":
+            MessageLookupByLibrary.simpleMessage("تنظيف الجروح الجراحية"),
+        "post_surgery_list5": MessageLookupByLibrary.simpleMessage(
+            "متابعة الالتهابات أو المضاعفات"),
+        "post_surgery_list6": MessageLookupByLibrary.simpleMessage(
+            "مساعدة المريض في الحركة التدريجية"),
         "preferences": MessageLookupByLibrary.simpleMessage("التفضيلات"),
         "previous": MessageLookupByLibrary.simpleMessage("السابق"),
         "price": MessageLookupByLibrary.simpleMessage("السعر"),
@@ -251,6 +350,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("صورة الملف الشخصي"),
         "profileUpdated":
             MessageLookupByLibrary.simpleMessage("تم تحديث الملف الشخصي"),
+        "psych_support":
+            MessageLookupByLibrary.simpleMessage("الدعم النفسي والتأهيلي"),
+        "psych_support_list1":
+            MessageLookupByLibrary.simpleMessage("دعم نفسي بسيط للمريض"),
+        "psych_support_list2": MessageLookupByLibrary.simpleMessage(
+            "دعم الأسرة في التعامل مع الحالة"),
+        "psych_support_list3": MessageLookupByLibrary.simpleMessage(
+            "تمارين تأهيل بسيطة في المنزل"),
+        "psych_support_list4":
+            MessageLookupByLibrary.simpleMessage("علاج طبيعي خفيف"),
+        "psych_support_list5":
+            MessageLookupByLibrary.simpleMessage("تدريب المريض على الحركة"),
         "psychologicalCareItems": MessageLookupByLibrary.simpleMessage(
             "🧠 دعم نفسي بسيط للمريض\n👨‍👩‍👧 دعم الأسرة في التعامل مع الحالة\n🧘 تمارين تأهيل بسيطة في المنزل\n🦵 علاج طبيعي خفيف (Mobility)\n🪑 تدريب المريض على الحركة"),
         "psychologicalCareTitle":
@@ -267,12 +378,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "regionTamiya": MessageLookupByLibrary.simpleMessage("طامية"),
         "regionYoussefElSeddik":
             MessageLookupByLibrary.simpleMessage("يوسف الصديق"),
-        "remarksHint": MessageLookupByLibrary.simpleMessage(
-            "الأعراض أو الحالات أو ملاحظات للممرض (اختياري)"),
+        "remarksHint":
+            MessageLookupByLibrary.simpleMessage("اعراض أو ملاحظات للممرض"),
         "respiratoryCareItems": MessageLookupByLibrary.simpleMessage(
             "💨 جلسات نيبولايزر (بخار)\n🫁 شفط بلغم (Suction)\n😮‍💨 متابعة الأكسجين المنزلي\n🧴 تعليم استخدام أجهزة التنفس\n📊 متابعة حالات الربو"),
         "respiratoryCareTitle": MessageLookupByLibrary.simpleMessage(
             "🫁 الرعاية التنفسية المنزلية"),
+        "respiratory_care":
+            MessageLookupByLibrary.simpleMessage("الرعاية التنفسية المنزلية"),
+        "respiratory_care_list1":
+            MessageLookupByLibrary.simpleMessage("جلسات نيبولايزر (بخار)"),
+        "respiratory_care_list2":
+            MessageLookupByLibrary.simpleMessage("شفط بلغم"),
+        "respiratory_care_list3":
+            MessageLookupByLibrary.simpleMessage("متابعة الأكسجين المنزلي"),
+        "respiratory_care_list4":
+            MessageLookupByLibrary.simpleMessage("تعليم استخدام أجهزة التنفس"),
+        "respiratory_care_list5":
+            MessageLookupByLibrary.simpleMessage("متابعة حالات الربو"),
         "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
         "reviewBooking": MessageLookupByLibrary.simpleMessage("راجع حجزك"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
@@ -383,6 +506,20 @@ class MessageLookup extends MessageLookupByLibrary {
             "🩹 غيار الجروح البسيطة والعميقة\n🧬 تنظيف الجروح وتعقيمها\n🦶 غيار قدم السكري\n🧴 علاج قرح الفراش (Bed Sores)\n🪡 متابعة الجروح بعد العمليات\n🧷 إزالة غرز بسيطة (Suture Removal)"),
         "woundCareTitle":
             MessageLookupByLibrary.simpleMessage("🩹 الجروح والرعاية الجلدية"),
+        "wound_care":
+            MessageLookupByLibrary.simpleMessage("الجروح والرعاية الجلدية"),
+        "wound_care_list1": MessageLookupByLibrary.simpleMessage(
+            "غيار الجروح البسيطة والعميقة"),
+        "wound_care_list2":
+            MessageLookupByLibrary.simpleMessage("تنظيف الجروح وتعقيمها"),
+        "wound_care_list3":
+            MessageLookupByLibrary.simpleMessage("غيار قدم السكري"),
+        "wound_care_list4":
+            MessageLookupByLibrary.simpleMessage("علاج قرح الفراش"),
+        "wound_care_list5":
+            MessageLookupByLibrary.simpleMessage("متابعة الجروح بعد العمليات"),
+        "wound_care_list6":
+            MessageLookupByLibrary.simpleMessage("إزالة غرز بسيطة"),
         "yearsOfExperience":
             MessageLookupByLibrary.simpleMessage("سنوات الخبرة"),
         "yearsOld": MessageLookupByLibrary.simpleMessage("سنة")

@@ -1830,10 +1830,10 @@ class S {
     );
   }
 
-  /// `Symptoms, conditions, notes for the nurse (optional)`
+  /// `Symptoms, notes for the nurse`
   String get remarksHint {
     return Intl.message(
-      'Symptoms, conditions, notes for the nurse (optional)',
+      'Symptoms, notes for the nurse',
       name: 'remarksHint',
       desc: '',
       args: [],
@@ -1905,6 +1905,46 @@ class S {
     return Intl.message(
       'Could not complete the booking',
       name: 'bookingFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select a service`
+  String get bookingSelectServiceError {
+    return Intl.message(
+      'Please select a service',
+      name: 'bookingSelectServiceError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your address`
+  String get bookingAddressRequiredError {
+    return Intl.message(
+      'Please enter your address',
+      name: 'bookingAddressRequiredError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter clinical notes`
+  String get bookingClinicalNotesRequiredError {
+    return Intl.message(
+      'Please enter clinical notes',
+      name: 'bookingClinicalNotesRequiredError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please choose date and time`
+  String get bookingDateTimeRequiredError {
+    return Intl.message(
+      'Please choose date and time',
+      name: 'bookingDateTimeRequiredError',
       desc: '',
       args: [],
     );
@@ -2295,6 +2335,656 @@ class S {
     return Intl.message(
       'Book Now',
       name: 'bookNow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book Appointment`
+  String get bookAppointment {
+    return Intl.message(
+      'Book Appointment',
+      name: 'bookAppointment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Basic Services`
+  String get basic_services {
+    return Intl.message(
+      'Basic Services',
+      name: 'basic_services',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Injection administration (IM / SC / IV)`
+  String get basic_services_list1 {
+    return Intl.message(
+      'Injection administration (IM / SC / IV)',
+      name: 'basic_services_list1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Random and cumulative blood sugar measurement`
+  String get basic_services_list2 {
+    return Intl.message(
+      'Random and cumulative blood sugar measurement',
+      name: 'basic_services_list2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Blood pressure measurement`
+  String get basic_services_list3 {
+    return Intl.message(
+      'Blood pressure measurement',
+      name: 'basic_services_list3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Temperature measurement`
+  String get basic_services_list4 {
+    return Intl.message(
+      'Temperature measurement',
+      name: 'basic_services_list4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vital signs measurement (Pulse – O2 – R)`
+  String get basic_services_list5 {
+    return Intl.message(
+      'Vital signs measurement (Pulse – O2 – R)',
+      name: 'basic_services_list5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medication administration on schedule`
+  String get basic_services_list6 {
+    return Intl.message(
+      'Medication administration on schedule',
+      name: 'basic_services_list6',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cannula insertion`
+  String get basic_services_list7 {
+    return Intl.message(
+      'Cannula insertion',
+      name: 'basic_services_list7',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `IV fluids administration`
+  String get basic_services_list8 {
+    return Intl.message(
+      'IV fluids administration',
+      name: 'basic_services_list8',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Monitor dehydration and fluid replacement`
+  String get basic_services_list9 {
+    return Intl.message(
+      'Monitor dehydration and fluid replacement',
+      name: 'basic_services_list9',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wound & Skin Care`
+  String get wound_care {
+    return Intl.message(
+      'Wound & Skin Care',
+      name: 'wound_care',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dressing simple and deep wounds`
+  String get wound_care_list1 {
+    return Intl.message(
+      'Dressing simple and deep wounds',
+      name: 'wound_care_list1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cleaning and sterilizing wounds`
+  String get wound_care_list2 {
+    return Intl.message(
+      'Cleaning and sterilizing wounds',
+      name: 'wound_care_list2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Diabetic foot dressing`
+  String get wound_care_list3 {
+    return Intl.message(
+      'Diabetic foot dressing',
+      name: 'wound_care_list3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bed sore treatment`
+  String get wound_care_list4 {
+    return Intl.message(
+      'Bed sore treatment',
+      name: 'wound_care_list4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Post-surgery wound follow-up`
+  String get wound_care_list5 {
+    return Intl.message(
+      'Post-surgery wound follow-up',
+      name: 'wound_care_list5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Simple stitch removal`
+  String get wound_care_list6 {
+    return Intl.message(
+      'Simple stitch removal',
+      name: 'wound_care_list6',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Elderly Care`
+  String get elderly_care {
+    return Intl.message(
+      'Elderly Care',
+      name: 'elderly_care',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full care for bedridden patients`
+  String get elderly_care_list1 {
+    return Intl.message(
+      'Full care for bedridden patients',
+      name: 'elderly_care_list1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bathing and cleaning dependent patients`
+  String get elderly_care_list2 {
+    return Intl.message(
+      'Bathing and cleaning dependent patients',
+      name: 'elderly_care_list2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Changing patient position to prevent sores`
+  String get elderly_care_list3 {
+    return Intl.message(
+      'Changing patient position to prevent sores',
+      name: 'elderly_care_list3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Feeding assistance`
+  String get elderly_care_list4 {
+    return Intl.message(
+      'Feeding assistance',
+      name: 'elderly_care_list4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Toileting assistance`
+  String get elderly_care_list5 {
+    return Intl.message(
+      'Toileting assistance',
+      name: 'elderly_care_list5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Monitoring psychological state and awareness`
+  String get elderly_care_list6 {
+    return Intl.message(
+      'Monitoring psychological state and awareness',
+      name: 'elderly_care_list6',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daily medication organization`
+  String get elderly_care_list7 {
+    return Intl.message(
+      'Daily medication organization',
+      name: 'elderly_care_list7',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chronic Diseases`
+  String get chronic_diseases {
+    return Intl.message(
+      'Chronic Diseases',
+      name: 'chronic_diseases',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cardiac patient follow-up`
+  String get chronic_diseases_list1 {
+    return Intl.message(
+      'Cardiac patient follow-up',
+      name: 'chronic_diseases_list1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Diabetes patient follow-up`
+  String get chronic_diseases_list2 {
+    return Intl.message(
+      'Diabetes patient follow-up',
+      name: 'chronic_diseases_list2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hypertension monitoring`
+  String get chronic_diseases_list3 {
+    return Intl.message(
+      'Hypertension monitoring',
+      name: 'chronic_diseases_list3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Asthma and breathing difficulty follow-up`
+  String get chronic_diseases_list4 {
+    return Intl.message(
+      'Asthma and breathing difficulty follow-up',
+      name: 'chronic_diseases_list4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Prepare periodic follow-up plan`
+  String get chronic_diseases_list5 {
+    return Intl.message(
+      'Prepare periodic follow-up plan',
+      name: 'chronic_diseases_list5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Record and analyze daily readings`
+  String get chronic_diseases_list6 {
+    return Intl.message(
+      'Record and analyze daily readings',
+      name: 'chronic_diseases_list6',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Post-Surgery Services`
+  String get post_surgery {
+    return Intl.message(
+      'Post-Surgery Services',
+      name: 'post_surgery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Post-surgical follow-up`
+  String get post_surgery_list1 {
+    return Intl.message(
+      'Post-surgical follow-up',
+      name: 'post_surgery_list1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Changing surgical dressings`
+  String get post_surgery_list2 {
+    return Intl.message(
+      'Changing surgical dressings',
+      name: 'post_surgery_list2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Administer antibiotics after surgery`
+  String get post_surgery_list3 {
+    return Intl.message(
+      'Administer antibiotics after surgery',
+      name: 'post_surgery_list3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cleaning surgical wounds`
+  String get post_surgery_list4 {
+    return Intl.message(
+      'Cleaning surgical wounds',
+      name: 'post_surgery_list4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Monitor infections or complications`
+  String get post_surgery_list5 {
+    return Intl.message(
+      'Monitor infections or complications',
+      name: 'post_surgery_list5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Assist patient with gradual movement`
+  String get post_surgery_list6 {
+    return Intl.message(
+      'Assist patient with gradual movement',
+      name: 'post_surgery_list6',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home Respiratory Care`
+  String get respiratory_care {
+    return Intl.message(
+      'Home Respiratory Care',
+      name: 'respiratory_care',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nebulizer sessions`
+  String get respiratory_care_list1 {
+    return Intl.message(
+      'Nebulizer sessions',
+      name: 'respiratory_care_list1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phlegm suction`
+  String get respiratory_care_list2 {
+    return Intl.message(
+      'Phlegm suction',
+      name: 'respiratory_care_list2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Monitor home oxygen`
+  String get respiratory_care_list3 {
+    return Intl.message(
+      'Monitor home oxygen',
+      name: 'respiratory_care_list3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Teach use of respiratory devices`
+  String get respiratory_care_list4 {
+    return Intl.message(
+      'Teach use of respiratory devices',
+      name: 'respiratory_care_list4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Asthma case follow-up`
+  String get respiratory_care_list5 {
+    return Intl.message(
+      'Asthma case follow-up',
+      name: 'respiratory_care_list5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Catheter & Special Procedures`
+  String get catheter_care {
+    return Intl.message(
+      'Catheter & Special Procedures',
+      name: 'catheter_care',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Urinary catheter insertion`
+  String get catheter_care_list1 {
+    return Intl.message(
+      'Urinary catheter insertion',
+      name: 'catheter_care_list1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Catheter replacement and monitoring`
+  String get catheter_care_list2 {
+    return Intl.message(
+      'Catheter replacement and monitoring',
+      name: 'catheter_care_list2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Catheter patient care`
+  String get catheter_care_list3 {
+    return Intl.message(
+      'Catheter patient care',
+      name: 'catheter_care_list3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Monitor urine and catheter complications`
+  String get catheter_care_list4 {
+    return Intl.message(
+      'Monitor urine and catheter complications',
+      name: 'catheter_care_list4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Psychological & Rehabilitation Support`
+  String get psych_support {
+    return Intl.message(
+      'Psychological & Rehabilitation Support',
+      name: 'psych_support',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Basic psychological support for patient`
+  String get psych_support_list1 {
+    return Intl.message(
+      'Basic psychological support for patient',
+      name: 'psych_support_list1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Family support in handling case`
+  String get psych_support_list2 {
+    return Intl.message(
+      'Family support in handling case',
+      name: 'psych_support_list2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Simple home rehabilitation exercises`
+  String get psych_support_list3 {
+    return Intl.message(
+      'Simple home rehabilitation exercises',
+      name: 'psych_support_list3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light physiotherapy`
+  String get psych_support_list4 {
+    return Intl.message(
+      'Light physiotherapy',
+      name: 'psych_support_list4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Train patient on movement`
+  String get psych_support_list5 {
+    return Intl.message(
+      'Train patient on movement',
+      name: 'psych_support_list5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Emergency & Quick Assessment`
+  String get emergency_services {
+    return Intl.message(
+      'Emergency & Quick Assessment',
+      name: 'emergency_services',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Emergency case assessment at home`
+  String get emergency_services_list1 {
+    return Intl.message(
+      'Emergency case assessment at home',
+      name: 'emergency_services_list1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quick health status measurement`
+  String get emergency_services_list2 {
+    return Intl.message(
+      'Quick health status measurement',
+      name: 'emergency_services_list2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Prepare patient for hospital transfer`
+  String get emergency_services_list3 {
+    return Intl.message(
+      'Prepare patient for hospital transfer',
+      name: 'emergency_services_list3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Urgent nursing consultation`
+  String get emergency_services_list4 {
+    return Intl.message(
+      'Urgent nursing consultation',
+      name: 'emergency_services_list4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose service you want`
+  String get StepOneChooseService {
+    return Intl.message(
+      'Choose service you want',
+      name: 'StepOneChooseService',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type your address and clinical notes`
+  String get StepTwoPatientDetails {
+    return Intl.message(
+      'Type your address and clinical notes',
+      name: 'StepTwoPatientDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose date and time of your booking`
+  String get StepThreeChosseDateAndTime {
+    return Intl.message(
+      'Choose date and time of your booking',
+      name: 'StepThreeChosseDateAndTime',
       desc: '',
       args: [],
     );

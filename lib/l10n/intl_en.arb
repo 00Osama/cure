@@ -176,7 +176,7 @@
   "noSlots": "No available slots for this day",
   "selectRegion": "Select region",
   "clinicalRemarks": "Clinical remarks",
-  "remarksHint": "Symptoms, conditions, notes for the nurse (optional)",
+  "remarksHint": "Symptoms, notes for the nurse",
   "addressLabel": "Address",
   "addressHint": "Building, street, area",
   "reviewBooking": "Review your booking",
@@ -184,6 +184,10 @@
   "bookingConfirmed": "Booking confirmed",
   "bookingConfirmedSubtitle": "Your request has been sent. You can track it on your dashboard.",
   "bookingFailed": "Could not complete the booking",
+  "bookingSelectServiceError": "Please select a service",
+  "bookingAddressRequiredError": "Please enter your address",
+  "bookingClinicalNotesRequiredError": "Please enter clinical notes",
+  "bookingDateTimeRequiredError": "Please choose date and time",
   "price": "Price",
   "continueLabel": "Continue",
   "done": "Done",
@@ -222,8 +226,90 @@
   "oneToThreeExperience": "1–3 years of experience",
   "threeToFiveExperience": "3–5 years of experience",
   "moreThanFiveExperience": "5+ years of experience", 
-  "bookNow": "Book Now"
+  "bookNow": "Book Now",
+  "bookAppointment": "Book Appointment",
+
+  
 
 
+  "basic_services": "Basic Services",
+  "basic_services_list1": "Injection administration (IM / SC / IV)",
+  "basic_services_list2": "Random and cumulative blood sugar measurement",
+  "basic_services_list3": "Blood pressure measurement",
+  "basic_services_list4": "Temperature measurement",
+  "basic_services_list5": "Vital signs measurement (Pulse – O2 – R)",
+  "basic_services_list6": "Medication administration on schedule",
+  "basic_services_list7": "Cannula insertion",
+  "basic_services_list8": "IV fluids administration",
+  "basic_services_list9": "Monitor dehydration and fluid replacement",
+
+  "wound_care": "Wound & Skin Care",
+  "wound_care_list1": "Dressing simple and deep wounds",
+  "wound_care_list2": "Cleaning and sterilizing wounds",
+  "wound_care_list3": "Diabetic foot dressing",
+  "wound_care_list4": "Bed sore treatment",
+  "wound_care_list5": "Post-surgery wound follow-up",
+  "wound_care_list6": "Simple stitch removal",
+
+  "elderly_care": "Elderly Care",
+  "elderly_care_list1": "Full care for bedridden patients",
+  "elderly_care_list2": "Bathing and cleaning dependent patients",
+  "elderly_care_list3": "Changing patient position to prevent sores",
+  "elderly_care_list4": "Feeding assistance",
+  "elderly_care_list5": "Toileting assistance",
+  "elderly_care_list6": "Monitoring psychological state and awareness",
+  "elderly_care_list7": "Daily medication organization",
+
+  "chronic_diseases": "Chronic Diseases",
+  "chronic_diseases_list1": "Cardiac patient follow-up",
+  "chronic_diseases_list2": "Diabetes patient follow-up",
+  "chronic_diseases_list3": "Hypertension monitoring",
+  "chronic_diseases_list4": "Asthma and breathing difficulty follow-up",
+  "chronic_diseases_list5": "Prepare periodic follow-up plan",
+  "chronic_diseases_list6": "Record and analyze daily readings",
+
+  "post_surgery": "Post-Surgery Services",
+  "post_surgery_list1": "Post-surgical follow-up",
+  "post_surgery_list2": "Changing surgical dressings",
+  "post_surgery_list3": "Administer antibiotics after surgery",
+  "post_surgery_list4": "Cleaning surgical wounds",
+  "post_surgery_list5": "Monitor infections or complications",
+  "post_surgery_list6": "Assist patient with gradual movement",
+
+  "respiratory_care": "Home Respiratory Care",
+  "respiratory_care_list1": "Nebulizer sessions",
+  "respiratory_care_list2": "Phlegm suction",
+  "respiratory_care_list3": "Monitor home oxygen",
+  "respiratory_care_list4": "Teach use of respiratory devices",
+  "respiratory_care_list5": "Asthma case follow-up",
+
+  "catheter_care": "Catheter & Special Procedures",
+  "catheter_care_list1": "Urinary catheter insertion",
+  "catheter_care_list2": "Catheter replacement and monitoring",
+  "catheter_care_list3": "Catheter patient care",
+  "catheter_care_list4": "Monitor urine and catheter complications",
+
+  "psych_support": "Psychological & Rehabilitation Support",
+  "psych_support_list1": "Basic psychological support for patient",
+  "psych_support_list2": "Family support in handling case",
+  "psych_support_list3": "Simple home rehabilitation exercises",
+  "psych_support_list4": "Light physiotherapy",
+  "psych_support_list5": "Train patient on movement",
+
+  "emergency_services": "Emergency & Quick Assessment",
+  "emergency_services_list1": "Emergency case assessment at home",
+  "emergency_services_list2": "Quick health status measurement",
+  "emergency_services_list3": "Prepare patient for hospital transfer",
+  "emergency_services_list4": "Urgent nursing consultation",
+
+
+
+  "StepOneChooseService": "Choose service you want",
+  "StepTwoPatientDetails": "Type your address and clinical notes",
+  "StepThreeChosseDateAndTime": "Choose date and time of your booking"
+  
 
 }
+
+
+

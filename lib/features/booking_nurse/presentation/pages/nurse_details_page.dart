@@ -1,5 +1,6 @@
 import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:cure/features/auth/presentation/widgets/button.dart';
+import 'package:cure/features/booking_nurse/presentation/pages/book_appointment.dart';
 import 'package:cure/features/booking_nurse/presentation/widgets/nurse_details_tile.dart';
 import 'package:cure/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,8 @@ class NurseDetailsPage extends StatelessWidget {
           return S.of(context).regionYoussefElSeddik;
         case 'itsa':
           return S.of(context).regionItsa;
+        case 'fayoumCity':
+          return S.of(context).regionFayoumCity;
         case 'other':
           return S.of(context).regionOther;
         default:
@@ -111,7 +114,12 @@ class NurseDetailsPage extends StatelessWidget {
               ? Container()
               : AppPrimaryButton(
                   onPressed: () {
-                    // handle booking action here
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BookAppointment(nurse: nurse),
+                      ),
+                    );
                   },
                   title: S().bookNow,
                 ),

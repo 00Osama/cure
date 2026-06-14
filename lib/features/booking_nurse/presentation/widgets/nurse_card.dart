@@ -33,6 +33,21 @@ class NurseCard extends StatelessWidget {
       }
     }
 
+    String formatExperience(String years) {
+      switch (years) {
+        case 'lessThanOne':
+          return S.of(context).lessThanOneExperience;
+        case 'oneToThree':
+          return S.of(context).oneToThreeExperience;
+        case 'threeToFive':
+          return S.of(context).threeToFiveExperience;
+        case 'moreThanFive':
+          return S.of(context).moreThanFiveExperience;
+        default:
+          return '$years years of experience';
+      }
+    }
+
     return Card(
       elevation: 0,
       color: colors.surface,
@@ -65,13 +80,13 @@ class NurseCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 6),
                     _InfoLine(
-                      icon: Icons.phone_rounded,
-                      text: nurse.phoneNumber!,
+                      icon: Icons.cake_rounded,
+                      text: '${nurse.age} ${S.of(context).yearsOld}',
                     ),
                     const SizedBox(height: 4),
                     _InfoLine(
-                      icon: Icons.cake_rounded,
-                      text: '${nurse.age} ${S.of(context).yearsOld}',
+                      icon: Icons.medical_information_rounded,
+                      text: formatExperience(nurse.yearOfExperience!),
                     ),
                     const SizedBox(height: 4),
                     _InfoLine(

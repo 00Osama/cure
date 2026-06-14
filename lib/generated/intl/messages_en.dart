@@ -27,6 +27,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "PatientProfilePhotoNote": MessageLookupByLibrary.simpleMessage(
             "A profile photo helps nurses recognize you easily."),
         "SelectPhoto": MessageLookupByLibrary.simpleMessage("Select Photo"),
+        "StepOneChooseService":
+            MessageLookupByLibrary.simpleMessage("Choose service you want"),
+        "StepThreeChosseDateAndTime": MessageLookupByLibrary.simpleMessage(
+            "Choose date and time of your booking"),
+        "StepTwoPatientDetails": MessageLookupByLibrary.simpleMessage(
+            "Type your address and clinical notes"),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "accountDeleted": MessageLookupByLibrary.simpleMessage(
             "Account deleted successfully"),
@@ -53,16 +59,46 @@ class MessageLookup extends MessageLookupByLibrary {
         "basicCareItems": MessageLookupByLibrary.simpleMessage(
             "💉 Giving injections (IM / SC / IV)\n🩸 Random and cumulative blood sugar measurement\n❤️ Blood pressure measurement\n🌡️ Temperature measurement\n📊 Measuring vital signs (Pulse – O2 – R)\n💊 Administering medications on schedule\n🧪 IV Cannula insertion\n💧 Setting up intravenous fluids\n🧴 Monitoring dehydration and fluid replacement"),
         "basicCareTitle": MessageLookupByLibrary.simpleMessage("📋 Basic Care"),
+        "basic_services":
+            MessageLookupByLibrary.simpleMessage("Basic Services"),
+        "basic_services_list1": MessageLookupByLibrary.simpleMessage(
+            "Injection administration (IM / SC / IV)"),
+        "basic_services_list2": MessageLookupByLibrary.simpleMessage(
+            "Random and cumulative blood sugar measurement"),
+        "basic_services_list3":
+            MessageLookupByLibrary.simpleMessage("Blood pressure measurement"),
+        "basic_services_list4":
+            MessageLookupByLibrary.simpleMessage("Temperature measurement"),
+        "basic_services_list5": MessageLookupByLibrary.simpleMessage(
+            "Vital signs measurement (Pulse – O2 – R)"),
+        "basic_services_list6": MessageLookupByLibrary.simpleMessage(
+            "Medication administration on schedule"),
+        "basic_services_list7":
+            MessageLookupByLibrary.simpleMessage("Cannula insertion"),
+        "basic_services_list8":
+            MessageLookupByLibrary.simpleMessage("IV fluids administration"),
+        "basic_services_list9": MessageLookupByLibrary.simpleMessage(
+            "Monitor dehydration and fluid replacement"),
         "bookAnurse": MessageLookupByLibrary.simpleMessage("Book a Nurse"),
+        "bookAppointment":
+            MessageLookupByLibrary.simpleMessage("Book Appointment"),
         "bookNow": MessageLookupByLibrary.simpleMessage("Book Now"),
         "bookService": MessageLookupByLibrary.simpleMessage("Book a Service"),
+        "bookingAddressRequiredError":
+            MessageLookupByLibrary.simpleMessage("Please enter your address"),
+        "bookingClinicalNotesRequiredError":
+            MessageLookupByLibrary.simpleMessage("Please enter clinical notes"),
         "bookingConfirmed":
             MessageLookupByLibrary.simpleMessage("Booking confirmed"),
         "bookingConfirmedSubtitle": MessageLookupByLibrary.simpleMessage(
             "Your request has been sent. You can track it on your dashboard."),
+        "bookingDateTimeRequiredError":
+            MessageLookupByLibrary.simpleMessage("Please choose date and time"),
         "bookingFailed": MessageLookupByLibrary.simpleMessage(
             "Could not complete the booking"),
         "bookingHistory": MessageLookupByLibrary.simpleMessage("History"),
+        "bookingSelectServiceError":
+            MessageLookupByLibrary.simpleMessage("Please select a service"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cancelBooking": MessageLookupByLibrary.simpleMessage("Cancel booking"),
         "cancelBookingConfirm": MessageLookupByLibrary.simpleMessage(
@@ -75,6 +111,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "🚿 Urinary catheter insertion\n🧼 Changing and monitoring catheter\n💧 Care for catheterized patient\n🧪 Monitoring urine and catheter complications"),
         "catheterCareTitle": MessageLookupByLibrary.simpleMessage(
             "🚿 Catheter and Special Procedures"),
+        "catheter_care": MessageLookupByLibrary.simpleMessage(
+            "Catheter & Special Procedures"),
+        "catheter_care_list1":
+            MessageLookupByLibrary.simpleMessage("Urinary catheter insertion"),
+        "catheter_care_list2": MessageLookupByLibrary.simpleMessage(
+            "Catheter replacement and monitoring"),
+        "catheter_care_list3":
+            MessageLookupByLibrary.simpleMessage("Catheter patient care"),
+        "catheter_care_list4": MessageLookupByLibrary.simpleMessage(
+            "Monitor urine and catheter complications"),
         "checkNurses":
             MessageLookupByLibrary.simpleMessage("Check Nurses Profile"),
         "chooseDateTime":
@@ -83,6 +129,20 @@ class MessageLookup extends MessageLookupByLibrary {
             "🫀 Monitoring heart disease patients\n🩸 Monitoring diabetes patients\n🧠 Monitoring high blood pressure\n🫁 Monitoring asthma and breathing difficulty patients\n📅 Preparing periodic follow-up plan\n📊 Recording and analyzing daily readings"),
         "chronicCareTitle":
             MessageLookupByLibrary.simpleMessage("🫀 Chronic Diseases Care"),
+        "chronic_diseases":
+            MessageLookupByLibrary.simpleMessage("Chronic Diseases"),
+        "chronic_diseases_list1":
+            MessageLookupByLibrary.simpleMessage("Cardiac patient follow-up"),
+        "chronic_diseases_list2":
+            MessageLookupByLibrary.simpleMessage("Diabetes patient follow-up"),
+        "chronic_diseases_list3":
+            MessageLookupByLibrary.simpleMessage("Hypertension monitoring"),
+        "chronic_diseases_list4": MessageLookupByLibrary.simpleMessage(
+            "Asthma and breathing difficulty follow-up"),
+        "chronic_diseases_list5": MessageLookupByLibrary.simpleMessage(
+            "Prepare periodic follow-up plan"),
+        "chronic_diseases_list6": MessageLookupByLibrary.simpleMessage(
+            "Record and analyze daily readings"),
         "clinicalRemarks":
             MessageLookupByLibrary.simpleMessage("Clinical remarks"),
         "completedLabel": MessageLookupByLibrary.simpleMessage("Completed"),
@@ -109,11 +169,36 @@ class MessageLookup extends MessageLookupByLibrary {
             "🛏️ Complete care for bedridden patients\n🚿 Bathing and cleaning unable patients\n🔄 Changing patient position to prevent sores\n🍽️ Assistance with nutrition\n🚻 Assistance with toilet needs\n🧠 Monitoring mental state and consciousness\n💊 Organizing daily medications"),
         "elderlyCareTitle":
             MessageLookupByLibrary.simpleMessage("🧓 Elderly Care"),
+        "elderly_care": MessageLookupByLibrary.simpleMessage("Elderly Care"),
+        "elderly_care_list1": MessageLookupByLibrary.simpleMessage(
+            "Full care for bedridden patients"),
+        "elderly_care_list2": MessageLookupByLibrary.simpleMessage(
+            "Bathing and cleaning dependent patients"),
+        "elderly_care_list3": MessageLookupByLibrary.simpleMessage(
+            "Changing patient position to prevent sores"),
+        "elderly_care_list4":
+            MessageLookupByLibrary.simpleMessage("Feeding assistance"),
+        "elderly_care_list5":
+            MessageLookupByLibrary.simpleMessage("Toileting assistance"),
+        "elderly_care_list6": MessageLookupByLibrary.simpleMessage(
+            "Monitoring psychological state and awareness"),
+        "elderly_care_list7": MessageLookupByLibrary.simpleMessage(
+            "Daily medication organization"),
         "emailAddress": MessageLookupByLibrary.simpleMessage("Email Address"),
         "emergencyCareItems": MessageLookupByLibrary.simpleMessage(
             "🚨 Emergency case assessment at home\n📉 Rapid health status measurement\n🏥 Preparing patient for hospital transfer\n📞 Urgent nursing consultation"),
         "emergencyCareTitle": MessageLookupByLibrary.simpleMessage(
             "🚨 Emergency and Rapid Assessment Services"),
+        "emergency_services": MessageLookupByLibrary.simpleMessage(
+            "Emergency & Quick Assessment"),
+        "emergency_services_list1": MessageLookupByLibrary.simpleMessage(
+            "Emergency case assessment at home"),
+        "emergency_services_list2": MessageLookupByLibrary.simpleMessage(
+            "Quick health status measurement"),
+        "emergency_services_list3": MessageLookupByLibrary.simpleMessage(
+            "Prepare patient for hospital transfer"),
+        "emergency_services_list4":
+            MessageLookupByLibrary.simpleMessage("Urgent nursing consultation"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "errorExperienceRequired": MessageLookupByLibrary.simpleMessage(
             "Please enter years of experience"),
@@ -239,6 +324,20 @@ class MessageLookup extends MessageLookupByLibrary {
             "🏥 Post-operative surgical monitoring\n🩹 Changing surgical bandages\n💉 Administering post-operative antibiotics\n🧼 Cleaning surgical wounds\n📉 Monitoring infections or complications\n🛏️ Helping patient gradual movement"),
         "postOpCareTitle":
             MessageLookupByLibrary.simpleMessage("🚑 Post-Operative Care"),
+        "post_surgery":
+            MessageLookupByLibrary.simpleMessage("Post-Surgery Services"),
+        "post_surgery_list1":
+            MessageLookupByLibrary.simpleMessage("Post-surgical follow-up"),
+        "post_surgery_list2":
+            MessageLookupByLibrary.simpleMessage("Changing surgical dressings"),
+        "post_surgery_list3": MessageLookupByLibrary.simpleMessage(
+            "Administer antibiotics after surgery"),
+        "post_surgery_list4":
+            MessageLookupByLibrary.simpleMessage("Cleaning surgical wounds"),
+        "post_surgery_list5": MessageLookupByLibrary.simpleMessage(
+            "Monitor infections or complications"),
+        "post_surgery_list6": MessageLookupByLibrary.simpleMessage(
+            "Assist patient with gradual movement"),
         "preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
         "previous": MessageLookupByLibrary.simpleMessage("Previous"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
@@ -255,6 +354,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Profile Photo"),
         "profileUpdated":
             MessageLookupByLibrary.simpleMessage("Profile updated"),
+        "psych_support": MessageLookupByLibrary.simpleMessage(
+            "Psychological & Rehabilitation Support"),
+        "psych_support_list1": MessageLookupByLibrary.simpleMessage(
+            "Basic psychological support for patient"),
+        "psych_support_list2": MessageLookupByLibrary.simpleMessage(
+            "Family support in handling case"),
+        "psych_support_list3": MessageLookupByLibrary.simpleMessage(
+            "Simple home rehabilitation exercises"),
+        "psych_support_list4":
+            MessageLookupByLibrary.simpleMessage("Light physiotherapy"),
+        "psych_support_list5":
+            MessageLookupByLibrary.simpleMessage("Train patient on movement"),
         "psychologicalCareItems": MessageLookupByLibrary.simpleMessage(
             "🧠 Basic psychological support for patient\n👨‍👩‍👧 Family support in dealing with condition\n🧘 Simple rehabilitation exercises at home\n🦵 Light physical therapy (Mobility)\n🪑 Training patient on movement"),
         "psychologicalCareTitle": MessageLookupByLibrary.simpleMessage(
@@ -271,11 +382,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "regionYoussefElSeddik":
             MessageLookupByLibrary.simpleMessage("Youssef El Seddik"),
         "remarksHint": MessageLookupByLibrary.simpleMessage(
-            "Symptoms, conditions, notes for the nurse (optional)"),
+            "Symptoms, notes for the nurse"),
         "respiratoryCareItems": MessageLookupByLibrary.simpleMessage(
             "💨 Nebulizer sessions (steam)\n🫁 Suctioning phlegm\n😮‍💨 Monitoring home oxygen\n🧴 Teaching use of respiratory devices\n📊 Monitoring asthma cases"),
         "respiratoryCareTitle":
             MessageLookupByLibrary.simpleMessage("🫁 Home Respiratory Care"),
+        "respiratory_care":
+            MessageLookupByLibrary.simpleMessage("Home Respiratory Care"),
+        "respiratory_care_list1":
+            MessageLookupByLibrary.simpleMessage("Nebulizer sessions"),
+        "respiratory_care_list2":
+            MessageLookupByLibrary.simpleMessage("Phlegm suction"),
+        "respiratory_care_list3":
+            MessageLookupByLibrary.simpleMessage("Monitor home oxygen"),
+        "respiratory_care_list4": MessageLookupByLibrary.simpleMessage(
+            "Teach use of respiratory devices"),
+        "respiratory_care_list5":
+            MessageLookupByLibrary.simpleMessage("Asthma case follow-up"),
         "retry": MessageLookupByLibrary.simpleMessage("Retry"),
         "reviewBooking":
             MessageLookupByLibrary.simpleMessage("Review your booking"),
@@ -386,6 +509,19 @@ class MessageLookup extends MessageLookupByLibrary {
             "🩹 Dressing simple and deep wounds\n🧬 Cleaning and sterilizing wounds\n🦶 Diabetic foot dressing\n🧴 Treating bed sores\n🪡 Monitoring post-operative wounds\n🧷 Simple suture removal"),
         "woundCareTitle":
             MessageLookupByLibrary.simpleMessage("🩹 Wound and Skin Care"),
+        "wound_care": MessageLookupByLibrary.simpleMessage("Wound & Skin Care"),
+        "wound_care_list1": MessageLookupByLibrary.simpleMessage(
+            "Dressing simple and deep wounds"),
+        "wound_care_list2": MessageLookupByLibrary.simpleMessage(
+            "Cleaning and sterilizing wounds"),
+        "wound_care_list3":
+            MessageLookupByLibrary.simpleMessage("Diabetic foot dressing"),
+        "wound_care_list4":
+            MessageLookupByLibrary.simpleMessage("Bed sore treatment"),
+        "wound_care_list5": MessageLookupByLibrary.simpleMessage(
+            "Post-surgery wound follow-up"),
+        "wound_care_list6":
+            MessageLookupByLibrary.simpleMessage("Simple stitch removal"),
         "yearsOfExperience":
             MessageLookupByLibrary.simpleMessage("Years of Experience"),
         "yearsOld": MessageLookupByLibrary.simpleMessage("years old")
