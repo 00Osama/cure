@@ -54,7 +54,7 @@ notifications. Booking‑status changes are surfaced two ways:
 
 ## Backend 
 
-Firebase remains the source of truth for auth + user profiles, Supabase for managing user images. 
+Firebase remains the source of truth for auth + user profiles managment, Supabase for user images storage. 
 
 1. Create a Supabase project.
 2. Copy your project URL + **anon/publishable** key into config (below).
