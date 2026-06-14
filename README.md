@@ -33,10 +33,27 @@ lib/
 │   ├── nurse_dashboard/         
 │   └── patient_dashboard/          
 │   └── profile/           
-├── l10n/                   # arabic and english localization files
-│   ├── intl_ar.arb/          
-│   └── intl_en.arb/           
+└── l10n/                   # arabic and english localization files
+    ├── intl_ar.arb/          
+    └── intl_en.arb/
 ```
+
+---
+
+## Tech stack
+
+Flutter 3.x → Building cross-platform user interfaces<br>
+Dart → Implementing application logic and handling user interactions<br>
+flutter_bloc → State management<br>
+freezed → Immutable models and union/sealed classes generation<br>
+json_serializable → JSON serialization/deserialization code generation<br>
+firebase_auth → User authentication<br>
+cloud_firestore → Cloud database<br>
+firebase_messaging → Push notifications<br>
+supabase_flutter → Profile image storage<br>
+intl → Internationalization and localization (English/Arabic)
+
+---
 
 ## Push notifications (FCM)
 
@@ -86,22 +103,11 @@ define api_config.dart   # then fill in your keys
 `api_config.dart` is gitignored.
 ```
 
+---
+
 ## Testing
 
 ```bash
 flutter analyze
 flutter test
 ```
-
-## Tech stack
-
-Flutter 3.x → Building cross-platform user interfaces<br>
-Dart → Implementing application logic and handling user interactions<br>
-flutter_bloc → State management<br>
-freezed → Immutable models and union/sealed classes generation<br>
-json_serializable → JSON serialization/deserialization code generation<br>
-firebase_auth → User authentication<br>
-cloud_firestore → Cloud database<br>
-firebase_messaging → Push notifications<br>
-supabase_flutter → Profile image storage<br>
-intl → Internationalization and localization (English/Arabic)
