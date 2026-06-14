@@ -1,10 +1,7 @@
 # CURE — Home‑Care Nursing (Flutter)
 
-An enterprise‑style module for booking and orchestrating home‑care nursing
-services. A patient selects a clinical service, resolves a schedule slot, adds
-clinical remarks, and moves the booking through a **deterministic state
-machine**; a data‑driven dashboard shows aggregates, active requests and
-history.
+CURE is a healthcare app that connects patients with qualified home nurses. Patients can browse nurse profiles, choose needed nursing services, enter address and clinical notes and request an appointment.
+The app also supports nurse and patient accounts, localized Arabic and English UI, profile management, dashboards for booking status, and a structured booking flow for home medical care services.
 
 ---
 
@@ -13,62 +10,33 @@ history.
 Each feature is a vertical slice with three layers:
 
 ```
-Presentation (Cubit + freezed state, pages, widgets)
-      │  depends on ▼
-Domain (entities, repository interfaces, use cases, Result<T>)
-      ▲  implemented by ▼
 Data (models @JsonSerializable, data sources, repository impls)
+Domain (entities, repository interfaces, use cases, Result<T>)
+Presentation (Cubit, pages, widgets)
+   
 ```
 
 ```
 lib/
-├── core/
-│   ├── network/            # dio ApiClient + interceptors (auth, logging, retry) + error mapper
-│   └── notifications/      # FCM + local notifications service
-├── features/
-│   ├── auth/               # Firebase auth + Firestore profiles (existing)
-│   ├── booking/            # service select → schedule → remarks → confirm  (state machine)
-│   ├── dashboard/          # patient aggregates + active/history
-│   └── profile/            # settings, theme, language
-└── shared/
-    ├── di/                 # manual singleton DI container (`di`)
-    ├── theme_and_locals/   # ThemeCubit, LanguageCubit, theme, gradients
-    └── utils/              # Result<T>, Failure hierarchy
+├── assets/                 # assets that app need incluading animations and images 
+│   ├── animations/            
+│   └── images/      
+├── core/                   # shared files that app need
+│   ├── network/           
+│   └── notifications/      
+│   ├── di/                
+│   ├── theme_and_locals/
+│   └── utils/             
+├── features/               # app features with clean architecture
+│   ├── auth/              
+│   ├── booking_nurse/           
+│   ├── nurse_dashboard/         
+│   └── patient_dashboard/          
+│   └── profile/           
+├── l10n/                   # arabic and english localization files
+│   ├── intl_ar.arb/          
+│   └── intl_en.arb/           
 ```
-
-- **State management:** `flutter_bloc`. New cubits use **freezed** states with
-  explicit `Initial/Loading/Loaded/Error` (dashboard) or a single immutable
-  wizard state with a `step` field (booking).
-- **Error handling:** repositories return `Result<T>` (`Success`/`Failure`);
-  dio errors are centrally mapped to the `Failure` hierarchy
-  (`network_exception_mapper.dart`).
-- **DI:** `lib/shared/di/injection.dart` — a manual singleton (`di`) with
-  `initialize()`, getters, and `createXCubit()` factories.
-
-### Deterministic booking state machine
-`lib/features/booking/domain/entities/booking_status.dart` defines the legal
-transitions and the single `transition()` enforcement point:
-
-```
-requested → confirmed → inProgress → completed
-     └──────────┴────────────┴──────→ cancelled        (completed/cancelled = terminal)
-```
-
-Illegal moves throw `InvalidTransitionException`; the use case validates the
-transition **before** any network write. Covered by
-`test/features/booking/domain/booking_status_test.dart`.
-
-### Network layer (dio → Supabase REST)
-`lib/core/network/` exposes a backend‑agnostic `ApiClient` (data sources never
-touch Dio directly). `DioApiClient` wires three interceptors:
-
-- **AuthInterceptor** — injects the `apikey` header + `Authorization: Bearer`
-  token (from a swappable `AuthTokenProvider`) + `Prefer: return=representation`.
-- **RetryInterceptor** — exponential backoff on timeouts/connection/5xx, **only
-  for idempotent methods**, so a booking `POST` is never duplicated.
-- **LoggingInterceptor** — debug‑only, secrets redacted.
-
----
 
 ## Push notifications (FCM)
 
