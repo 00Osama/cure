@@ -5,7 +5,7 @@ class UpdateFcmTokenUseCase {
 
   final ProfileRepository _repository;
 
-  Future<void> call(String token) {
-    return _repository.updateFcmToken(token);
+  Future<void> call(String token, String role) {
+    return _repository.updateFcmToken(token, role);
   }
 }

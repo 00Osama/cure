@@ -6,17 +6,17 @@ import '../models/profile_model.dart';
 abstract class ProfileRemoteDataSource {
   Future<void> createProfile(Map<String, dynamic> data);
 
-  Future<ProfileModel?> getProfileById(String id);
+  Future<void> updateProfileFields(String role, Map<String, dynamic> fields);
 
-  Future<void> updateFcmToken(String id, String token);
-
-  Future<void> updateProfileFields(String id, Map<String, dynamic> fields);
+  Future<void> updateFcmToken(String role, String token);
 
   Future<void> deleteProfile(String role);
 
   Future<void> deleteAuthAccount();
 
   Future<void> logout();
+
+  Future<ProfileModel?> getProfileById(String id);
 }
 
 class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
@@ -32,8 +32,42 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
   Future<void> createProfile(Map<String, dynamic> data) async {
     await _firestore
         .collection(data['role'] == 'nurse' ? 'nurses' : 'patients')
-        .doc(_firebaseAuth.currentUser!.email)
+        .doc(_requireCurrentEmail())
         .set(data);
+  }
+
+  @override
+  Future<void> updateProfileFields(
+    String role,
+    Map<String, dynamic> fields,
+  ) async {
+    await _firestore
+        .collection(role == 'nurse' ? 'nurses' : 'patients')
+        .doc(_requireCurrentEmail())
+        .update(fields);
+  }
+
+  @override
+  Future<void> updateFcmToken(String role, String token) async {
+    await updateProfileFields(role, {'fcm_token': token});
+  }
+
+  @override
+  Future<void> deleteProfile(String role) async {
+    await _firestore
+        .collection(role == 'nurse' ? 'nurses' : 'patients')
+        .doc(_requireCurrentEmail())
+        .delete();
+  }
+
+  @override
+  Future<void> deleteAuthAccount() async {
+    await _firebaseAuth.currentUser?.delete();
+  }
+
+  @override
+  Future<void> logout() async {
+    await _firebaseAuth.signOut();
   }
 
   @override
@@ -41,39 +75,6 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
     final document = await _findProfileDocument(id);
     if (document == null) return null;
     return ProfileModel.fromJson(document.data());
-  }
-
-  @override
-  Future<void> updateFcmToken(String id, String token) async {
-    await updateProfileFields(id, {'fcm_token': token});
-  }
-
-  @override
-  Future<void> updateProfileFields(
-    String id,
-    Map<String, dynamic> fields,
-  ) async {
-    final document = await _findProfileDocument(id);
-    if (document == null) return;
-    await document.reference.update(fields);
-  }
-
-  @override
-  Future<void> deleteProfile(String role) async {
-    await _firestore
-        .collection(role == 'nurse' ? 'nurses' : 'patients')
-        .doc(_firebaseAuth.currentUser!.email)
-        .delete();
-  }
-
-  @override
-  Future<void> deleteAuthAccount() async {
-    _firebaseAuth.currentUser!.delete();
-  }
-
-  @override
-  Future<void> logout() async {
-    await _firebaseAuth.signOut();
   }
 
   Future<QueryDocumentSnapshot<Map<String, dynamic>>?> _findProfileDocument(
@@ -90,6 +91,14 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
     }
 
     return null;
+  }
+
+  String _requireCurrentEmail() {
+    final email = _firebaseAuth.currentUser?.email;
+    if (email == null || email.isEmpty) {
+      throw StateError('Missing current user email.');
+    }
+    return email;
   }
 }
 

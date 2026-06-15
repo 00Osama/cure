@@ -165,7 +165,9 @@ class DependencyInjection {
     try {
       final token = await _notificationService.token();
       if (token == null) return;
-      await _updateFcmTokenUseCase(token);
+      final profile = await _profileRepository.getProfile();
+      if (profile == null) return;
+      await _updateFcmTokenUseCase(token, profile.role);
     } catch (_) {
       // Non-fatal: token registration is best-effort.
     }

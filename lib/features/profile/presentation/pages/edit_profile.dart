@@ -13,7 +13,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EditProfile extends StatefulWidget {
-  const EditProfile({super.key});
+  const EditProfile({super.key, required this.role});
+  final String role;
 
   @override
   State<EditProfile> createState() => _EditProfileState();
@@ -64,6 +65,7 @@ class _EditProfileState extends State<EditProfile> {
       yearOfExperience: _selectedExperience,
       region: _selectedRegion,
       skillSet: _skills.text,
+      role: widget.role,
     );
   }
 

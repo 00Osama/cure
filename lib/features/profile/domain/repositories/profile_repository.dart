@@ -12,11 +12,12 @@ abstract class ProfileRepository {
     String? region,
     String? skillSet,
     String? profileImagePath,
+    String role,
   });
 
   Future<String?> uploadProfileImage(String imagePath);
 
-  Future<void> updateFcmToken(String token);
+  Future<void> updateFcmToken(String token, String role);
 
   Future<void> deleteAccount(String role);
 

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../domain/entities/profile.dart';
 
 class ProfileModel {
@@ -29,17 +31,17 @@ class ProfileModel {
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) {
     return ProfileModel(
-      id: json['id'],
-      name: json['name'],
-      email: json['email'],
-      phoneNumber: json['phone_number'],
-      dateOfBirth: DateTime.parse(json['date_of_birth']),
-      gender: json['gender'],
-      role: json['role'],
-      profileImagePath: json['profile_image_url'] ?? 'default',
-      yearOfExperience: json['year_of_experience'],
-      region: json['region'],
-      skillSet: json['skill_set'],
+      id: json['id'] as String? ?? '',
+      name: json['name'] as String? ?? '',
+      email: json['email'] as String? ?? '',
+      phoneNumber: json['phone_number'] as String?,
+      dateOfBirth: _parseDate(json['date_of_birth']),
+      gender: json['gender'] as String? ?? '',
+      role: json['role'] as String? ?? 'patient',
+      profileImagePath: json['profile_image_url'] as String? ?? 'default',
+      yearOfExperience: json['year_of_experience'] as String?,
+      region: json['region'] as String?,
+      skillSet: json['skill_set'] as String?,
     );
   }
 
@@ -74,4 +76,13 @@ class ProfileModel {
       skillSet: skillSet,
     );
   }
+}
+
+DateTime _parseDate(Object? value) {
+  if (value is Timestamp) return value.toDate();
+  if (value is DateTime) return value;
+  if (value is String && value.isNotEmpty) {
+    return DateTime.tryParse(value) ?? DateTime.now();
+  }
+  return DateTime.now();
 }

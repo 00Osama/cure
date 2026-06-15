@@ -7,13 +7,10 @@ import 'edit_profile_info_state.dart';
 
 class EditProfileInfoCubit extends Cubit<EditProfileInfoState> {
   EditProfileInfoCubit({
-    required GetProfileUseCase getProfileUseCase,
-    required UpdateProfileUseCase updateProfileUseCase,
-    required UploadProfileImageUseCase uploadProfileImageUseCase,
-  }) : _getProfileUseCase = getProfileUseCase,
-       _updateProfileUseCase = updateProfileUseCase,
-       _uploadProfileImageUseCase = uploadProfileImageUseCase,
-       super(const EditProfileInfoState());
+    required this._getProfileUseCase,
+    required this._updateProfileUseCase,
+    required this._uploadProfileImageUseCase,
+  }) : super(const EditProfileInfoState());
 
   final GetProfileUseCase _getProfileUseCase;
   final UpdateProfileUseCase _updateProfileUseCase;
@@ -54,8 +51,10 @@ class EditProfileInfoCubit extends Cubit<EditProfileInfoState> {
     String? yearOfExperience,
     String? region,
     String? skillSet,
+    String? role,
   }) async {
-    if (state.profile == null) {
+    final currentProfile = state.profile;
+    if (currentProfile == null) {
       emit(
         state.copyWith(
           status: EditProfileInfoStatus.failure,
@@ -65,6 +64,7 @@ class EditProfileInfoCubit extends Cubit<EditProfileInfoState> {
       return;
     }
 
+    final effectiveRole = role ?? currentProfile.role;
     emit(state.copyWith(status: EditProfileInfoStatus.saving));
 
     try {
@@ -72,7 +72,7 @@ class EditProfileInfoCubit extends Cubit<EditProfileInfoState> {
       String? profileImagePath;
       if (selectedImagePath != null &&
           selectedImagePath.isNotEmpty &&
-          selectedImagePath != state.profile!.profileImagePath) {
+          selectedImagePath != currentProfile.profileImagePath) {
         profileImagePath = await _uploadProfileImageUseCase(selectedImagePath);
       }
 
@@ -85,6 +85,7 @@ class EditProfileInfoCubit extends Cubit<EditProfileInfoState> {
         region: region,
         skillSet: skillSet,
         profileImagePath: profileImagePath,
+        role: effectiveRole,
       );
 
       final updatedProfile = await _getProfileUseCase();

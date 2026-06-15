@@ -14,6 +14,7 @@ class UpdateProfileUseCase {
     String? region,
     String? skillSet,
     String? profileImagePath,
+    required String role,
   }) {
     return _repository.updateProfile(
       name: name,
@@ -24,6 +25,7 @@ class UpdateProfileUseCase {
       region: region,
       skillSet: skillSet,
       profileImagePath: profileImagePath,
+      role: role,
     );
   }
 }

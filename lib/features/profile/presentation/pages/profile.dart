@@ -211,10 +211,10 @@ class _ProfilePageState extends State<ProfilePage> {
                           await Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => const EditProfile(),
+                              builder: (_) => EditProfile(role: role),
                             ),
                           );
-                          if (!mounted) return;
+                          if (!context.mounted) return;
                           context.read<ProfileCubit>().loadProfile();
                         },
                       ),
@@ -245,7 +245,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                           final deleted = await context
                               .read<ProfileCubit>()
-                              .deleteAccount(widget.role);
+                              .deleteAccount(role);
 
                           if (!context.mounted) return;
                           Navigator.of(context, rootNavigator: true).pop();

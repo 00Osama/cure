@@ -16,8 +16,6 @@ class ProfileRepositoryImpl implements ProfileRepository {
   final ProfileRemoteDataSource _remoteDataSource;
   final FirebaseAuth _firebaseAuth;
 
-  String? get _currentUid => _firebaseAuth.currentUser?.uid;
-
   @override
   Future<Profile?> getProfile() async {
     final uid = _requireCurrentUid();
@@ -35,13 +33,8 @@ class ProfileRepositoryImpl implements ProfileRepository {
     String? region,
     String? skillSet,
     String? profileImagePath,
+    String? role,
   }) async {
-    final uid = _requireCurrentUid();
-    final profile = await getProfile();
-    if (profile == null) {
-      throw StateError('Profile is not loaded.');
-    }
-
     final fields = <String, dynamic>{
       'name': name.trim(),
       'phone_number': phoneNumber.trim(),
@@ -49,7 +42,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
       'gender': gender,
     };
 
-    if (profile.isNurse) {
+    if (role == 'nurse') {
       fields.addAll({
         'year_of_experience': yearOfExperience,
         'region': region,
@@ -61,7 +54,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
       fields['profile_image_url'] = profileImagePath;
     }
 
-    await _remoteDataSource.updateProfileFields(uid, fields);
+    await _remoteDataSource.updateProfileFields(role!, fields);
   }
 
   @override
@@ -82,44 +75,6 @@ class ProfileRepositoryImpl implements ProfileRepository {
       role: profile.role,
     );
     return remoteUrl ?? localPath;
-  }
-
-  @override
-  Future<void> updateFcmToken(String token) async {
-    final uid = _currentUid;
-    if (uid == null) return;
-    await _remoteDataSource.updateFcmToken(uid, token);
-  }
-
-  @override
-  Future<void> deleteAccount(String role) async {
-    await _remoteDataSource.deleteProfile(role);
-    await _remoteDataSource.deleteAuthAccount();
-  }
-
-  @override
-  Future<void> logout() {
-    return _remoteDataSource.logout();
-  }
-
-  String _requireCurrentUid() {
-    final uid = _currentUid;
-    if (uid == null) {
-      throw StateError('Missing current user.');
-    }
-    return uid;
-  }
-
-  Future<String> _copyProfileImageLocally({
-    required String uid,
-    required String sourcePath,
-  }) async {
-    final directory = await getApplicationDocumentsDirectory();
-    final extension = sourcePath.split('.').last;
-    final target = File(
-      '${directory.path}${Platform.pathSeparator}profile_$uid.$extension',
-    );
-    return File(sourcePath).copy(target.path).then((file) => file.path);
   }
 
   Future<String?> _uploadProfileImage({
@@ -143,5 +98,41 @@ class ProfileRepositoryImpl implements ProfileRepository {
     return Supabase.instance.client.storage
         .from(bucket)
         .getPublicUrl(storagePath);
+  }
+
+  @override
+  Future<void> updateFcmToken(String token, String role) async {
+    await _remoteDataSource.updateFcmToken(role, token);
+  }
+
+  @override
+  Future<void> deleteAccount(String role) async {
+    await _remoteDataSource.deleteProfile(role);
+    await _remoteDataSource.deleteAuthAccount();
+  }
+
+  @override
+  Future<void> logout() {
+    return _remoteDataSource.logout();
+  }
+
+  String _requireCurrentUid() {
+    final uid = _firebaseAuth.currentUser?.uid;
+    if (uid == null) {
+      throw StateError('Missing current user.');
+    }
+    return uid;
+  }
+
+  Future<String> _copyProfileImageLocally({
+    required String uid,
+    required String sourcePath,
+  }) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final extension = sourcePath.split('.').last;
+    final target = File(
+      '${directory.path}${Platform.pathSeparator}profile_$uid.$extension',
+    );
+    return File(sourcePath).copy(target.path).then((file) => file.path);
   }
 }
