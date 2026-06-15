@@ -307,7 +307,13 @@
 
   "StepOneChooseService": "اختر الخدمة التي تريدها",
   "StepTwoPatientDetails": "اكتب عنوانك والملاحظات السريرية", 
-  "StepThreeChosseDateAndTime": "اختر تاريخ ووقت الحجز"
+  "StepThreeChosseDateAndTime": "اختر تاريخ ووقت الحجز", 
+  "bookingDetails": "تفاصيل الحجز",
+  "appointmentBookedSuccessfully": "تم حجز الموعد بنجاح", 
+  "loading": "جارٍ التحميل"
+
+
+
 
 
 

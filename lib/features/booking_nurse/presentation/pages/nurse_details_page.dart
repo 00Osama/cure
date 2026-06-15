@@ -121,7 +121,7 @@ class NurseDetailsPage extends StatelessWidget {
                       ),
                     );
                   },
-                  title: S().bookNow,
+                  title: S().bookingDetails,
                 ),
         ],
       ),

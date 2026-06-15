@@ -1,47 +1,16 @@
 import '../../../../core/network/network_exception_mapper.dart';
 import '../../../../core/utils/failures.dart' as f;
 import '../../../../core/utils/result.dart';
-import '../../domain/entities/availability_slot.dart';
 import '../../domain/entities/booking.dart';
 import '../../domain/entities/booking_status.dart';
-import '../../domain/entities/service.dart';
 import '../../domain/repositories/booking_repository.dart';
 import '../datasources/booking_remote_datasource.dart';
 import '../models/booking_model.dart';
 
-/// Note: `result.dart` and `failures.dart` BOTH export a `Failure` symbol, so
-/// the domain failures are imported aliased as `f` while `Failure(...)` here
-/// refers to the `Result.Failure` wrapper.
 class BookingRepositoryImpl implements BookingRepository {
   BookingRepositoryImpl({required this.remoteDataSource});
 
   final BookingRemoteDataSource remoteDataSource;
-
-  @override
-  Future<Result<List<Service>>> getServices() async {
-    try {
-      final models = await remoteDataSource.getServices();
-      return Success(models.map((m) => m.toEntity()).toList());
-    } catch (e) {
-      return Failure(mapDioError(e));
-    }
-  }
-
-  @override
-  Future<Result<List<AvailabilitySlot>>> getAvailability({
-    required String region,
-    required DateTime day,
-  }) async {
-    try {
-      final models = await remoteDataSource.getAvailability(
-        region: region,
-        day: day,
-      );
-      return Success(models.map((m) => m.toEntity()).toList());
-    } catch (e) {
-      return Failure(mapDioError(e));
-    }
-  }
 
   @override
   Future<Result<Booking>> createBooking(Booking draft) async {

@@ -18,7 +18,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  const ProfilePage({super.key, required this.role});
+
+  final String role;
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -243,7 +245,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                           final deleted = await context
                               .read<ProfileCubit>()
-                              .deleteAccount();
+                              .deleteAccount(widget.role);
 
                           if (!context.mounted) return;
                           Navigator.of(context, rootNavigator: true).pop();

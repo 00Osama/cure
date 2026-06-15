@@ -21,10 +21,12 @@ class NursesPage extends StatefulWidget {
 
 class _NursesPageState extends State<NursesPage> {
   final _scrollController = ScrollController();
+  late final NursesCubit _nursesCubit;
 
   @override
   void initState() {
     super.initState();
+    _nursesCubit = di.createNursesCubit()..loadFirstPage();
     _scrollController.addListener(_onScroll);
   }
 
@@ -33,6 +35,7 @@ class _NursesPageState extends State<NursesPage> {
     _scrollController
       ..removeListener(_onScroll)
       ..dispose();
+    _nursesCubit.close();
     super.dispose();
   }
 
@@ -43,15 +46,15 @@ class _NursesPageState extends State<NursesPage> {
     final isNearBottom = position.pixels >= position.maxScrollExtent - 220;
     if (!isNearBottom) return;
 
-    context.read<NursesCubit>().loadNextPage();
+    _nursesCubit.loadNextPage();
   }
 
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
 
-    return BlocProvider(
-      create: (_) => di.createNursesCubit()..loadFirstPage(),
+    return BlocProvider.value(
+      value: _nursesCubit,
       child: Scaffold(
         backgroundColor: colors.gradientEnd,
         appBar: AppBar(

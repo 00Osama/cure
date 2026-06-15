@@ -5,7 +5,7 @@ class DeleteAccountUseCase {
 
   final ProfileRepository _repository;
 
-  Future<void> call() {
-    return _repository.deleteAccount();
+  Future<void> call(String role) {
+    return _repository.deleteAccount(role);
   }
 }

@@ -306,8 +306,10 @@
 
   "StepOneChooseService": "Choose service you want",
   "StepTwoPatientDetails": "Type your address and clinical notes",
-  "StepThreeChosseDateAndTime": "Choose date and time of your booking"
-  
+  "StepThreeChosseDateAndTime": "Choose date and time of your booking",
+  "bookingDetails": "bookingDetails",
+  "appointmentBookedSuccessfully": "appointment booked successfully", 
+  "loading": "loading"
 
 }
 

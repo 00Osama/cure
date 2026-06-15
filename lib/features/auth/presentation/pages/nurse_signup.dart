@@ -603,7 +603,7 @@ class _NurseSignupPageState extends State<NurseSignupPage>
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 24),
       child: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SlideHeader(
               title: S.of(context).personalDetailsHeaderTitle,

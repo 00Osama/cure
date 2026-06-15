@@ -2989,6 +2989,36 @@ class S {
       args: [],
     );
   }
+
+  /// `bookingDetails`
+  String get bookingDetails {
+    return Intl.message(
+      'bookingDetails',
+      name: 'bookingDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `appointment booked successfully`
+  String get appointmentBookedSuccessfully {
+    return Intl.message(
+      'appointment booked successfully',
+      name: 'appointmentBookedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `loading`
+  String get loading {
+    return Intl.message(
+      'loading',
+      name: 'loading',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

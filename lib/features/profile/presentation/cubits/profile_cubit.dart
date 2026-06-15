@@ -28,10 +28,10 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  Future<bool> deleteAccount() async {
+  Future<bool> deleteAccount(String role) async {
     emit(state.copyWith(status: ProfileStatus.deleting));
     try {
-      await _deleteAccountUseCase();
+      await _deleteAccountUseCase(role);
       emit(state.copyWith(status: ProfileStatus.deleted));
       return true;
     } catch (e) {

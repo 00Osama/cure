@@ -18,7 +18,7 @@ abstract class ProfileRepository {
 
   Future<void> updateFcmToken(String token);
 
-  Future<void> deleteAccount();
+  Future<void> deleteAccount(String role);
 
   Future<void> logout();
 }

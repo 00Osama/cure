@@ -48,7 +48,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       return [
         const NursesPage(role: 'nurse'),
         const NurseDashboardPage(),
-        const ProfilePage(),
+        const ProfilePage(role: 'nurse'),
       ];
     }
     return [
@@ -57,7 +57,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         create: (_) => di.createDashboardCubit()..load(),
         child: const PatientDashboardPage(),
       ),
-      const ProfilePage(),
+      const ProfilePage(role: 'patient'),
     ];
   }
 

@@ -12,7 +12,7 @@ abstract class ProfileRemoteDataSource {
 
   Future<void> updateProfileFields(String id, Map<String, dynamic> fields);
 
-  Future<void> deleteProfile(String id);
+  Future<void> deleteProfile(String role);
 
   Future<void> deleteAuthAccount();
 
@@ -30,7 +30,10 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
 
   @override
   Future<void> createProfile(Map<String, dynamic> data) async {
-    await _firestore.collection(_collectionNameFor(data)).add(data);
+    await _firestore
+        .collection(data['role'] == 'nurse' ? 'nurses' : 'patients')
+        .doc(_firebaseAuth.currentUser!.email)
+        .set(data);
   }
 
   @override
@@ -56,24 +59,16 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
   }
 
   @override
-  Future<void> deleteProfile(String id) async {
-    for (final collectionName in _profileCollections) {
-      final query = await _firestore
-          .collection(collectionName)
-          .where('id', isEqualTo: id)
-          .get();
-
-      for (final document in query.docs) {
-        await document.reference.delete();
-      }
-    }
+  Future<void> deleteProfile(String role) async {
+    await _firestore
+        .collection(role == 'nurse' ? 'nurses' : 'patients')
+        .doc(_firebaseAuth.currentUser!.email)
+        .delete();
   }
 
   @override
   Future<void> deleteAuthAccount() async {
-    final user = _firebaseAuth.currentUser;
-    if (user == null) return;
-    await user.delete();
+    _firebaseAuth.currentUser!.delete();
   }
 
   @override
@@ -96,10 +91,6 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
 
     return null;
   }
-
-  String _collectionNameFor(Map<String, dynamic> data) {
-    return data['role'] == 'nurse' ? 'nurses' : 'users';
-  }
 }
 
-const _profileCollections = ['nurses', 'users'];
+const _profileCollections = ['nurses', 'patients'];

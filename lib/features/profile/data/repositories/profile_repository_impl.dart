@@ -92,9 +92,8 @@ class ProfileRepositoryImpl implements ProfileRepository {
   }
 
   @override
-  Future<void> deleteAccount() async {
-    final uid = _requireCurrentUid();
-    await _remoteDataSource.deleteProfile(uid);
+  Future<void> deleteAccount(String role) async {
+    await _remoteDataSource.deleteProfile(role);
     await _remoteDataSource.deleteAuthAccount();
   }
 

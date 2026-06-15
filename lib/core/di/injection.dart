@@ -20,14 +20,19 @@ import '../../features/auth/domain/usecase/auth_usecase.dart';
 import '../../features/auth/presentation/cubits/auth_cubit.dart';
 import '../../features/profile/presentation/cubits/edit_profile_info_cubit.dart';
 import '../../features/profile/presentation/cubits/profile_cubit.dart';
+import '../../features/booking_nurse/data/datasources/book_nurse_remote_data_source.dart';
 import '../../features/booking_nurse/data/datasources/booking_remote_datasource.dart';
 import '../../features/booking_nurse/data/datasources/nurse_remote_datasource.dart';
+import '../../features/booking_nurse/data/repositories/book_nurse_repository_impl.dart';
 import '../../features/booking_nurse/data/repositories/booking_repository_impl.dart';
 import '../../features/booking_nurse/data/repositories/nurse_repository_impl.dart';
+import '../../features/booking_nurse/domain/repositories/book_nurse_repository.dart';
 import '../../features/booking_nurse/domain/repositories/booking_repository.dart';
 import '../../features/booking_nurse/domain/repositories/nurse_repository.dart';
+import '../../features/booking_nurse/domain/usecase/book_nurse_usecase.dart';
 import '../../features/booking_nurse/domain/usecase/booking_usecase.dart';
 import '../../features/booking_nurse/domain/usecase/get_available_nurses_usecase.dart';
+import '../../features/booking_nurse/presentation/cubits/book_nurse_cubit.dart';
 import '../../features/booking_nurse/presentation/cubits/nurses_cubit.dart';
 import '../../features/patient_dashboard/domain/usecase/dashboard_usecase.dart';
 import '../../features/patient_dashboard/presentation/cubits/dashboard_cubit.dart';
@@ -63,6 +68,9 @@ class DependencyInjection {
 
   // Network + booking/dashboard
   late final ApiClient _apiClient;
+  late final BookNurseRemoteDataSource _bookNurseRemoteDataSource;
+  late final BookNurseRepository _bookNurseRepository;
+  late final BookNurseUseCase _bookNurseUseCase;
   late final BookingRemoteDataSource _bookingRemoteDataSource;
   late final BookingRepository _bookingRepository;
   late final BookingUseCase _bookingUseCase;
@@ -116,6 +124,12 @@ class DependencyInjection {
 
     // Network layer (dio → Supabase REST) + booking/dashboard wiring
     _apiClient = DioApiClient(tokenProvider: const SupabaseAnonTokenProvider());
+    _bookNurseRemoteDataSource = BookNurseRemoteDataSourceImpl(
+      firestore: _firestore,
+      firebaseAuth: _firebaseAuth,
+    );
+    _bookNurseRepository = BookNurseRepositoryImpl(_bookNurseRemoteDataSource);
+    _bookNurseUseCase = BookNurseUseCase(_bookNurseRepository);
     _bookingRemoteDataSource = BookingRemoteDataSourceImpl(
       apiClient: _apiClient,
     );
@@ -190,6 +204,10 @@ class DependencyInjection {
 
   NursesCubit createNursesCubit() {
     return NursesCubit(_getAvailableNursesUseCase);
+  }
+
+  BookNurseCubit createBookNurseCubit() {
+    return BookNurseCubit(_bookNurseUseCase);
   }
 }
 

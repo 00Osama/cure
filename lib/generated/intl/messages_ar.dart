@@ -52,6 +52,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لدي حساب بالفعل"),
         "alreadyHaveAccountSubtitle": MessageLookupByLibrary.simpleMessage(
             "سجل الدخول إلى حسابك للوصول السريع إلى خدمات التمريض المنزلي أو لإدارة حسابك كممرض."),
+        "appointmentBookedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("تم حجز الموعد بنجاح"),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
         "availableSlots":
             MessageLookupByLibrary.simpleMessage("المواعيد المتاحة"),
@@ -94,6 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "تم إرسال طلبك. يمكنك متابعته من لوحة التحكم."),
         "bookingDateTimeRequiredError":
             MessageLookupByLibrary.simpleMessage("يرجى اختيار التاريخ والوقت"),
+        "bookingDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الحجز"),
         "bookingFailed":
             MessageLookupByLibrary.simpleMessage("تعذّر إتمام الحجز"),
         "bookingHistory": MessageLookupByLibrary.simpleMessage("السجل"),
@@ -261,6 +264,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أقل من سنة خبرة"),
         "light": MessageLookupByLibrary.simpleMessage("فاتح"),
         "lightMode": MessageLookupByLibrary.simpleMessage("الوضع الفاتح"),
+        "loading": MessageLookupByLibrary.simpleMessage("جارٍ التحميل"),
         "makeSure": MessageLookupByLibrary.simpleMessage(
             "تأكد من صحة البيانات وحاول مرة أخرى"),
         "maleLabel": MessageLookupByLibrary.simpleMessage("ذكر"),

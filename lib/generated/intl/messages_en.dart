@@ -53,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Already have an account"),
         "alreadyHaveAccountSubtitle": MessageLookupByLibrary.simpleMessage(
             "Sign in to your account for quick access to home nursing services or to manage your nurse account."),
+        "appointmentBookedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "appointment booked successfully"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "availableSlots":
             MessageLookupByLibrary.simpleMessage("Available slots"),
@@ -94,6 +96,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Your request has been sent. You can track it on your dashboard."),
         "bookingDateTimeRequiredError":
             MessageLookupByLibrary.simpleMessage("Please choose date and time"),
+        "bookingDetails":
+            MessageLookupByLibrary.simpleMessage("bookingDetails"),
         "bookingFailed": MessageLookupByLibrary.simpleMessage(
             "Could not complete the booking"),
         "bookingHistory": MessageLookupByLibrary.simpleMessage("History"),
@@ -261,6 +265,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Less than 1 year of experience"),
         "light": MessageLookupByLibrary.simpleMessage("Light"),
         "lightMode": MessageLookupByLibrary.simpleMessage("Light Mode"),
+        "loading": MessageLookupByLibrary.simpleMessage("loading"),
         "makeSure": MessageLookupByLibrary.simpleMessage(
             "Make sure the data is correct and try again"),
         "maleLabel": MessageLookupByLibrary.simpleMessage("Male"),

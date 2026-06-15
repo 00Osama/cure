@@ -1,10 +1,16 @@
+import 'package:cure/core/di/injection.dart';
 import 'package:cure/core/theme_and_locals/app_colors.dart';
+import 'package:cure/core/widgets/loading_widget.dart';
 import 'package:cure/features/auth/presentation/widgets/button.dart';
 import 'package:cure/features/booking_nurse/domain/entities/available_nurse.dart';
+import 'package:cure/features/booking_nurse/domain/entities/nurse_booking.dart';
+import 'package:cure/features/booking_nurse/presentation/cubits/book_nurse_cubit.dart';
+import 'package:cure/features/booking_nurse/presentation/cubits/book_nurse_state.dart';
 import 'package:cure/features/booking_nurse/presentation/widgets/booking_step.dart';
 import 'package:cure/features/booking_nurse/presentation/widgets/service_category_card.dart';
 import 'package:cure/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BookAppointment extends StatefulWidget {
   const BookAppointment({super.key, required this.nurse});
@@ -51,29 +57,18 @@ class _BookAppointmentState extends State<BookAppointment> {
 
     if (!context.mounted || pickedDate == null) return;
 
-    // Show time picker after date is picked
-    final pickedTime = await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.fromDateTime(now),
-    );
-
-    if (pickedTime == null) return;
-
     // Combine date and time
     final selectedDateTime = DateTime(
       pickedDate!.year,
       pickedDate!.month,
       pickedDate!.day,
-      pickedTime.hour,
-      pickedTime.minute,
     );
 
     setState(() {
       _selectedDate = selectedDateTime;
-      // Format date & time nicely
+      // Format date nicely
       _dateTimeController.text =
-          "${selectedDateTime.day}/${selectedDateTime.month}/${selectedDateTime.year} "
-          "${pickedTime.format(context)}";
+          "${selectedDateTime.day}/${selectedDateTime.month}/${selectedDateTime.year} ";
     });
   }
 
@@ -84,6 +79,17 @@ class _BookAppointmentState extends State<BookAppointment> {
         SnackBar(
           content: Text(message, style: TextStyle(color: Colors.white)),
           backgroundColor: Colors.red,
+        ),
+      );
+  }
+
+  void _showSuccess(BuildContext context, String message) {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          content: Text(message, style: TextStyle(color: Colors.white)),
+          backgroundColor: Colors.green,
         ),
       );
   }
@@ -104,7 +110,14 @@ class _BookAppointmentState extends State<BookAppointment> {
       _showError(context, l10n.bookingDateTimeRequiredError);
       return;
     } else {
-      /// handle nurse booking here
+      final booking = NurseBooking(
+        serviceName: _selectedService!,
+        address: _addressController.text.trim(),
+        clinicalNotes: _clinicalNotesController.text.trim(),
+        dateTime: _selectedDate!,
+        nurse: widget.nurse,
+      );
+      context.read<BookNurseCubit>().bookNurse(booking);
     }
   }
 
@@ -221,121 +234,150 @@ class _BookAppointmentState extends State<BookAppointment> {
     ];
 
     final colors = AppColors.of(context);
-    return Scaffold(
-      backgroundColor: colors.gradientEnd,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          l10n.bookAppointment,
-          style: TextStyle(
-            color: colors.onSurface,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-      ),
-      body: ListView(
-        padding: const EdgeInsets.all(12.0),
-        children: [
-          BookingStep(stepNumber: '1', stepText: l10n.StepOneChooseService),
-          ...categories.map(
-            (category) => ServiceCategoryCard(
-              category: category,
-              selectedService: _selectedService,
-              onServiceSelected: (service) {
-                setState(() => _selectedService = service);
-              },
-            ),
-          ),
-          BookingStep(stepNumber: '2', stepText: l10n.StepTwoPatientDetails),
-          const SizedBox(height: 15),
-          Card(
-            elevation: 3,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  TextFormField(
-                    controller: _addressController,
-                    minLines: 2,
-                    maxLines: 3,
-                    textAlignVertical: TextAlignVertical.center,
-                    decoration: InputDecoration(
-                      labelText: l10n.addressLabel,
-                      hintText: l10n.addressHint,
-                      alignLabelWithHint: false,
-                      prefixIcon: const Icon(Icons.location_on_outlined),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    controller: _clinicalNotesController,
-                    minLines: 4,
-                    maxLines: 6,
-                    textAlignVertical: TextAlignVertical.center,
-                    decoration: InputDecoration(
-                      labelText: l10n.clinicalRemarks,
-                      hintText: l10n.remarksHint,
-                      alignLabelWithHint: false,
-                      prefixIcon: const Icon(
-                        Icons.medical_information_outlined,
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                    ),
-                  ),
-                ],
+    return BlocProvider(
+      create: (_) => di.createBookNurseCubit(),
+      child: BlocConsumer<BookNurseCubit, BookNurseState>(
+        listener: (context, state) {
+          if (state.status == BookNurseStatus.success) {
+            _showSuccess(context, S.of(context).appointmentBookedSuccessfully);
+            Navigator.pop(context);
+          } else if (state.status == BookNurseStatus.error) {
+            _showError(context, state.errorMessage ?? l10n.somethingWentWrong);
+          }
+        },
+        builder: (context, state) {
+          final isBooking = state.status == BookNurseStatus.loading;
+
+          return Scaffold(
+            backgroundColor: colors.gradientEnd,
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              centerTitle: true,
+              title: Text(
+                l10n.bookAppointment,
+                style: TextStyle(
+                  color: colors.onSurface,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 15),
-          BookingStep(
-            stepNumber: '3',
-            stepText: l10n.StepThreeChosseDateAndTime,
-          ),
-          const SizedBox(height: 15),
-          Card(
-            elevation: 3,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextFormField(
-                    controller: _dateTimeController,
-                    readOnly: true,
-                    decoration: InputDecoration(
-                      labelText: l10n.chooseDateTime,
-                      hintText: l10n.chooseDateTime,
-                      prefixIcon: const Icon(Icons.event_available_outlined),
-                      suffixIcon: const Icon(Icons.keyboard_arrow_down_rounded),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                    ),
-                    onTap: () => _pickDate(context),
+            body: ListView(
+              padding: const EdgeInsets.all(12.0),
+              children: [
+                BookingStep(
+                  stepNumber: '1',
+                  stepText: l10n.StepOneChooseService,
+                ),
+                ...categories.map(
+                  (category) => ServiceCategoryCard(
+                    category: category,
+                    selectedService: _selectedService,
+                    onServiceSelected: (service) {
+                      setState(() => _selectedService = service);
+                    },
                   ),
-                ],
-              ),
+                ),
+                BookingStep(
+                  stepNumber: '2',
+                  stepText: l10n.StepTwoPatientDetails,
+                ),
+                const SizedBox(height: 15),
+                Card(
+                  elevation: 3,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          controller: _addressController,
+                          minLines: 2,
+                          maxLines: 3,
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                            labelText: l10n.addressLabel,
+                            hintText: l10n.addressHint,
+                            alignLabelWithHint: false,
+                            prefixIcon: const Icon(Icons.location_on_outlined),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        TextFormField(
+                          controller: _clinicalNotesController,
+                          minLines: 4,
+                          maxLines: 6,
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                            labelText: l10n.clinicalRemarks,
+                            hintText: l10n.remarksHint,
+                            alignLabelWithHint: false,
+                            prefixIcon: const Icon(
+                              Icons.medical_information_outlined,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                BookingStep(
+                  stepNumber: '3',
+                  stepText: l10n.StepThreeChosseDateAndTime,
+                ),
+                const SizedBox(height: 15),
+                Card(
+                  elevation: 3,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextFormField(
+                          controller: _dateTimeController,
+                          readOnly: true,
+                          decoration: InputDecoration(
+                            labelText: l10n.chooseDateTime,
+                            hintText: l10n.chooseDateTime,
+                            prefixIcon: const Icon(
+                              Icons.event_available_outlined,
+                            ),
+                            suffixIcon: const Icon(
+                              Icons.keyboard_arrow_down_rounded,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                          ),
+                          onTap: () => _pickDate(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                isBooking
+                    ? LoadingWidget()
+                    : AppPrimaryButton(
+                        onPressed: () => _bookNow(context),
+                        title: l10n.bookNow,
+                      ),
+              ],
             ),
-          ),
-          const SizedBox(height: 20),
-          AppPrimaryButton(
-            onPressed: () => _bookNow(context),
-            title: l10n.bookNow,
-          ),
-        ],
+          );
+        },
       ),
     );
   }

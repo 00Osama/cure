@@ -1,7 +1,6 @@
 import '../../../../core/network/api_client.dart';
 import '../../../../core/utils/failures.dart';
 import '../../domain/entities/booking_status.dart';
-import '../models/availability_slot_model.dart';
 import '../models/booking_model.dart';
 import '../models/service_model.dart';
 
@@ -10,10 +9,6 @@ import '../models/service_model.dart';
 /// app stays backend-agnostic.
 abstract class BookingRemoteDataSource {
   Future<List<ServiceModel>> getServices();
-  Future<List<AvailabilitySlotModel>> getAvailability({
-    required String region,
-    required DateTime day,
-  });
   Future<BookingModel> createBooking(Map<String, dynamic> insertBody);
   Future<List<BookingModel>> getMyBookings(String patientId);
   Future<BookingModel> updateStatus({
@@ -37,31 +32,6 @@ class BookingRemoteDataSourceImpl implements BookingRemoteDataSource {
     );
     return rows
         .map((e) => ServiceModel.fromJson(e as Map<String, dynamic>))
-        .toList();
-  }
-
-  @override
-  Future<List<AvailabilitySlotModel>> getAvailability({
-    required String region,
-    required DateTime day,
-  }) async {
-    final start = DateTime(day.year, day.month, day.day).toUtc();
-    final end = start.add(const Duration(days: 1));
-    final rows = await _api.getList(
-      'nurse_availability',
-      query: {
-        'region': 'eq.$region',
-        'is_booked': 'eq.false',
-        // Repeated query key -> dio serializes as starts_at=gte.X&starts_at=lt.Y
-        'starts_at': [
-          'gte.${start.toIso8601String()}',
-          'lt.${end.toIso8601String()}',
-        ],
-        'order': 'starts_at.asc',
-      },
-    );
-    return rows
-        .map((e) => AvailabilitySlotModel.fromJson(e as Map<String, dynamic>))
         .toList();
   }
 
