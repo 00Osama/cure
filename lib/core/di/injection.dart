@@ -34,8 +34,18 @@ import '../../features/booking_nurse/domain/usecase/booking_usecase.dart';
 import '../../features/booking_nurse/domain/usecase/get_available_nurses_usecase.dart';
 import '../../features/booking_nurse/presentation/cubits/book_nurse_cubit.dart';
 import '../../features/booking_nurse/presentation/cubits/nurses_cubit.dart';
+import '../../features/nurse_dashboard/data/datasources/nurse_dashboard_remote_data_source.dart';
+import '../../features/nurse_dashboard/data/repositories/nurse_dashboard_repository_impl.dart';
+import '../../features/nurse_dashboard/domain/repositories/nurse_dashboard_repository.dart';
+import '../../features/nurse_dashboard/domain/usecase/nurse_dashboard_usecase.dart';
+import '../../features/nurse_dashboard/presentation/cubits/nurse_dashboard_cubit.dart';
+import '../../features/patient_dashboard/data/datasources/patient_dashboard_remote_data_source.dart';
+import '../../features/patient_dashboard/data/repositories/patient_dashboard_repository_impl.dart';
+import '../../features/patient_dashboard/domain/repositories/patient_dashboard_repository.dart';
+import '../../features/patient_dashboard/domain/usecase/patient_dashboard_usecase.dart';
 import '../../features/patient_dashboard/domain/usecase/dashboard_usecase.dart';
 import '../../features/patient_dashboard/presentation/cubits/dashboard_cubit.dart';
+import '../../features/patient_dashboard/presentation/cubits/patient_dashboard_cubit.dart';
 
 /// Simple dependency injection container
 ///
@@ -78,6 +88,12 @@ class DependencyInjection {
   late final NurseRepository _nurseRepository;
   late final GetAvailableNursesUseCase _getAvailableNursesUseCase;
   late final DashboardUseCase _dashboardUseCase;
+  late final PatientDashboardRemoteDataSource _patientDashboardRemoteDataSource;
+  late final PatientDashboardRepository _patientDashboardRepository;
+  late final PatientDashboardUseCase _patientDashboardUseCase;
+  late final NurseDashboardRemoteDataSource _nurseDashboardRemoteDataSource;
+  late final NurseDashboardRepository _nurseDashboardRepository;
+  late final NurseDashboardUseCase _nurseDashboardUseCase;
   late final NotificationService _notificationService;
 
   /// Initialize all dependencies
@@ -141,6 +157,24 @@ class DependencyInjection {
     _nurseRepository = NurseRepositoryImpl(_nurseRemoteDataSource);
     _getAvailableNursesUseCase = GetAvailableNursesUseCase(_nurseRepository);
     _dashboardUseCase = DashboardUseCase(bookingRepository: _bookingRepository);
+    _patientDashboardRemoteDataSource = PatientDashboardRemoteDataSourceImpl(
+      firestore: _firestore,
+      firebaseAuth: _firebaseAuth,
+    );
+    _patientDashboardRepository = PatientDashboardRepositoryImpl(
+      _patientDashboardRemoteDataSource,
+    );
+    _patientDashboardUseCase = PatientDashboardUseCase(
+      _patientDashboardRepository,
+    );
+    _nurseDashboardRemoteDataSource = NurseDashboardRemoteDataSourceImpl(
+      firestore: _firestore,
+      firebaseAuth: _firebaseAuth,
+    );
+    _nurseDashboardRepository = NurseDashboardRepositoryImpl(
+      _nurseDashboardRemoteDataSource,
+    );
+    _nurseDashboardUseCase = NurseDashboardUseCase(_nurseDashboardRepository);
     _notificationService = NotificationService();
   }
 
@@ -210,6 +244,14 @@ class DependencyInjection {
 
   BookNurseCubit createBookNurseCubit() {
     return BookNurseCubit(_bookNurseUseCase);
+  }
+
+  PatientDashboardCubit createPatientDashboardCubit() {
+    return PatientDashboardCubit(_patientDashboardUseCase);
+  }
+
+  NurseDashboardCubit createNurseDashboardCubit() {
+    return NurseDashboardCubit(_nurseDashboardUseCase);
   }
 }
 

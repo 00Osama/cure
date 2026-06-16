@@ -2990,10 +2990,10 @@ class S {
     );
   }
 
-  /// `bookingDetails`
+  /// `Booking Details`
   String get bookingDetails {
     return Intl.message(
-      'bookingDetails',
+      'Booking Details',
       name: 'bookingDetails',
       desc: '',
       args: [],
@@ -3015,6 +3015,86 @@ class S {
     return Intl.message(
       'loading',
       name: 'loading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Active`
+  String get active {
+    return Intl.message(
+      'Active',
+      name: 'active',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completed`
+  String get completed {
+    return Intl.message(
+      'Completed',
+      name: 'completed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No completed bookings yet.`
+  String get noActiveBookings {
+    return Intl.message(
+      'No completed bookings yet.',
+      name: 'noActiveBookings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try Again`
+  String get tryAgain {
+    return Intl.message(
+      'Try Again',
+      name: 'tryAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not load bookings.`
+  String get couldNotLoadBookings {
+    return Intl.message(
+      'Could not load bookings.',
+      name: 'couldNotLoadBookings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Close Booking`
+  String get closeBooking {
+    return Intl.message(
+      'Close Booking',
+      name: 'closeBooking',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Service Name`
+  String get serviceName {
+    return Intl.message(
+      'Service Name',
+      name: 'serviceName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nurse Data`
+  String get NurseDate {
+    return Intl.message(
+      'Nurse Data',
+      name: 'NurseDate',
       desc: '',
       args: [],
     );

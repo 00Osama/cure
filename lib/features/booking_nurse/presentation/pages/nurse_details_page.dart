@@ -1,22 +1,31 @@
 import 'package:cure/core/theme_and_locals/app_colors.dart';
-import 'package:cure/features/auth/presentation/widgets/button.dart';
+import 'package:cure/features/auth/domain/entities/nurse.dart';
+import 'package:cure/features/auth/domain/entities/user.dart';
+import 'package:cure/core/widgets/app_primary_button.dart';
 import 'package:cure/features/booking_nurse/presentation/pages/book_appointment.dart';
 import 'package:cure/features/booking_nurse/presentation/widgets/nurse_details_tile.dart';
 import 'package:cure/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import '../../domain/entities/available_nurse.dart';
 import '../widgets/nurse_avatar.dart';
 
 class NurseDetailsPage extends StatelessWidget {
-  const NurseDetailsPage({super.key, required this.nurse, required this.role});
+  const NurseDetailsPage({
+    super.key,
+    required this.nurse,
+    required this.role,
+    required this.patient,
+  });
 
-  final AvailableNurse nurse;
   final String role;
+  final Nurse nurse;
+  final User patient;
 
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
-    String formatExperience(String years) {
+    String? formatExperience(String? years) {
+      if (years == null || years.isEmpty) return null;
+
       switch (years) {
         case 'lessThanOne':
           return S.of(context).lessThanOneExperience;
@@ -31,7 +40,9 @@ class NurseDetailsPage extends StatelessWidget {
       }
     }
 
-    String formatRegion(String region) {
+    String? formatRegion(String? region) {
+      if (region == null || region.isEmpty) return null;
+
       switch (region) {
         case 'tamiya':
           return S.of(context).regionTamiya;
@@ -43,6 +54,8 @@ class NurseDetailsPage extends StatelessWidget {
           return S.of(context).regionFayoumCity;
         case 'other':
           return S.of(context).regionOther;
+        case 'snors':
+          return S.of(context).regionSnores;
         default:
           return region;
       }
@@ -100,11 +113,11 @@ class NurseDetailsPage extends StatelessWidget {
           ),
           NurseDetailsTile(
             label: S.of(context).region,
-            value: formatRegion(nurse.region!),
+            value: formatRegion(nurse.region),
           ),
           NurseDetailsTile(
             label: S.of(context).yearsOfExperience,
-            value: formatExperience(nurse.yearOfExperience!),
+            value: formatExperience(nurse.yearOfExperience),
           ),
           NurseDetailsTile(
             label: S.of(context).skillSet,
@@ -117,7 +130,8 @@ class NurseDetailsPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BookAppointment(nurse: nurse),
+                        builder: (context) =>
+                            BookAppointment(nurse: nurse, patient: patient),
                       ),
                     );
                   },

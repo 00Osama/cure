@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../core/utils/result.dart';
 import '../../domain/entities/nurse_booking.dart';
 import '../../domain/usecase/book_nurse_usecase.dart';

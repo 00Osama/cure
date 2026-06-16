@@ -310,7 +310,15 @@
   "StepThreeChosseDateAndTime": "اختر تاريخ ووقت الحجز", 
   "bookingDetails": "تفاصيل الحجز",
   "appointmentBookedSuccessfully": "تم حجز الموعد بنجاح", 
-  "loading": "جارٍ التحميل"
+  "loading": "جارٍ التحميل", 
+  "active": "نشطة",
+"completed": "مكتملة",
+"noActiveBookings": "لا توجد حجوزات مكتملة حتى الآن.",
+"tryAgain": "إعادة المحاولة",
+"couldNotLoadBookings": "تعذر تحميل الحجوزات.",
+"closeBooking": "إغلاق الحجز",
+"serviceName": "اسم الخدمة",
+"NurseDate": "بيانات الممرض"
 
 
 

@@ -1,9 +1,9 @@
 /// Base class for all users
-abstract class User {
+class User {
   final String id;
   final String name;
   final String email;
-  final String? phoneNumber;
+  final String phoneNumber;
   final DateTime dateOfBirth;
   final String gender;
   String profileImageUrl;
@@ -17,4 +17,14 @@ abstract class User {
     required this.gender,
     required this.profileImageUrl,
   });
+
+  int get age {
+    final now = DateTime.now();
+    int age = now.year - dateOfBirth.year;
+    if (now.month < dateOfBirth.month ||
+        (now.month == dateOfBirth.month && now.day < dateOfBirth.day)) {
+      age--;
+    }
+    return age;
+  }
 }

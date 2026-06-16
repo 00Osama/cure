@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "NurseDate": MessageLookupByLibrary.simpleMessage("بيانات الممرض"),
         "NurseProfilePhotoNote": MessageLookupByLibrary.simpleMessage(
             "صورة الملف الشخصي تساعد المرضى على التعرف عليك بسهولة."),
         "PatientProfilePhotoNote": MessageLookupByLibrary.simpleMessage(
@@ -41,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountDetailsHeaderTitle":
             MessageLookupByLibrary.simpleMessage("تفاصيل الحساب"),
         "accountSecurity": MessageLookupByLibrary.simpleMessage("أمان الحساب"),
+        "active": MessageLookupByLibrary.simpleMessage("نشطة"),
         "activeLabel": MessageLookupByLibrary.simpleMessage("نشط"),
         "activeRequests":
             MessageLookupByLibrary.simpleMessage("الطلبات النشطة"),
@@ -148,12 +150,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تسجيل قراءات يومية وتحليلها"),
         "clinicalRemarks":
             MessageLookupByLibrary.simpleMessage("ملاحظات سريرية"),
+        "closeBooking": MessageLookupByLibrary.simpleMessage("إغلاق الحجز"),
+        "completed": MessageLookupByLibrary.simpleMessage("مكتملة"),
         "completedLabel": MessageLookupByLibrary.simpleMessage("مكتمل"),
         "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "confirmBooking": MessageLookupByLibrary.simpleMessage("تأكيد الحجز"),
         "confirmPasswordLabel":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "continueLabel": MessageLookupByLibrary.simpleMessage("متابعة"),
+        "couldNotLoadBookings":
+            MessageLookupByLibrary.simpleMessage("تعذر تحميل الحجوزات."),
         "customizeThemeAndLanguage":
             MessageLookupByLibrary.simpleMessage("تخصيص السمة واللغة"),
         "dark": MessageLookupByLibrary.simpleMessage("داكن"),
@@ -271,6 +277,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "moreThanFiveExperience":
             MessageLookupByLibrary.simpleMessage("أكثر من 5 سنوات خبرة"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
+        "noActiveBookings": MessageLookupByLibrary.simpleMessage(
+            "لا توجد حجوزات مكتملة حتى الآن."),
         "noApp": MessageLookupByLibrary.simpleMessage(
             "100% لا يوجد تطبيق في الفيوم"),
         "noBookings":
@@ -409,6 +417,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "اختر ما إذا كنت مريضاً تحتاج رعاية أو ممرضاً يريد عمل منظم"),
         "selectRegion": MessageLookupByLibrary.simpleMessage("اختر المنطقة"),
         "selectService": MessageLookupByLibrary.simpleMessage("اختر خدمة"),
+        "serviceName": MessageLookupByLibrary.simpleMessage("اسم الخدمة"),
         "servicesIntro": MessageLookupByLibrary.simpleMessage(
             "نوفر مجموعة واسعة من خدمات التمريض المنزلي المخصصة لتناسب جميع الحالات"),
         "signInButtonLabel":
@@ -493,6 +502,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "threeToFiveExperience":
             MessageLookupByLibrary.simpleMessage("من 3 إلى 5 سنوات خبرة"),
         "totalBookings": MessageLookupByLibrary.simpleMessage("الإجمالي"),
+        "tryAgain": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
         "unfairPrice":
             MessageLookupByLibrary.simpleMessage("68% دفعوا أسعاراً غير عادلة"),
         "unsafeFeel":

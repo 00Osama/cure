@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:cure/core/theme_and_locals/app_colors.dart';
-import 'package:cure/features/auth/presentation/widgets/button.dart';
+import 'package:cure/core/widgets/app_primary_button.dart';
 import 'package:cure/features/auth/presentation/widgets/slide_header.dart';
 import 'package:cure/generated/l10n.dart';
 import 'package:cure/core/utils/media_permission.dart';

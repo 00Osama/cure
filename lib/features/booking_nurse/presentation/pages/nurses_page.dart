@@ -1,6 +1,7 @@
 import 'package:cure/core/di/injection.dart';
 import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:cure/core/widgets/loading_widget.dart';
+import 'package:cure/features/auth/domain/entities/user.dart';
 import 'package:cure/features/booking_nurse/presentation/cubits/nurses_cubit.dart';
 import 'package:cure/features/booking_nurse/presentation/cubits/nurses_state.dart';
 import 'package:cure/generated/l10n.dart';
@@ -11,9 +12,10 @@ import '../widgets/nurse_card.dart';
 import 'nurse_details_page.dart';
 
 class NursesPage extends StatefulWidget {
-  const NursesPage({super.key, required this.role});
+  const NursesPage({super.key, required this.role, this.patient});
 
   final String role;
+  final User? patient;
 
   @override
   State<NursesPage> createState() => _NursesPageState();
@@ -112,8 +114,21 @@ class _NursesPageState extends State<NursesPage> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (_) =>
-                              NurseDetailsPage(nurse: nurse, role: widget.role),
+                          builder: (_) => NurseDetailsPage(
+                            nurse: nurse,
+                            role: widget.role,
+                            patient:
+                                widget.patient ??
+                                User(
+                                  dateOfBirth: DateTime(0),
+                                  email: '',
+                                  gender: '',
+                                  id: '',
+                                  name: '',
+                                  phoneNumber: '',
+                                  profileImageUrl: '',
+                                ),
+                          ),
                         ),
                       );
                     },

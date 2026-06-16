@@ -20,12 +20,24 @@ class BookNurseRepositoryImpl implements BookNurseRepository {
 
   Map<String, dynamic> _toJson(NurseBooking booking) {
     final nurse = booking.nurse;
+    final patient = booking.patient;
 
     return {
-      'serviceName': booking.serviceName,
-      'address': booking.address,
-      'clinicalNotes': booking.clinicalNotes,
-      'dateTime': booking.dateTime,
+      // booking data
+      'service_name': booking.serviceName,
+      'booking_address': booking.bookingAddress,
+      'booking_dateTime': booking.bookingDateTime,
+      // patient data
+      'patient_id': patient.id,
+      'patient_email': patient.email,
+      'patient_clinicalNotes': booking.bookingClinicalNotes,
+      'patient_age': patient.age,
+      'patient_name': patient.name,
+      'patient_phone': patient.phoneNumber,
+      'patient_gender': patient.gender,
+      'patient_profile_image_url': patient.profileImageUrl,
+      // nurse data
+      'nurse_id': nurse.id,
       'nurse_name': nurse.name,
       'nurse_email': nurse.email,
       'nurse_phone_number': nurse.phoneNumber,

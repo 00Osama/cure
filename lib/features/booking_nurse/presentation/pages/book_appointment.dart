@@ -1,8 +1,9 @@
 import 'package:cure/core/di/injection.dart';
 import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:cure/core/widgets/loading_widget.dart';
-import 'package:cure/features/auth/presentation/widgets/button.dart';
-import 'package:cure/features/booking_nurse/domain/entities/available_nurse.dart';
+import 'package:cure/features/auth/domain/entities/nurse.dart';
+import 'package:cure/features/auth/domain/entities/user.dart';
+import 'package:cure/core/widgets/app_primary_button.dart';
 import 'package:cure/features/booking_nurse/domain/entities/nurse_booking.dart';
 import 'package:cure/features/booking_nurse/presentation/cubits/book_nurse_cubit.dart';
 import 'package:cure/features/booking_nurse/presentation/cubits/book_nurse_state.dart';
@@ -13,9 +14,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BookAppointment extends StatefulWidget {
-  const BookAppointment({super.key, required this.nurse});
+  const BookAppointment({
+    super.key,
+    required this.nurse,
+    required this.patient,
+  });
 
-  final AvailableNurse nurse;
+  final Nurse nurse;
+  final User patient;
 
   @override
   State<BookAppointment> createState() => _BookAppointmentState();
@@ -94,7 +100,7 @@ class _BookAppointmentState extends State<BookAppointment> {
       );
   }
 
-  void _bookNow(BuildContext context) {
+  void _bookNow(BuildContext context) async {
     final l10n = S.of(context);
 
     if (_selectedService == null) {
@@ -112,9 +118,10 @@ class _BookAppointmentState extends State<BookAppointment> {
     } else {
       final booking = NurseBooking(
         serviceName: _selectedService!,
-        address: _addressController.text.trim(),
-        clinicalNotes: _clinicalNotesController.text.trim(),
-        dateTime: _selectedDate!,
+        bookingAddress: _addressController.text.trim(),
+        bookingClinicalNotes: _clinicalNotesController.text.trim(),
+        bookingDateTime: _selectedDate!,
+        patient: widget.patient,
         nurse: widget.nurse,
       );
       context.read<BookNurseCubit>().bookNurse(booking);

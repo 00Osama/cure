@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import '../../domain/entities/available_nurse.dart';
+import 'package:cure/features/auth/domain/entities/nurse.dart';
 
 enum NursesStatus { initial, loading, loaded, loadingMore, error }
 
@@ -14,7 +13,7 @@ class NursesState {
   });
 
   final NursesStatus status;
-  final List<AvailableNurse> nurses;
+  final List<Nurse> nurses;
   final DocumentSnapshot<Map<String, dynamic>>? lastDocument;
   final bool hasMore;
   final String? errorMessage;
@@ -23,7 +22,7 @@ class NursesState {
 
   NursesState copyWith({
     NursesStatus? status,
-    List<AvailableNurse>? nurses,
+    List<Nurse>? nurses,
     DocumentSnapshot<Map<String, dynamic>>? lastDocument,
     bool? hasMore,
     String? errorMessage,

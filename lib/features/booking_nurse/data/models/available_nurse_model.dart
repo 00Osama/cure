@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import '../../domain/entities/available_nurse.dart';
+import 'package:cure/features/auth/domain/entities/nurse.dart';
 
 class AvailableNurseModel {
   const AvailableNurseModel({
@@ -42,12 +41,12 @@ class AvailableNurseModel {
     );
   }
 
-  AvailableNurse toEntity() {
-    return AvailableNurse(
+  Nurse toEntity() {
+    return Nurse(
       id: id,
       name: name,
       email: email,
-      phoneNumber: phoneNumber,
+      phoneNumber: phoneNumber!,
       dateOfBirth: dateOfBirth,
       gender: gender,
       profileImageUrl: profileImageUrl,

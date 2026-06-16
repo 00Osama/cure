@@ -307,9 +307,17 @@
   "StepOneChooseService": "Choose service you want",
   "StepTwoPatientDetails": "Type your address and clinical notes",
   "StepThreeChosseDateAndTime": "Choose date and time of your booking",
-  "bookingDetails": "bookingDetails",
+  "bookingDetails": "Booking Details",
   "appointmentBookedSuccessfully": "appointment booked successfully", 
-  "loading": "loading"
+  "loading": "loading", 
+  "active":"Active", 
+  "completed": "Completed", 
+  "noActiveBookings": "No completed bookings yet.", 
+  "tryAgain": "Try Again", 
+  "couldNotLoadBookings": "Could not load bookings.",
+  "closeBooking": "Close Booking", 
+  "serviceName": "Service Name",
+  "NurseDate": "Nurse Data"
 
 }
 

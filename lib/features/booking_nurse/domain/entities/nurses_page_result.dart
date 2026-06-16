@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'available_nurse.dart';
+import 'package:cure/features/auth/domain/entities/nurse.dart';
 
 class NursesPageResult {
   const NursesPageResult({
@@ -9,7 +8,7 @@ class NursesPageResult {
     required this.hasMore,
   });
 
-  final List<AvailableNurse> nurses;
+  final List<Nurse> nurses;
   final DocumentSnapshot<Map<String, dynamic>>? lastDocument;
   final bool hasMore;
 }

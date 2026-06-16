@@ -26,6 +26,7 @@ class NurseDetailsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
+    final hasPhoneNumber = phoneNumber?.isNotEmpty == true;
 
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
@@ -52,7 +53,7 @@ class NurseDetailsTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      value!,
+                      value?.isNotEmpty == true ? value! : 'Not added',
                       style: TextStyle(
                         color: colors.onSurface,
                         fontSize: 15,
@@ -62,9 +63,11 @@ class NurseDetailsTile extends StatelessWidget {
                   ],
                 ),
                 IconButton(
-                  onPressed: () {
-                    makePhoneCall(phoneNumber!);
-                  },
+                  onPressed: hasPhoneNumber
+                      ? () {
+                          makePhoneCall(phoneNumber!);
+                        }
+                      : null,
                   icon: Icon(
                     Icons.phone_rounded,
                     color: colors.onSurfaceSubtle,

@@ -1,14 +1,13 @@
 import 'package:cure/core/theme_and_locals/app_colors.dart';
+import 'package:cure/features/auth/domain/entities/nurse.dart';
 import 'package:cure/generated/l10n.dart';
 import 'package:flutter/material.dart';
-
-import '../../domain/entities/available_nurse.dart';
 import 'nurse_avatar.dart';
 
 class NurseCard extends StatelessWidget {
   const NurseCard({super.key, required this.nurse, required this.onTap});
 
-  final AvailableNurse nurse;
+  final Nurse nurse;
   final VoidCallback onTap;
 
   @override

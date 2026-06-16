@@ -1,6 +1,6 @@
 import 'package:cure/core/theme_and_locals/app_colors.dart';
 import 'package:cure/features/auth/presentation/widgets/bottom_nav_bar.dart';
-import 'package:cure/features/auth/presentation/widgets/button.dart';
+import 'package:cure/core/widgets/app_primary_button.dart';
 import 'package:cure/features/auth/presentation/widgets/text_field.dart';
 import 'package:cure/generated/l10n.dart';
 import 'package:cure/core/di/injection.dart';

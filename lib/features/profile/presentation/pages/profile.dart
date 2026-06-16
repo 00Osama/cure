@@ -257,6 +257,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 .errorMessage;
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
+                                backgroundColor: Colors.red,
+                                behavior: SnackBarBehavior.floating,
                                 content: Text(
                                   error != null &&
                                           error.contains(
@@ -264,6 +266,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           )
                                       ? l10n.reauthRequiredToDelete
                                       : l10n.errorUnexpected,
+                                  style: TextStyle(color: Colors.white),
                                 ),
                               ),
                             );

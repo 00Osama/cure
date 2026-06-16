@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "NurseDate": MessageLookupByLibrary.simpleMessage("Nurse Data"),
         "NurseProfilePhotoNote": MessageLookupByLibrary.simpleMessage(
             "Profile photo helps patients recognize you easily."),
         "PatientProfilePhotoNote": MessageLookupByLibrary.simpleMessage(
@@ -42,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Account Details"),
         "accountSecurity":
             MessageLookupByLibrary.simpleMessage("Account Security"),
+        "active": MessageLookupByLibrary.simpleMessage("Active"),
         "activeLabel": MessageLookupByLibrary.simpleMessage("Active"),
         "activeRequests":
             MessageLookupByLibrary.simpleMessage("Active requests"),
@@ -97,7 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "bookingDateTimeRequiredError":
             MessageLookupByLibrary.simpleMessage("Please choose date and time"),
         "bookingDetails":
-            MessageLookupByLibrary.simpleMessage("bookingDetails"),
+            MessageLookupByLibrary.simpleMessage("Booking Details"),
         "bookingFailed": MessageLookupByLibrary.simpleMessage(
             "Could not complete the booking"),
         "bookingHistory": MessageLookupByLibrary.simpleMessage("History"),
@@ -149,6 +151,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Record and analyze daily readings"),
         "clinicalRemarks":
             MessageLookupByLibrary.simpleMessage("Clinical remarks"),
+        "closeBooking": MessageLookupByLibrary.simpleMessage("Close Booking"),
+        "completed": MessageLookupByLibrary.simpleMessage("Completed"),
         "completedLabel": MessageLookupByLibrary.simpleMessage("Completed"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "confirmBooking":
@@ -156,6 +160,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmPasswordLabel":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "continueLabel": MessageLookupByLibrary.simpleMessage("Continue"),
+        "couldNotLoadBookings":
+            MessageLookupByLibrary.simpleMessage("Could not load bookings."),
         "customizeThemeAndLanguage": MessageLookupByLibrary.simpleMessage(
             "Customize Theme and Language"),
         "dark": MessageLookupByLibrary.simpleMessage("Dark"),
@@ -272,6 +278,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "moreThanFiveExperience":
             MessageLookupByLibrary.simpleMessage("5+ years of experience"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "noActiveBookings":
+            MessageLookupByLibrary.simpleMessage("No completed bookings yet."),
         "noApp":
             MessageLookupByLibrary.simpleMessage("100% — No app in Fayoum"),
         "noBookings": MessageLookupByLibrary.simpleMessage("No bookings yet"),
@@ -415,6 +423,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectRegion": MessageLookupByLibrary.simpleMessage("Select region"),
         "selectService":
             MessageLookupByLibrary.simpleMessage("Select a service"),
+        "serviceName": MessageLookupByLibrary.simpleMessage("Service Name"),
         "servicesIntro": MessageLookupByLibrary.simpleMessage(
             "We provide a wide range of home nursing services tailored to all cases"),
         "signInButtonLabel": MessageLookupByLibrary.simpleMessage("Sign In"),
@@ -498,6 +507,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "threeToFiveExperience":
             MessageLookupByLibrary.simpleMessage("3–5 years of experience"),
         "totalBookings": MessageLookupByLibrary.simpleMessage("Total"),
+        "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),
         "unfairPrice":
             MessageLookupByLibrary.simpleMessage("68% paid unfair prices"),
         "unsafeFeel": MessageLookupByLibrary.simpleMessage("81% felt unsafe"),

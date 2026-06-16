@@ -1,4 +1,5 @@
 import 'package:cure/features/auth/domain/entities/nurse.dart';
+import 'package:cure/features/auth/domain/entities/user.dart';
 import 'package:cure/features/booking_nurse/presentation/pages/nurses_page.dart';
 import 'package:cure/features/nurse_dashboard/presentation/pages/nurse_dashboard_page.dart';
 import 'package:cure/features/patient_dashboard/presentation/pages/patient_dashboard_page.dart';
@@ -24,6 +25,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   bool _roleLoaded = false;
   bool _isNurse = false;
   List<Widget> _screens = const [];
+  User? user;
 
   @override
   void initState() {
@@ -32,7 +34,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   }
 
   Future<void> _loadRole() async {
-    final user = await di.authUseCase.getCurrentUser();
+    user = await di.authUseCase.getCurrentUser();
     if (!mounted) return;
     setState(() {
       _isNurse = user is Nurse;
@@ -47,14 +49,17 @@ class _BottomNavBarState extends State<BottomNavBar> {
     if (_isNurse) {
       return [
         const NursesPage(role: 'nurse'),
-        const NurseDashboardPage(),
+        BlocProvider(
+          create: (_) => di.createNurseDashboardCubit()..load(),
+          child: const NurseDashboardPage(),
+        ),
         const ProfilePage(role: 'nurse'),
       ];
     }
     return [
-      const NursesPage(role: 'patient'),
+      NursesPage(role: 'patient', patient: user),
       BlocProvider(
-        create: (_) => di.createDashboardCubit()..load(),
+        create: (_) => di.createPatientDashboardCubit()..load(),
         child: const PatientDashboardPage(),
       ),
       const ProfilePage(role: 'patient'),

@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:cure/features/profile/presentation/cubits/edit_profile_info_cubit.dart';
 import 'package:cure/features/profile/presentation/cubits/edit_profile_info_state.dart';
 import 'package:flutter/material.dart';
-import 'package:cure/features/auth/presentation/widgets/button.dart';
+import 'package:cure/core/widgets/app_primary_button.dart';
 import 'package:cure/features/auth/presentation/widgets/text_field.dart';
 import 'package:cure/generated/l10n.dart';
 import 'package:cure/core/di/injection.dart';
