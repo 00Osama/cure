@@ -53,21 +53,7 @@ firebase_messaging → Push notifications<br>
 supabase_flutter → Profile image storage<br>
 intl → Internationalization and localization (English/Arabic)
 
----
 
-## Push notifications (FCM)
-
-`lib/core/notifications/notification_service.dart` handles permission, the FCM
-token (stored on the user's Firestore profile), foreground messages, and local
-notifications. Booking‑status changes are surfaced two ways:
-
-1. **Implemented:** poll‑based — the dashboard raises a local notification when a
-   booking's status changes between refreshes.
-2. **Production path (documented):** a Supabase DB webhook / Edge Function (or
-   Firebase Cloud Function) on `bookings` UPDATE that pushes via FCM to the
-   stored token.
-
----
 
 ## Backend 
 
