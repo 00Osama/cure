@@ -22,7 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "NurseDate": MessageLookupByLibrary.simpleMessage("بيانات الممرض"),
+        "NurseData": MessageLookupByLibrary.simpleMessage("بيانات الممرض"),
         "NurseProfilePhotoNote": MessageLookupByLibrary.simpleMessage(
             "صورة الملف الشخصي تساعد المرضى على التعرف عليك بسهولة."),
         "PatientProfilePhotoNote": MessageLookupByLibrary.simpleMessage(
@@ -96,6 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم تأكيد الحجز"),
         "bookingConfirmedSubtitle": MessageLookupByLibrary.simpleMessage(
             "تم إرسال طلبك. يمكنك متابعته من لوحة التحكم."),
+        "bookingData": MessageLookupByLibrary.simpleMessage("بيانات الحجز"),
         "bookingDateTimeRequiredError":
             MessageLookupByLibrary.simpleMessage("يرجى اختيار التاريخ والوقت"),
         "bookingDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الحجز"),
@@ -171,6 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
         "deleteAccountDialogMessage": MessageLookupByLibrary.simpleMessage(
             "هل أنت متأكد أنك تريد حذف حسابك؟ هذا الإجراء لا يمكن التراجع عنه."),
+        "deletePhoto": MessageLookupByLibrary.simpleMessage("حذف الصورة"),
         "done": MessageLookupByLibrary.simpleMessage("تم"),
         "editProfile":
             MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
@@ -278,11 +280,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أكثر من 5 سنوات خبرة"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "noActiveBookings": MessageLookupByLibrary.simpleMessage(
-            "لا توجد حجوزات مكتملة حتى الآن."),
+            "لا توجد حجوزات نشطة حتى الآن."),
         "noApp": MessageLookupByLibrary.simpleMessage(
             "100% لا يوجد تطبيق في الفيوم"),
         "noBookings":
             MessageLookupByLibrary.simpleMessage("لا توجد حجوزات بعد"),
+        "noCompletedBookings": MessageLookupByLibrary.simpleMessage(
+            "لا توجد حجوزات مكتملة حتى الآن."),
         "noIncomingRequests":
             MessageLookupByLibrary.simpleMessage("لا توجد طلبات واردة"),
         "noSlots": MessageLookupByLibrary.simpleMessage(
@@ -313,6 +317,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "patientButton": MessageLookupByLibrary.simpleMessage("سجل كمريض"),
         "patientButtonSubtitle": MessageLookupByLibrary.simpleMessage(
             "احصل على رعاية منزلية سريعة وآمنة من خلال شبكة الممرضين المعتمدين لدينا في أقل من 15 دقيقة."),
+        "patientData": MessageLookupByLibrary.simpleMessage("بيانات المريض"),
         "patientSignupSubtitle": MessageLookupByLibrary.simpleMessage(
             "سجّل للوصول إلى خدمات التمريض المنزلي"),
         "patientSignupSuccess":
@@ -417,7 +422,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "اختر ما إذا كنت مريضاً تحتاج رعاية أو ممرضاً يريد عمل منظم"),
         "selectRegion": MessageLookupByLibrary.simpleMessage("اختر المنطقة"),
         "selectService": MessageLookupByLibrary.simpleMessage("اختر خدمة"),
-        "serviceName": MessageLookupByLibrary.simpleMessage("اسم الخدمة"),
         "servicesIntro": MessageLookupByLibrary.simpleMessage(
             "نوفر مجموعة واسعة من خدمات التمريض المنزلي المخصصة لتناسب جميع الحالات"),
         "signInButtonLabel":

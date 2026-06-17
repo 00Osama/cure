@@ -121,7 +121,7 @@ class PatientDashboardPage extends StatelessWidget {
                   role: 'patient',
                   patientbookings: state.completedBookings,
                   nursebookings: [],
-                  emptyMessage: S().noActiveBookings,
+                  emptyMessage: S().noCompletedBookings,
                 ),
               ],
             );

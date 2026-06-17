@@ -312,12 +312,15 @@
   "loading": "loading", 
   "active":"Active", 
   "completed": "Completed", 
-  "noActiveBookings": "No completed bookings yet.", 
+  "noActiveBookings": "No Active bookings yet.", 
+  "noCompletedBookings": "No Completed bookings yet.", 
   "tryAgain": "Try Again", 
   "couldNotLoadBookings": "Could not load bookings.",
   "closeBooking": "Close Booking", 
-  "serviceName": "Service Name",
-  "NurseDate": "Nurse Data"
+  "bookingData": "Booking Data",
+  "NurseData": "Nurse Data", 
+  "patientData": "Patient Data", 
+  "deletePhoto": "Delete Photo"
 
 }
 

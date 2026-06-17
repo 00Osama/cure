@@ -313,12 +313,15 @@
   "loading": "جارٍ التحميل", 
   "active": "نشطة",
 "completed": "مكتملة",
-"noActiveBookings": "لا توجد حجوزات مكتملة حتى الآن.",
+"noActiveBookings": "لا توجد حجوزات نشطة حتى الآن.",
+"noCompletedBookings": "لا توجد حجوزات مكتملة حتى الآن.",
 "tryAgain": "إعادة المحاولة",
 "couldNotLoadBookings": "تعذر تحميل الحجوزات.",
 "closeBooking": "إغلاق الحجز",
-"serviceName": "اسم الخدمة",
-"NurseDate": "بيانات الممرض"
+"bookingData": "بيانات الحجز",
+"NurseData": "بيانات الممرض", 
+"patientData": "بيانات المريض", 
+"deletePhoto": "حذف الصورة"
 
 
 

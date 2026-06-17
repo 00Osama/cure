@@ -7,10 +7,9 @@ abstract class BookNurseRemoteDataSource {
 
 class BookNurseRemoteDataSourceImpl implements BookNurseRemoteDataSource {
   const BookNurseRemoteDataSourceImpl({
-    required FirebaseFirestore firestore,
-    required FirebaseAuth firebaseAuth,
-  }) : _firestore = firestore,
-       _firebaseAuth = firebaseAuth;
+    required this._firestore,
+    required this._firebaseAuth,
+  });
 
   final FirebaseFirestore _firestore;
   final FirebaseAuth _firebaseAuth;

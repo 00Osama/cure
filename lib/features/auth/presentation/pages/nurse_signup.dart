@@ -536,6 +536,15 @@ class _NurseSignupPageState extends State<NurseSignupPage>
               validator: _validateExperience,
             ),
             const SizedBox(height: 16),
+            MyTextField(
+              controller: _skillsController,
+              label: S.of(context).skillsSpecialties,
+              icon: Icons.medical_services_outlined,
+              maxLines: 3,
+              validator: _validateSkills,
+              textInputAction: TextInputAction.done,
+            ),
+            const SizedBox(height: 16),
             DropdownButtonFormField<String>(
               isExpanded: true,
               initialValue: _selectedRegion,
@@ -582,15 +591,6 @@ class _NurseSignupPageState extends State<NurseSignupPage>
                 });
               },
               validator: _validateRegion,
-            ),
-            const SizedBox(height: 16),
-            MyTextField(
-              controller: _skillsController,
-              label: S.of(context).skillsSpecialties,
-              icon: Icons.medical_services_outlined,
-              maxLines: 3,
-              validator: _validateSkills,
-              textInputAction: TextInputAction.done,
             ),
           ],
         ),

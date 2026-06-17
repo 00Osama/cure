@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:cure/core/theme_and_locals/app_colors.dart';
+import 'package:cure/core/utils/media_permission.dart';
 import 'package:cure/core/widgets/app_primary_button.dart';
 import 'package:cure/features/auth/presentation/widgets/slide_header.dart';
 import 'package:cure/generated/l10n.dart';
-import 'package:cure/core/utils/media_permission.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -46,20 +46,25 @@ class ProfilePhotoPicker extends StatelessWidget {
             child: Column(
               children: [
                 CircleAvatar(
-                  radius: 90,
+                  radius: 80,
                   backgroundColor: colors.iconBackground,
                   backgroundImage: _hasImage
                       ? FileImage(File(imagePath))
                       : null,
                   child: !_hasImage
-                      ? Icon(
-                          Icons.camera_alt_outlined,
-                          size: 56,
-                          color: colors.onSurfaceMuted,
+                      ? CircleAvatar(
+                          radius: 80,
+                          backgroundColor: colors.surfaceHigh,
+                          child: Icon(
+                            Icons.person_rounded,
+                            size: 76,
+                            color: colors.onSurfaceSubtle,
+                          ),
                         )
                       : null,
                 ),
                 const SizedBox(height: 13),
+
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.6,
                   child: AppPrimaryButton(
@@ -67,7 +72,9 @@ class ProfilePhotoPicker extends StatelessWidget {
                     onPressed: () async {
                       final permission =
                           await MediaPermission.requestGalleryAccess();
+
                       if (!context.mounted) return;
+
                       if (permission == MediaPermissionResult.denied) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -78,20 +85,39 @@ class ProfilePhotoPicker extends StatelessWidget {
                         );
                         return;
                       }
+
                       if (permission ==
                           MediaPermissionResult.permanentlyDenied) {
                         await MediaPermission.showOpenSettingsDialog(context);
                         return;
                       }
+
                       final pickedFile = await ImagePicker().pickImage(
                         source: ImageSource.gallery,
                       );
+
                       if (pickedFile != null) {
                         onImagePicked(pickedFile.path);
                       }
                     },
                   ),
                 ),
+
+                if (_hasImage) ...[
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.6,
+                    child: OutlinedButton.icon(
+                      onPressed: () => onImagePicked('default'),
+                      icon: const Icon(Icons.delete_outline),
+                      label: Text(S().deletePhoto),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: Colors.red,
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                      ),
+                    ),
+                  ),
+                ],
               ],
             ),
           ),

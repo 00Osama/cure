@@ -3040,11 +3040,21 @@ class S {
     );
   }
 
-  /// `No completed bookings yet.`
+  /// `No Active bookings yet.`
   String get noActiveBookings {
     return Intl.message(
-      'No completed bookings yet.',
+      'No Active bookings yet.',
       name: 'noActiveBookings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Completed bookings yet.`
+  String get noCompletedBookings {
+    return Intl.message(
+      'No Completed bookings yet.',
+      name: 'noCompletedBookings',
       desc: '',
       args: [],
     );
@@ -3080,21 +3090,41 @@ class S {
     );
   }
 
-  /// `Service Name`
-  String get serviceName {
+  /// `Booking Data`
+  String get bookingData {
     return Intl.message(
-      'Service Name',
-      name: 'serviceName',
+      'Booking Data',
+      name: 'bookingData',
       desc: '',
       args: [],
     );
   }
 
   /// `Nurse Data`
-  String get NurseDate {
+  String get NurseData {
     return Intl.message(
       'Nurse Data',
-      name: 'NurseDate',
+      name: 'NurseData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Patient Data`
+  String get patientData {
+    return Intl.message(
+      'Patient Data',
+      name: 'patientData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Photo`
+  String get deletePhoto {
+    return Intl.message(
+      'Delete Photo',
+      name: 'deletePhoto',
       desc: '',
       args: [],
     );

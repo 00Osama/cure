@@ -22,7 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "NurseDate": MessageLookupByLibrary.simpleMessage("Nurse Data"),
+        "NurseData": MessageLookupByLibrary.simpleMessage("Nurse Data"),
         "NurseProfilePhotoNote": MessageLookupByLibrary.simpleMessage(
             "Profile photo helps patients recognize you easily."),
         "PatientProfilePhotoNote": MessageLookupByLibrary.simpleMessage(
@@ -96,6 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Booking confirmed"),
         "bookingConfirmedSubtitle": MessageLookupByLibrary.simpleMessage(
             "Your request has been sent. You can track it on your dashboard."),
+        "bookingData": MessageLookupByLibrary.simpleMessage("Booking Data"),
         "bookingDateTimeRequiredError":
             MessageLookupByLibrary.simpleMessage("Please choose date and time"),
         "bookingDetails":
@@ -173,6 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
         "deleteAccountDialogMessage": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete your account? This action cannot be undone."),
+        "deletePhoto": MessageLookupByLibrary.simpleMessage("Delete Photo"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "elderlyCareItems": MessageLookupByLibrary.simpleMessage(
@@ -279,10 +281,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("5+ years of experience"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "noActiveBookings":
-            MessageLookupByLibrary.simpleMessage("No completed bookings yet."),
+            MessageLookupByLibrary.simpleMessage("No Active bookings yet."),
         "noApp":
             MessageLookupByLibrary.simpleMessage("100% — No app in Fayoum"),
         "noBookings": MessageLookupByLibrary.simpleMessage("No bookings yet"),
+        "noCompletedBookings":
+            MessageLookupByLibrary.simpleMessage("No Completed bookings yet."),
         "noIncomingRequests":
             MessageLookupByLibrary.simpleMessage("No incoming requests"),
         "noSlots": MessageLookupByLibrary.simpleMessage(
@@ -316,6 +320,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sign Up as a Patient"),
         "patientButtonSubtitle": MessageLookupByLibrary.simpleMessage(
             "Get fast and secure home care from our network of certified nurses in less than 15 minutes."),
+        "patientData": MessageLookupByLibrary.simpleMessage("Patient Data"),
         "patientSignupSubtitle": MessageLookupByLibrary.simpleMessage(
             "Sign up to access home nursing services"),
         "patientSignupSuccess":
@@ -423,7 +428,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectRegion": MessageLookupByLibrary.simpleMessage("Select region"),
         "selectService":
             MessageLookupByLibrary.simpleMessage("Select a service"),
-        "serviceName": MessageLookupByLibrary.simpleMessage("Service Name"),
         "servicesIntro": MessageLookupByLibrary.simpleMessage(
             "We provide a wide range of home nursing services tailored to all cases"),
         "signInButtonLabel": MessageLookupByLibrary.simpleMessage("Sign In"),
