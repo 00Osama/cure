@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../domain/use_cases/get_profile_use_case.dart';
-import '../../domain/use_cases/update_profile_use_case.dart';
-import '../../domain/use_cases/upload_profile_image_use_case.dart';
+import '../../domain/usecase/get_profile_use_case.dart';
+import '../../domain/usecase/update_profile_use_case.dart';
+import '../../domain/usecase/upload_profile_image_use_case.dart';
 import 'edit_profile_info_state.dart';
 
 class EditProfileInfoCubit extends Cubit<EditProfileInfoState> {

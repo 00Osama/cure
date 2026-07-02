@@ -3129,6 +3129,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Notifications are coming soon.`
+  String get notificationsCominSoon {
+    return Intl.message(
+      'Notifications are coming soon.',
+      name: 'notificationsCominSoon',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

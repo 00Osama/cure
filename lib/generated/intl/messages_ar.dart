@@ -299,6 +299,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "noVerificationDesc": MessageLookupByLibrary.simpleMessage(
             "لا توجد طريقة للتحقق من مؤهلات الممرض أو خلفيته المهنية قبل استقباله"),
         "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+        "notificationsCominSoon": MessageLookupByLibrary.simpleMessage(
+            "الإشعارات ستكون متاحة قريبًا."),
         "nurse": MessageLookupByLibrary.simpleMessage("ممرض"),
         "nurseButton": MessageLookupByLibrary.simpleMessage("سجل كممرض"),
         "nurseButtonSubtitle": MessageLookupByLibrary.simpleMessage(

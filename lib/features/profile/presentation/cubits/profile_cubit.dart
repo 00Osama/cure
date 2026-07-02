@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../domain/use_cases/delete_account_use_case.dart';
-import '../../domain/use_cases/get_profile_use_case.dart';
-import '../../domain/use_cases/logout_use_case.dart';
+import '../../domain/usecase/delete_account_use_case.dart';
+import '../../domain/usecase/get_profile_use_case.dart';
+import '../../domain/usecase/logout_use_case.dart';
 import 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {

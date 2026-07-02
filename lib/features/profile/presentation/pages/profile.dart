@@ -323,9 +323,18 @@ class _ProfilePageState extends State<ProfilePage> {
                               Divider(height: 1, color: colors.border),
 
                               NotificationTile(
-                                value: notificationsEnabled,
+                                value: false,
                                 onChanged: (value) {
-                                  setState(() => notificationsEnabled = value);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      behavior: SnackBarBehavior.floating,
+                                      backgroundColor: colors.warning,
+                                      content: Text(
+                                        S().notificationsCominSoon,
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  );
                                 },
                               ),
                             ],

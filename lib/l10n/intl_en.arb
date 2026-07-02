@@ -320,7 +320,9 @@
   "bookingData": "Booking Data",
   "NurseData": "Nurse Data", 
   "patientData": "Patient Data", 
-  "deletePhoto": "Delete Photo"
+  "deletePhoto": "Delete Photo",
+  "notificationsCominSoon": "Notifications are coming soon."
+
 
 }
 

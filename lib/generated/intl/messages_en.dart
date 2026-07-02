@@ -299,6 +299,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "noVerificationDesc": MessageLookupByLibrary.simpleMessage(
             "No way to verify a nurse\'s qualifications or professional background"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+        "notificationsCominSoon": MessageLookupByLibrary.simpleMessage(
+            "Notifications are coming soon."),
         "nurse": MessageLookupByLibrary.simpleMessage("Nurse"),
         "nurseButton":
             MessageLookupByLibrary.simpleMessage("Sign Up as a Nurse"),
